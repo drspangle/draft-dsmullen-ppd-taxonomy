@@ -5,15 +5,15 @@
 <meta content="Common,Latin" name="scripts">
 <meta content="initial-scale=1.0" name="viewport">
 <title>Privacy Preference Declaration Taxonomy</title>
-<meta content="Your Name Here" name="author">
+<meta content="Daniel Smullen" name="author">
 <meta content="
-       TODO Abstract 
+       This document defines a standardized taxonomy for describing data handling practices of Internet-connected devices within home networks. It complements the Privacy Preference Declaration (PPD) Protocol by providing the necessary vocabulary and semantic structure to represent and reason about data types, purposes, actions, sources, and destinations. This taxonomy supports both machine reasoning and human interpretation and can be implemented using ontological frameworks such as OWL-DL. 
     " name="description">
 <meta content="xml2rfc 3.28.1" name="generator">
 <meta content="next generation" name="keyword">
 <meta content="unicorn" name="keyword">
 <meta content="sparkling distributed ledger" name="keyword">
-<meta content="draft-todo-yourname-protocol-latest" name="ietf.draft">
+<meta content="draft-dsmullen-ppd-taxonomy-latest" name="ietf.draft">
 <!-- Generator version information:
   xml2rfc 3.28.1
     Python 3.12.10
@@ -1049,8 +1049,8 @@ svg :is([fill="white"], [fill^="#fff"]) {
 <td class="right">May 2025</td>
 </tr></thead>
 <tfoot><tr>
-<td class="left">Here</td>
-<td class="center">Expires 22 November 2025</td>
+<td class="left">Smullen</td>
+<td class="center">Expires 23 November 2025</td>
 <td class="right">[Page]</td>
 </tr></tfoot>
 </table>
@@ -1058,22 +1058,22 @@ svg :is([fill="white"], [fill^="#fff"]) {
 <div id="internal-metadata" class="document-information">
 <dl id="identifiers">
 <dt class="label-workgroup">Workgroup:</dt>
-<dd class="workgroup">WG Working Group</dd>
+<dd class="workgroup">Network Working Group</dd>
 <dt class="label-internet-draft">Internet-Draft:</dt>
-<dd class="internet-draft">draft-todo-yourname-protocol-latest</dd>
+<dd class="internet-draft">draft-dsmullen-ppd-taxonomy-latest</dd>
 <dt class="label-published">Published:</dt>
 <dd class="published">
-<time datetime="2025-05-21" class="published">21 May 2025</time>
+<time datetime="2025-05-22" class="published">22 May 2025</time>
     </dd>
 <dt class="label-intended-status">Intended Status:</dt>
 <dd class="intended-status">Informational</dd>
 <dt class="label-expires">Expires:</dt>
-<dd class="expires"><time datetime="2025-11-22">22 November 2025</time></dd>
+<dd class="expires"><time datetime="2025-11-23">23 November 2025</time></dd>
 <dt class="label-authors">Author:</dt>
 <dd class="authors">
 <div class="author">
-      <div class="author-name">Y. N. Here</div>
-<div class="org">Your Organization Here</div>
+      <div class="author-name">D. Smullen</div>
+<div class="org">CableLabs</div>
 </div>
 </dd>
 </dl>
@@ -1081,7 +1081,7 @@ svg :is([fill="white"], [fill^="#fff"]) {
 <h1 id="title">Privacy Preference Declaration Taxonomy</h1>
 <section id="section-abstract">
       <h2 id="abstract"><a href="#abstract" class="selfRef">Abstract</a></h2>
-<p id="section-abstract-1">TODO Abstract<a href="#section-abstract-1" class="pilcrow">¶</a></p>
+<p id="section-abstract-1">This document defines a standardized taxonomy for describing data handling practices of Internet-connected devices within home networks. It complements the Privacy Preference Declaration (PPD) Protocol by providing the necessary vocabulary and semantic structure to represent and reason about data types, purposes, actions, sources, and destinations. This taxonomy supports both machine reasoning and human interpretation and can be implemented using ontological frameworks such as OWL-DL.<a href="#section-abstract-1" class="pilcrow">¶</a></p>
 </section>
 <section class="note rfcEditorRemove" id="section-note.1">
       <h2 id="name-about-this-document">
@@ -1089,14 +1089,10 @@ svg :is([fill="white"], [fill^="#fff"]) {
       </h2>
 <p id="section-note.1-1">This note is to be removed before publishing as an RFC.<a href="#section-note.1-1" class="pilcrow">¶</a></p>
 <p id="section-note.1-2">
-        The latest revision of this draft can be found at <span><a href="https://example.com/LATEST">https://example.com/LATEST</a></span>.
-        Status information for this document may be found at <span><a href="https://datatracker.ietf.org/doc/draft-todo-yourname-protocol/">https://datatracker.ietf.org/doc/draft-todo-yourname-protocol/</a></span>.<a href="#section-note.1-2" class="pilcrow">¶</a></p>
-<p id="section-note.1-3">
-        Discussion of this document takes place on the
-        WG Working Group mailing list (<span><a href="mailto:WG@example.com">mailto:WG@example.com</a></span>),
-        which is archived at <span><a href="https://example.com/WG">https://example.com/WG</a></span>.<a href="#section-note.1-3" class="pilcrow">¶</a></p>
-<p id="section-note.1-4">Source for this draft and an issue tracker can be found at
-        <span><a href="https://github.com/USER/REPO">https://github.com/USER/REPO</a></span>.<a href="#section-note.1-4" class="pilcrow">¶</a></p>
+        The latest revision of this draft can be found at <span><a href="https://drspangle.github.io/draft-dsmullen-ppd-taxonomy/draft-dsmullen-ppd-taxonomy.html">https://drspangle.github.io/draft-dsmullen-ppd-taxonomy/draft-dsmullen-ppd-taxonomy.html</a></span>.
+        Status information for this document may be found at <span><a href="https://datatracker.ietf.org/doc/draft-dsmullen-ppd-taxonomy/">https://datatracker.ietf.org/doc/draft-dsmullen-ppd-taxonomy/</a></span>.<a href="#section-note.1-2" class="pilcrow">¶</a></p>
+<p id="section-note.1-3">Source for this draft and an issue tracker can be found at
+        <span><a href="https://github.com/drspangle/draft-dsmullen-ppd-taxonomy">https://github.com/drspangle/draft-dsmullen-ppd-taxonomy</a></span>.<a href="#section-note.1-3" class="pilcrow">¶</a></p>
 </section>
 <div id="status-of-memo">
 <section id="section-boilerplate.1">
@@ -1117,7 +1113,7 @@ svg :is([fill="white"], [fill^="#fff"]) {
         time. It is inappropriate to use Internet-Drafts as reference
         material or to cite them other than as "work in progress."<a href="#section-boilerplate.1-3" class="pilcrow">¶</a></p>
 <p id="section-boilerplate.1-4">
-        This Internet-Draft will expire on 22 November 2025.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
+        This Internet-Draft will expire on 23 November 2025.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="copyright">
@@ -1153,19 +1149,96 @@ svg :is([fill="white"], [fill^="#fff"]) {
             <p id="section-toc.1-1.2.1" class="keepWithNext"><a href="#section-2" class="auto internal xref">2</a>.  <a href="#name-conventions-and-definitions" class="internal xref">Conventions and Definitions</a></p>
 </li>
           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.3">
-            <p id="section-toc.1-1.3.1" class="keepWithNext"><a href="#section-3" class="auto internal xref">3</a>.  <a href="#name-security-considerations" class="internal xref">Security Considerations</a></p>
+            <p id="section-toc.1-1.3.1" class="keepWithNext"><a href="#section-3" class="auto internal xref">3</a>.  <a href="#name-design-goals" class="internal xref">Design Goals</a></p>
 </li>
           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.4">
-            <p id="section-toc.1-1.4.1"><a href="#section-4" class="auto internal xref">4</a>.  <a href="#name-iana-considerations" class="internal xref">IANA Considerations</a></p>
+            <p id="section-toc.1-1.4.1"><a href="#section-4" class="auto internal xref">4</a>.  <a href="#name-core-taxonomy-structure" class="internal xref">Core Taxonomy Structure</a></p>
+<ul class="compact toc ulBare ulEmpty">
+<li class="compact toc ulBare ulEmpty" id="section-toc.1-1.4.2.1">
+                <p id="section-toc.1-1.4.2.1.1"><a href="#section-4.1" class="auto internal xref">4.1</a>.  <a href="#name-data-type-what" class="internal xref">Data Type (What)</a></p>
+</li>
+              <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.4.2.2">
+                <p id="section-toc.1-1.4.2.2.1"><a href="#section-4.2" class="auto internal xref">4.2</a>.  <a href="#name-purpose-why" class="internal xref">Purpose (Why)</a></p>
+</li>
+              <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.4.2.3">
+                <p id="section-toc.1-1.4.2.3.1"><a href="#section-4.3" class="auto internal xref">4.3</a>.  <a href="#name-action-how" class="internal xref">Action (How)</a></p>
+</li>
+              <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.4.2.4">
+                <p id="section-toc.1-1.4.2.4.1"><a href="#section-4.4" class="auto internal xref">4.4</a>.  <a href="#name-source-and-destination-wher" class="internal xref">Source and Destination (Where and To Whom)</a></p>
+</li>
+            </ul>
 </li>
           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.5">
-            <p id="section-toc.1-1.5.1"><a href="#section-5" class="auto internal xref">5</a>.  <a href="#name-normative-references" class="internal xref">Normative References</a></p>
+            <p id="section-toc.1-1.5.1"><a href="#section-5" class="auto internal xref">5</a>.  <a href="#name-ontological-representation" class="internal xref">Ontological Representation</a></p>
+<ul class="compact toc ulBare ulEmpty">
+<li class="compact toc ulBare ulEmpty" id="section-toc.1-1.5.2.1">
+                <p id="section-toc.1-1.5.2.1.1"><a href="#section-5.1" class="auto internal xref">5.1</a>.  <a href="#name-example-owl-classes" class="internal xref">Example OWL Classes</a></p>
+</li>
+            </ul>
 </li>
           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.6">
-            <p id="section-toc.1-1.6.1"><a href="#appendix-A" class="auto internal xref"></a><a href="#name-acknowledgments" class="internal xref">Acknowledgments</a></p>
+            <p id="section-toc.1-1.6.1"><a href="#section-6" class="auto internal xref">6</a>.  <a href="#name-use-in-privacy-policies" class="internal xref">Use in Privacy Policies</a></p>
+<ul class="compact toc ulBare ulEmpty">
+<li class="compact toc ulBare ulEmpty" id="section-toc.1-1.6.2.1">
+                <p id="section-toc.1-1.6.2.1.1"><a href="#section-6.1" class="auto internal xref">6.1</a>.  <a href="#name-sample-policy-statement-jso" class="internal xref">Sample Policy Statement (JSON-LD)</a></p>
+</li>
+            </ul>
 </li>
           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.7">
-            <p id="section-toc.1-1.7.1"><a href="#appendix-B" class="auto internal xref"></a><a href="#name-authors-address" class="internal xref">Author's Address</a></p>
+            <p id="section-toc.1-1.7.1"><a href="#section-7" class="auto internal xref">7</a>.  <a href="#name-security-considerations" class="internal xref">Security Considerations</a></p>
+<ul class="compact toc ulBare ulEmpty">
+<li class="compact toc ulBare ulEmpty" id="section-toc.1-1.7.2.1">
+                <p id="section-toc.1-1.7.2.1.1"><a href="#section-7.1" class="auto internal xref">7.1</a>.  <a href="#name-tamper-resistance" class="internal xref">Tamper resistance</a></p>
+</li>
+              <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.7.2.2">
+                <p id="section-toc.1-1.7.2.2.1"><a href="#section-7.2" class="auto internal xref">7.2</a>.  <a href="#name-immutable-references" class="internal xref">Immutable references</a></p>
+</li>
+              <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.7.2.3">
+                <p id="section-toc.1-1.7.2.3.1"><a href="#section-7.3" class="auto internal xref">7.3</a>.  <a href="#name-cross-device-reasoning" class="internal xref">Cross-device reasoning</a></p>
+</li>
+            </ul>
+</li>
+          <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.8">
+            <p id="section-toc.1-1.8.1"><a href="#section-8" class="auto internal xref">8</a>.  <a href="#name-iana-considerations" class="internal xref">IANA Considerations</a></p>
+<ul class="compact toc ulBare ulEmpty">
+<li class="compact toc ulBare ulEmpty" id="section-toc.1-1.8.2.1">
+                <p id="section-toc.1-1.8.2.1.1"><a href="#section-8.1" class="auto internal xref">8.1</a>.  <a href="#name-purpose-and-justification" class="internal xref">Purpose and Justification</a></p>
+</li>
+              <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.8.2.2">
+                <p id="section-toc.1-1.8.2.2.1"><a href="#section-8.2" class="auto internal xref">8.2</a>.  <a href="#name-registry-and-extension-mech" class="internal xref">Registry and Extension Mechanism</a></p>
+<ul class="compact toc ulBare ulEmpty">
+<li class="compact toc ulBare ulEmpty" id="section-toc.1-1.8.2.2.2.1">
+                    <p id="section-toc.1-1.8.2.2.2.1.1"><a href="#section-8.2.1" class="auto internal xref">8.2.1</a>.  <a href="#name-taxonomy-registry" class="internal xref">Taxonomy Registry</a></p>
+</li>
+                </ul>
+</li>
+              <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.8.2.3">
+                <p id="section-toc.1-1.8.2.3.1"><a href="#section-8.3" class="auto internal xref">8.3</a>.  <a href="#name-registry-structure" class="internal xref">Registry Structure</a></p>
+</li>
+              <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.8.2.4">
+                <p id="section-toc.1-1.8.2.4.1"><a href="#section-8.4" class="auto internal xref">8.4</a>.  <a href="#name-initial-registry-contents" class="internal xref">Initial Registry Contents</a></p>
+</li>
+              <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.8.2.5">
+                <p id="section-toc.1-1.8.2.5.1"><a href="#section-8.5" class="auto internal xref">8.5</a>.  <a href="#name-registry-management" class="internal xref">Registry Management</a></p>
+<ul class="compact toc ulBare ulEmpty">
+<li class="compact toc ulBare ulEmpty" id="section-toc.1-1.8.2.5.2.1">
+                    <p id="section-toc.1-1.8.2.5.2.1.1"><a href="#section-8.5.1" class="auto internal xref">8.5.1</a>.  <a href="#name-extension-mechanism" class="internal xref">Extension Mechanism</a></p>
+</li>
+                  <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.8.2.5.2.2">
+                    <p id="section-toc.1-1.8.2.5.2.2.1"><a href="#section-8.5.2" class="auto internal xref">8.5.2</a>.  <a href="#name-access-methods" class="internal xref">Access Methods</a></p>
+</li>
+                </ul>
+</li>
+            </ul>
+</li>
+          <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.9">
+            <p id="section-toc.1-1.9.1"><a href="#section-9" class="auto internal xref">9</a>.  <a href="#name-normative-references" class="internal xref">Normative References</a></p>
+</li>
+          <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.10">
+            <p id="section-toc.1-1.10.1"><a href="#appendix-A" class="auto internal xref"></a><a href="#name-acknowledgments" class="internal xref">Acknowledgments</a></p>
+</li>
+          <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.11">
+            <p id="section-toc.1-1.11.1"><a href="#appendix-B" class="auto internal xref"></a><a href="#name-authors-address" class="internal xref">Author's Address</a></p>
 </li>
         </ul>
 </nav>
@@ -1176,7 +1249,13 @@ svg :is([fill="white"], [fill^="#fff"]) {
       <h2 id="name-introduction">
 <a href="#section-1" class="section-number selfRef">1. </a><a href="#name-introduction" class="section-name selfRef">Introduction</a>
       </h2>
-<p id="section-1-1">TODO Introduction<a href="#section-1-1" class="pilcrow">¶</a></p>
+<p id="section-1-1">The effectiveness of the Privacy Preference Declaration (PPD) architecture depends on a shared understanding of the semantics of privacy preferences. (TODO: reference the main architecture i-d here.)
+A well-structured taxonomy enables the clear articulation of user-defined privacy constraints and provides a common language for devices to report their data handling practices.<a href="#section-1-1" class="pilcrow">¶</a></p>
+<p id="section-1-2">This document introduces such a taxonomy, allowing policy declarations to express what kind of data is being handled, why it is being handled, how it is used, where it originates and is sent, and who is involved.
+These taxonomic categories enable reasoning over complex privacy configurations and enforceable policies.<a href="#section-1-2" class="pilcrow">¶</a></p>
+<p id="section-1-3">To support interoperability and consistency, the taxonomy defined herein is coupled with a centralized registry governed by IANA or a designated authority.
+This registry ensures that all terms used in privacy declarations are semantically defined, unambiguous, and maintained through a community-driven process.
+The registry plays a critical role in policy validation, enforcement logic, and device interoperability across ecosystems.<a href="#section-1-3" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="conventions-and-definitions">
@@ -1190,31 +1269,537 @@ described in BCP 14 <span>[<a href="#RFC2119" class="cite xref">RFC2119</a>]</s
 appear in all capitals, as shown here.<a href="#section-2-1" class="pilcrow">¶</a></p>
 </section>
 </div>
-<div id="security-considerations">
+<div id="design-goals">
 <section id="section-3">
-      <h2 id="name-security-considerations">
-<a href="#section-3" class="section-number selfRef">3. </a><a href="#name-security-considerations" class="section-name selfRef">Security Considerations</a>
+      <h2 id="name-design-goals">
+<a href="#section-3" class="section-number selfRef">3. </a><a href="#name-design-goals" class="section-name selfRef">Design Goals</a>
       </h2>
-<p id="section-3-1">TODO Security<a href="#section-3-1" class="pilcrow">¶</a></p>
+<ul class="normal">
+<li class="normal" id="section-3-1.1">
+          <p id="section-3-1.1.1">Semantic Clarity: Enable precise and unambiguous expression of privacy concepts.<a href="#section-3-1.1.1" class="pilcrow">¶</a></p>
+</li>
+        <li class="normal" id="section-3-1.2">
+          <p id="section-3-1.2.1">Machine Reasoning: Support ontology-based reasoning to detect policy violations or mismatches.<a href="#section-3-1.2.1" class="pilcrow">¶</a></p>
+</li>
+        <li class="normal" id="section-3-1.3">
+          <p id="section-3-1.3.1">Extensibility: Allow addition of new concepts without disrupting existing deployments.<a href="#section-3-1.3.1" class="pilcrow">¶</a></p>
+</li>
+        <li class="normal" id="section-3-1.4">
+          <p id="section-3-1.4.1">Alignment: Reflect terminology familiar from privacy regulations (e.g., GDPR, CCPA).<a href="#section-3-1.4.1" class="pilcrow">¶</a></p>
+</li>
+        <li class="normal" id="section-3-1.5">
+          <p id="section-3-1.5.1">Registry Governance: Ensure terms are publicly documented, versioned, and governed through a formal review process to maintain ecosystem coherence.<a href="#section-3-1.5.1" class="pilcrow">¶</a></p>
+</li>
+        <li class="normal" id="section-3-1.6">
+          <p id="section-3-1.6.1">Validation Support: Facilitate automated validation of policies and declarations using machine-readable registry definitions.<a href="#section-3-1.6.1" class="pilcrow">¶</a></p>
+</li>
+        <li class="normal" id="section-3-1.7">
+          <p id="section-3-1.7.1">Interoperability: Promote uniform understanding of privacy semantics across diverse vendors and devices, backed by a shared taxonomy registry.<a href="#section-3-1.7.1" class="pilcrow">¶</a></p>
+</li>
+      </ul>
+</section>
+</div>
+<div id="core-taxonomy-structure">
+<section id="section-4">
+      <h2 id="name-core-taxonomy-structure">
+<a href="#section-4" class="section-number selfRef">4. </a><a href="#name-core-taxonomy-structure" class="section-name selfRef">Core Taxonomy Structure</a>
+      </h2>
+<p id="section-4-1">The taxonomy consists of five orthogonal but interrelated categories.
+These categories reference the concepts defined by Contextual Integrity theory in describing data flows. (TODO: cite this properly as an informative reference)<a href="#section-4-1" class="pilcrow">¶</a></p>
+<div id="data-type-what">
+<section id="section-4.1">
+        <h3 id="name-data-type-what">
+<a href="#section-4.1" class="section-number selfRef">4.1. </a><a href="#name-data-type-what" class="section-name selfRef">Data Type (What)</a>
+        </h3>
+<p id="section-4.1-1">Defines the nature of the data being collected, used, or transmitted.<a href="#section-4.1-1" class="pilcrow">¶</a></p>
+<p id="section-4.1-2">Examples:<a href="#section-4.1-2" class="pilcrow">¶</a></p>
+<ul class="normal">
+<li class="normal" id="section-4.1-3.1">
+            <p id="section-4.1-3.1.1">temperatureReading<a href="#section-4.1-3.1.1" class="pilcrow">¶</a></p>
+</li>
+          <li class="normal" id="section-4.1-3.2">
+            <p id="section-4.1-3.2.1">videoCapture<a href="#section-4.1-3.2.1" class="pilcrow">¶</a></p>
+</li>
+          <li class="normal" id="section-4.1-3.3">
+            <p id="section-4.1-3.3.1">locationCoordinate<a href="#section-4.1-3.3.1" class="pilcrow">¶</a></p>
+</li>
+          <li class="normal" id="section-4.1-3.4">
+            <p id="section-4.1-3.4.1">audioTranscript<a href="#section-4.1-3.4.1" class="pilcrow">¶</a></p>
+</li>
+          <li class="normal" id="section-4.1-3.5">
+            <p id="section-4.1-3.5.1">deviceIdentifier<a href="#section-4.1-3.5.1" class="pilcrow">¶</a></p>
+</li>
+          <li class="normal" id="section-4.1-3.6">
+            <p id="section-4.1-3.6.1">healthStatus<a href="#section-4.1-3.6.1" class="pilcrow">¶</a></p>
+</li>
+        </ul>
+<p id="section-4.1-4">This dimension aligns with data classification in privacy laws and informs sensitivity.<a href="#section-4.1-4" class="pilcrow">¶</a></p>
+</section>
+</div>
+<div id="purpose-why">
+<section id="section-4.2">
+        <h3 id="name-purpose-why">
+<a href="#section-4.2" class="section-number selfRef">4.2. </a><a href="#name-purpose-why" class="section-name selfRef">Purpose (Why)</a>
+        </h3>
+<p id="section-4.2-1">Describes the rationale for processing the data.<a href="#section-4.2-1" class="pilcrow">¶</a></p>
+<p id="section-4.2-2">Examples:<a href="#section-4.2-2" class="pilcrow">¶</a></p>
+<ul class="normal">
+<li class="normal" id="section-4.2-3.1">
+            <p id="section-4.2-3.1.1">coreFunctionality (e.g., heating control)<a href="#section-4.2-3.1.1" class="pilcrow">¶</a></p>
+</li>
+          <li class="normal" id="section-4.2-3.2">
+            <p id="section-4.2-3.2.1">analytics<a href="#section-4.2-3.2.1" class="pilcrow">¶</a></p>
+</li>
+          <li class="normal" id="section-4.2-3.3">
+            <p id="section-4.2-3.3.1">advertising<a href="#section-4.2-3.3.1" class="pilcrow">¶</a></p>
+</li>
+          <li class="normal" id="section-4.2-3.4">
+            <p id="section-4.2-3.4.1">securityMonitoring<a href="#section-4.2-3.4.1" class="pilcrow">¶</a></p>
+</li>
+          <li class="normal" id="section-4.2-3.5">
+            <p id="section-4.2-3.5.1">personalization<a href="#section-4.2-3.5.1" class="pilcrow">¶</a></p>
+</li>
+          <li class="normal" id="section-4.2-3.6">
+            <p id="section-4.2-3.6.1">diagnostics<a href="#section-4.2-3.6.1" class="pilcrow">¶</a></p>
+</li>
+        </ul>
+<p id="section-4.2-4">Each purpose can be mapped to categories of lawful basis for processing under regulations like GDPR (e.g., contract, consent, legitimateInterest).<a href="#section-4.2-4" class="pilcrow">¶</a></p>
+</section>
+</div>
+<div id="action-how">
+<section id="section-4.3">
+        <h3 id="name-action-how">
+<a href="#section-4.3" class="section-number selfRef">4.3. </a><a href="#name-action-how" class="section-name selfRef">Action (How)</a>
+        </h3>
+<p id="section-4.3-1">Specifies what is being done with the data.<a href="#section-4.3-1" class="pilcrow">¶</a></p>
+<p id="section-4.3-2">Subclasses:<a href="#section-4.3-2" class="pilcrow">¶</a></p>
+<ul class="normal">
+<li class="normal" id="section-4.3-3.1">
+            <p id="section-4.3-3.1.1">collection (retrieval or ingestion)<a href="#section-4.3-3.1.1" class="pilcrow">¶</a></p>
+</li>
+          <li class="normal" id="section-4.3-3.2">
+            <p id="section-4.3-3.2.1">usage (processing or decision-making)<a href="#section-4.3-3.2.1" class="pilcrow">¶</a></p>
+</li>
+          <li class="normal" id="section-4.3-3.3">
+            <p id="section-4.3-3.3.1">transfer (sharing externally)<a href="#section-4.3-3.3.1" class="pilcrow">¶</a></p>
+</li>
+          <li class="normal" id="section-4.3-3.4">
+            <p id="section-4.3-3.4.1">retention (storage over time)<a href="#section-4.3-3.4.1" class="pilcrow">¶</a></p>
+</li>
+          <li class="normal" id="section-4.3-3.5">
+            <p id="section-4.3-3.5.1">deletion (erasure procedures)<a href="#section-4.3-3.5.1" class="pilcrow">¶</a></p>
+</li>
+        </ul>
+<p id="section-4.3-4">These actions enable both auditing and fine-grained controls.<a href="#section-4.3-4" class="pilcrow">¶</a></p>
+</section>
+</div>
+<div id="source-and-destination-where-and-to-whom">
+<section id="section-4.4">
+        <h3 id="name-source-and-destination-wher">
+<a href="#section-4.4" class="section-number selfRef">4.4. </a><a href="#name-source-and-destination-wher" class="section-name selfRef">Source and Destination (Where and To Whom)</a>
+        </h3>
+<p id="section-4.4-1">Defines the data origin and endpoint.<a href="#section-4.4-1" class="pilcrow">¶</a></p>
+<p id="section-4.4-2">Source may be, in the abstract:<a href="#section-4.4-2" class="pilcrow">¶</a></p>
+<ul class="normal">
+<li class="normal" id="section-4.4-3.1">
+            <p id="section-4.4-3.1.1">userInput<a href="#section-4.4-3.1.1" class="pilcrow">¶</a></p>
+</li>
+          <li class="normal" id="section-4.4-3.2">
+            <p id="section-4.4-3.2.1">sensor<a href="#section-4.4-3.2.1" class="pilcrow">¶</a></p>
+</li>
+          <li class="normal" id="section-4.4-3.3">
+            <p id="section-4.4-3.3.1">inferred (e.g., derived from other data)<a href="#section-4.4-3.3.1" class="pilcrow">¶</a></p>
+</li>
+          <li class="normal" id="section-4.4-3.4">
+            <p id="section-4.4-3.4.1">thirdPartyImport<a href="#section-4.4-3.4.1" class="pilcrow">¶</a></p>
+</li>
+        </ul>
+<p id="section-4.4-4">Destination may include, in the abstract:<a href="#section-4.4-4" class="pilcrow">¶</a></p>
+<ul class="normal">
+<li class="normal" id="section-4.4-5.1">
+            <p id="section-4.4-5.1.1">localProcessing<a href="#section-4.4-5.1.1" class="pilcrow">¶</a></p>
+</li>
+          <li class="normal" id="section-4.4-5.2">
+            <p id="section-4.4-5.2.1">cloudStorage<a href="#section-4.4-5.2.1" class="pilcrow">¶</a></p>
+</li>
+          <li class="normal" id="section-4.4-5.3">
+            <p id="section-4.4-5.3.1">manufacturerServer<a href="#section-4.4-5.3.1" class="pilcrow">¶</a></p>
+</li>
+          <li class="normal" id="section-4.4-5.4">
+            <p id="section-4.4-5.4.1">thirdPartyPartner<a href="#section-4.4-5.4.1" class="pilcrow">¶</a></p>
+</li>
+          <li class="normal" id="section-4.4-5.5">
+            <p id="section-4.4-5.5.1">dataBroker<a href="#section-4.4-5.5.1" class="pilcrow">¶</a></p>
+</li>
+        </ul>
+<p id="section-4.4-6">Concrete examples of these abstract categories of source and destination may also be used, such as <span>[<a href="#RFC3986" class="cite xref">RFC3986</a>]</span>.
+This classification enables constraints on data flow (e.g., local-only, no third-party sharing).<a href="#section-4.4-6" class="pilcrow">¶</a></p>
+</section>
+</div>
+</section>
+</div>
+<div id="ontological-representation">
+<section id="section-5">
+      <h2 id="name-ontological-representation">
+<a href="#section-5" class="section-number selfRef">5. </a><a href="#name-ontological-representation" class="section-name selfRef">Ontological Representation</a>
+      </h2>
+<p id="section-5-1">To support semantic reasoning, the taxonomy is expressed in OWL-DL (Web Ontology Language - Description Logic). (TODO: perhaps add a normative reference to this?)
+This allows:<a href="#section-5-1" class="pilcrow">¶</a></p>
+<ul class="normal">
+<li class="normal" id="section-5-2.1">
+          <p id="section-5-2.1.1">Inference of non-compliance: e.g., if a device claims to process only temperatureReading for coreFunctionality, but attempts to collect locationCoordinate for advertising.<a href="#section-5-2.1.1" class="pilcrow">¶</a></p>
+</li>
+        <li class="normal" id="section-5-2.2">
+          <p id="section-5-2.2.1">Subclassing and equivalence: Allowing extension through subClassOf and equivalentClass definitions.<a href="#section-5-2.2.1" class="pilcrow">¶</a></p>
+</li>
+        <li class="normal" id="section-5-2.3">
+          <p id="section-5-2.3.1">Integration with existing vocabularies: Such as Data Privacy Vocabulary (DPV), and schema.org. (TODO: add an informative reference to DPV)<a href="#section-5-2.3.1" class="pilcrow">¶</a></p>
+</li>
+      </ul>
+<div id="example-owl-classes">
+<section id="section-5.1">
+        <h3 id="name-example-owl-classes">
+<a href="#section-5.1" class="section-number selfRef">5.1. </a><a href="#name-example-owl-classes" class="section-name selfRef">Example OWL Classes</a>
+        </h3>
+<div class="alignLeft art-text artwork" id="section-5.1-1">
+<pre>
+&lt;owl:Class rdf:ID="DataType"/&gt;
+&lt;owl:Class rdf:ID="temperatureReading"&gt;
+  &lt;rdfs:subClassOf rdf:resource="#DataType"/&gt;
+&lt;/owl:Class&gt;
+
+&lt;owl:Class rdf:ID="Purpose"/&gt;
+&lt;owl:Class rdf:ID="coreFunctionality"&gt;
+  &lt;rdfs:subClassOf rdf:resource="#Purpose"/&gt;
+&lt;/owl:Class&gt;
+
+&lt;owl:ObjectProperty rdf:ID="hasPurpose"&gt;
+  &lt;rdfs:domain rdf:resource="#DataHandlingAction"/&gt;
+  &lt;rdfs:range rdf:resource="#Purpose"/&gt;
+&lt;/owl:ObjectProperty&gt;
+</pre><a href="#section-5.1-1" class="pilcrow">¶</a>
+</div>
+</section>
+</div>
+</section>
+</div>
+<div id="use-in-privacy-policies">
+<section id="section-6">
+      <h2 id="name-use-in-privacy-policies">
+<a href="#section-6" class="section-number selfRef">6. </a><a href="#name-use-in-privacy-policies" class="section-name selfRef">Use in Privacy Policies</a>
+      </h2>
+<p id="section-6-1">Policies referencing this taxonomy can be expressed in a structured format such as JSON-LD or RDF/XML, allowing for both enforcement at runtime and static policy analysis. (TODO: add normative references here)<a href="#section-6-1" class="pilcrow">¶</a></p>
+<div id="sample-policy-statement-json-ld">
+<section id="section-6.1">
+        <h3 id="name-sample-policy-statement-jso">
+<a href="#section-6.1" class="section-number selfRef">6.1. </a><a href="#name-sample-policy-statement-jso" class="section-name selfRef">Sample Policy Statement (JSON-LD)</a>
+        </h3>
+<div class="alignLeft art-text artwork" id="section-6.1-1">
+<pre>
+{
+  "@context": "http://example.org/ppd-taxonomy",
+  "@type": "Policy",
+  "appliesTo": "device:smart-thermostat-123",
+  "allows": {
+    "action": "collection",
+    "data": "temperatureReading",
+    "purpose": "coreFunctionality",
+    "destination": "localProcessing"
+  },
+  "prohibits": [
+    {
+      "action": "transfer",
+      "data": "temperatureReading",
+      "destination": "thirdPartyPartner"
+    },
+    {
+      "action": "collection",
+      "data": "locationCoordinate"
+    }
+  ]
+}
+</pre><a href="#section-6.1-1" class="pilcrow">¶</a>
+</div>
+</section>
+</div>
+</section>
+</div>
+<div id="security-considerations">
+<section id="section-7">
+      <h2 id="name-security-considerations">
+<a href="#section-7" class="section-number selfRef">7. </a><a href="#name-security-considerations" class="section-name selfRef">Security Considerations</a>
+      </h2>
+<div id="tamper-resistance">
+<section id="section-7.1">
+        <h3 id="name-tamper-resistance">
+<a href="#section-7.1" class="section-number selfRef">7.1. </a><a href="#name-tamper-resistance" class="section-name selfRef">Tamper resistance</a>
+        </h3>
+<p id="section-7.1-1">Devices must not forge or misrepresent declared purposes.
+Term identifiers <span class="bcp14">MAY</span> include cryptographic hashes for integrity.
+All entries <span class="bcp14">MUST</span> be tamper-resistant and digitally signed where applicable.
+Devices <span class="bcp14">SHALL</span> reject policies using unrecognized or invalid terms.<a href="#section-7.1-1" class="pilcrow">¶</a></p>
+</section>
+</div>
+<div id="immutable-references">
+<section id="section-7.2">
+        <h3 id="name-immutable-references">
+<a href="#section-7.2" class="section-number selfRef">7.2. </a><a href="#name-immutable-references" class="section-name selfRef">Immutable references</a>
+        </h3>
+<p id="section-7.2-1">Policy enforcement relies on exact matching; hash-based identifiers may be used.<a href="#section-7.2-1" class="pilcrow">¶</a></p>
+</section>
+</div>
+<div id="cross-device-reasoning">
+<section id="section-7.3">
+        <h3 id="name-cross-device-reasoning">
+<a href="#section-7.3" class="section-number selfRef">7.3. </a><a href="#name-cross-device-reasoning" class="section-name selfRef">Cross-device reasoning</a>
+        </h3>
+<p id="section-7.3-1">Shared taxonomy supports detecting conflicts or inconsistencies in multi-device settings.<a href="#section-7.3-1" class="pilcrow">¶</a></p>
+</section>
+</div>
 </section>
 </div>
 <div id="iana-considerations">
-<section id="section-4">
+<section id="section-8">
       <h2 id="name-iana-considerations">
-<a href="#section-4" class="section-number selfRef">4. </a><a href="#name-iana-considerations" class="section-name selfRef">IANA Considerations</a>
+<a href="#section-8" class="section-number selfRef">8. </a><a href="#name-iana-considerations" class="section-name selfRef">IANA Considerations</a>
       </h2>
-<p id="section-4-1">This document has no IANA actions.<a href="#section-4-1" class="pilcrow">¶</a></p>
+<p id="section-8-1">This specification requests the creation of a new IANA registry titled:<a href="#section-8-1" class="pilcrow">¶</a></p>
+<p id="section-8-2">Privacy Preference Declaration (PPD) Taxonomy Registry<a href="#section-8-2" class="pilcrow">¶</a></p>
+<p id="section-8-3">This registry defines structured terms for use in Privacy Preference Declarations, organized across five core categories: DataType, Purpose, Action, Source, and Destination.
+It is intended to support semantic validation, enforcement, and interoperability in privacy-aware networked systems.<a href="#section-8-3" class="pilcrow">¶</a></p>
+<div id="purpose-and-justification">
+<section id="section-8.1">
+        <h3 id="name-purpose-and-justification">
+<a href="#section-8.1" class="section-number selfRef">8.1. </a><a href="#name-purpose-and-justification" class="section-name selfRef">Purpose and Justification</a>
+        </h3>
+<p id="section-8.1-1">The Privacy Taxonomy Registry described in this document serves as the authoritative catalog of privacy-related semantic terms used across the Privacy Preference Declaration (PPD) architecture.
+Managed under the Internet Assigned Numbers Authority (IANA), this registry provides a consistent, governed vocabulary to ensure interoperability, enforcement, and semantic alignment among privacy declarations, devices, and policy engines.<a href="#section-8.1-1" class="pilcrow">¶</a></p>
+<p id="section-8.1-2">Unlike many traditional IANA registries that define protocol-level constructs such as status codes or media types, the Privacy Taxonomy Registry defines semantically rich terms suitable for reasoning over privacy constraints.
+Each term is designed to be both human-readable and machine-processable, enabling automated policy enforcement, auditing, and semantic validation in distributed environments like home networks.
+The registry helps prevent semantic drift, ensures privacy declarations are interpretable across vendor ecosystems, and provides a compliance anchor point for policy analysis and device certification.
+It supports a unified approach to policy expression that is extensible yet constrained by formal definitions, such as those expressed in OWL-DL.
+This registry distinguishes itself by supporting semantic reasoning and structured validation, not just name-value mappings.
+It is foundational to privacy-preserving automation.<a href="#section-8.1-2" class="pilcrow">¶</a></p>
+</section>
+</div>
+<div id="registry-and-extension-mechanism">
+<section id="section-8.2">
+        <h3 id="name-registry-and-extension-mech">
+<a href="#section-8.2" class="section-number selfRef">8.2. </a><a href="#name-registry-and-extension-mech" class="section-name selfRef">Registry and Extension Mechanism</a>
+        </h3>
+<p id="section-8.2-1">The success of the Privacy Preference Declaration framework depends on a shared, extensible, and authoritative vocabulary of privacy-related concepts.
+A unified taxonomy ensures that:<a href="#section-8.2-1" class="pilcrow">¶</a></p>
+<ul class="normal">
+<li class="normal" id="section-8.2-2.1">
+            <p id="section-8.2-2.1.1">Users can write meaningful, enforceable policies with well-understood terms.<a href="#section-8.2-2.1.1" class="pilcrow">¶</a></p>
+</li>
+          <li class="normal" id="section-8.2-2.2">
+            <p id="section-8.2-2.2.1">Device manufacturers can interpret and comply with these policies using standard semantics.<a href="#section-8.2-2.2.1" class="pilcrow">¶</a></p>
+</li>
+          <li class="normal" id="section-8.2-2.3">
+            <p id="section-8.2-2.3.1">Policy processing engines can reason over device declarations and user constraints for compatibility, conflicts, or enforcement.<a href="#section-8.2-2.3.1" class="pilcrow">¶</a></p>
+</li>
+        </ul>
+<p id="section-8.2-3">Without a centralized governance model, the ecosystem risks semantic drift — where different devices interpret similar terms differently, or invent new, incompatible terms — undermining both interoperability and policy clarity.<a href="#section-8.2-3" class="pilcrow">¶</a></p>
+<div id="taxonomy-registry">
+<section id="section-8.2.1">
+          <h4 id="name-taxonomy-registry">
+<a href="#section-8.2.1" class="section-number selfRef">8.2.1. </a><a href="#name-taxonomy-registry" class="section-name selfRef">Taxonomy Registry</a>
+          </h4>
+<p id="section-8.2.1-1">A central Privacy Taxonomy Registry <span class="bcp14">SHALL</span> be established and governed by a standards organization (e.g., IETF/IANA, or an independent Privacy Policy Consortium).
+This registry <span class="bcp14">SHALL</span>:<a href="#section-8.2.1-1" class="pilcrow">¶</a></p>
+<ul class="normal">
+<li class="normal" id="section-8.2.1-2.1">
+              <p id="section-8.2.1-2.1.1">Host the canonical definitions for core taxonomy terms.<a href="#section-8.2.1-2.1.1" class="pilcrow">¶</a></p>
+</li>
+            <li class="normal" id="section-8.2.1-2.2">
+              <p id="section-8.2.1-2.2.1">Publish OWL-DL and JSON-LD serializations for tooling.<a href="#section-8.2.1-2.2.1" class="pilcrow">¶</a></p>
+</li>
+            <li class="normal" id="section-8.2.1-2.3">
+              <p id="section-8.2.1-2.3.1">Allow versioning and deprecation of terms.<a href="#section-8.2.1-2.3.1" class="pilcrow">¶</a></p>
+</li>
+            <li class="normal" id="section-8.2.1-2.4">
+              <p id="section-8.2.1-2.4.1">Accept vetted community-submitted extensions via a structured process.<a href="#section-8.2.1-2.4.1" class="pilcrow">¶</a></p>
+</li>
+            <li class="normal" id="section-8.2.1-2.5">
+              <p id="section-8.2.1-2.5.1">Provide a human-readable portal and machine-readable API for lookup and validation.<a href="#section-8.2.1-2.5.1" class="pilcrow">¶</a></p>
+</li>
+          </ul>
+</section>
+</div>
+</section>
+</div>
+<div id="registry-structure">
+<section id="section-8.3">
+        <h3 id="name-registry-structure">
+<a href="#section-8.3" class="section-number selfRef">8.3. </a><a href="#name-registry-structure" class="section-name selfRef">Registry Structure</a>
+        </h3>
+<p id="section-8.3-1">Each entry in the registry <span class="bcp14">MUST</span> include the following fields:<a href="#section-8.3-1" class="pilcrow">¶</a></p>
+<ul class="normal">
+<li class="normal" id="section-8.3-2.1">
+            <p id="section-8.3-2.1.1">term_id: Globally unique identifier (e.g., ppd:purpose.analytics, ppd:dataType.temperature)<a href="#section-8.3-2.1.1" class="pilcrow">¶</a></p>
+</li>
+          <li class="normal" id="section-8.3-2.2">
+            <p id="section-8.3-2.2.1">category: One of: DataType, Purpose, Action, Source, Destination<a href="#section-8.3-2.2.1" class="pilcrow">¶</a></p>
+</li>
+          <li class="normal" id="section-8.3-2.3">
+            <p id="section-8.3-2.3.1">definition: Human-readable description of the term<a href="#section-8.3-2.3.1" class="pilcrow">¶</a></p>
+</li>
+          <li class="normal" id="section-8.3-2.4">
+            <p id="section-8.3-2.4.1">owl_definition: OWL-DL class or property definition<a href="#section-8.3-2.4.1" class="pilcrow">¶</a></p>
+</li>
+          <li class="normal" id="section-8.3-2.5">
+            <p id="section-8.3-2.5.1">examples: At least one real-world usage scenario<a href="#section-8.3-2.5.1" class="pilcrow">¶</a></p>
+</li>
+          <li class="normal" id="section-8.3-2.6">
+            <p id="section-8.3-2.6.1">status: Enum: active, deprecated, or experimental<a href="#section-8.3-2.6.1" class="pilcrow">¶</a></p>
+</li>
+          <li class="normal" id="section-8.3-2.7">
+            <p id="section-8.3-2.7.1">submitted_by: Name of contributing entity (organization or individual)<a href="#section-8.3-2.7.1" class="pilcrow">¶</a></p>
+</li>
+          <li class="normal" id="section-8.3-2.8">
+            <p id="section-8.3-2.8.1">date_registered: ISO timestamp of official inclusion<a href="#section-8.3-2.8.1" class="pilcrow">¶</a></p>
+</li>
+          <li class="normal" id="section-8.3-2.9">
+            <p id="section-8.3-2.9.1">version: Semantic versioning identifier (e.g., 1.0.0)<a href="#section-8.3-2.9.1" class="pilcrow">¶</a></p>
+</li>
+          <li class="normal" id="section-8.3-2.10">
+            <p id="section-8.3-2.10.1">references: Optional legal or technical citations (e.g., GDPR, RFCs)<a href="#section-8.3-2.10.1" class="pilcrow">¶</a></p>
+</li>
+        </ul>
+<p id="section-8.3-3">All entries <span class="bcp14">MUST</span> conform to this structure and be encoded in both machine-readable (JSON-LD, RDF/XML) and human-readable formats.<a href="#section-8.3-3" class="pilcrow">¶</a></p>
+</section>
+</div>
+<div id="initial-registry-contents">
+<section id="section-8.4">
+        <h3 id="name-initial-registry-contents">
+<a href="#section-8.4" class="section-number selfRef">8.4. </a><a href="#name-initial-registry-contents" class="section-name selfRef">Initial Registry Contents</a>
+        </h3>
+<p id="section-8.4-1">IANA <span class="bcp14">SHALL</span> initialize the registry with the baseline terms defined in this document's core taxonomy. These include:<a href="#section-8.4-1" class="pilcrow">¶</a></p>
+<ul class="normal">
+<li class="normal" id="section-8.4-2.1">
+            <p id="section-8.4-2.1.1">Core Data Types: temperatureReading, locationCoordinate, audioRecording, videoStream, deviceIdentifier, userPreference, biometricData, healthData, presenceIndicator<a href="#section-8.4-2.1.1" class="pilcrow">¶</a></p>
+</li>
+          <li class="normal" id="section-8.4-2.2">
+            <p id="section-8.4-2.2.1">Core Purposes: coreFunctionality, security, personalization, analytics, advertising, diagnostics, regulatoryCompliance<a href="#section-8.4-2.2.1" class="pilcrow">¶</a></p>
+</li>
+          <li class="normal" id="section-8.4-2.3">
+            <p id="section-8.4-2.3.1">Core Actions: collection, usage, transfer, retention, deletion<a href="#section-8.4-2.3.1" class="pilcrow">¶</a></p>
+</li>
+          <li class="normal" id="section-8.4-2.4">
+            <p id="section-8.4-2.4.1">Core Sources: sensor, userInput, thirdPartyImport, derivedData<a href="#section-8.4-2.4.1" class="pilcrow">¶</a></p>
+</li>
+          <li class="normal" id="section-8.4-2.5">
+            <p id="section-8.4-2.5.1">Core Destinations: localProcessing, cloudStorage, manufacturerServer, thirdPartyPartner, dataBroker<a href="#section-8.4-2.5.1" class="pilcrow">¶</a></p>
+</li>
+        </ul>
+<p id="section-8.4-3">Each of these <span class="bcp14">SHALL</span> be registered with complete metadata as described above.<a href="#section-8.4-3" class="pilcrow">¶</a></p>
+</section>
+</div>
+<div id="registry-management">
+<section id="section-8.5">
+        <h3 id="name-registry-management">
+<a href="#section-8.5" class="section-number selfRef">8.5. </a><a href="#name-registry-management" class="section-name selfRef">Registry Management</a>
+        </h3>
+<p id="section-8.5-1">The registry <span class="bcp14">SHALL</span> be maintained under the “Expert Review” policy defined in <span>[<a href="#RFC8126" class="cite xref">RFC8126</a>]</span>.
+The designated expert(s) will evaluate submissions for:<a href="#section-8.5-1" class="pilcrow">¶</a></p>
+<ul class="normal">
+<li class="normal" id="section-8.5-2.1">
+            <p id="section-8.5-2.1.1">Conformance with the OWL-DL ontology<a href="#section-8.5-2.1.1" class="pilcrow">¶</a></p>
+</li>
+          <li class="normal" id="section-8.5-2.2">
+            <p id="section-8.5-2.2.1">Semantic clarity and non-ambiguity<a href="#section-8.5-2.2.1" class="pilcrow">¶</a></p>
+</li>
+          <li class="normal" id="section-8.5-2.3">
+            <p id="section-8.5-2.3.1">Necessity and non-duplication<a href="#section-8.5-2.3.1" class="pilcrow">¶</a></p>
+</li>
+          <li class="normal" id="section-8.5-2.4">
+            <p id="section-8.5-2.4.1">Privacy and security impact (if applicable)<a href="#section-8.5-2.4.1" class="pilcrow">¶</a></p>
+</li>
+        </ul>
+<p id="section-8.5-3">The review process <span class="bcp14">MUST</span> include a public comment period and the ability to appeal decisions.<a href="#section-8.5-3" class="pilcrow">¶</a></p>
+<div id="extension-mechanism">
+<section id="section-8.5.1">
+          <h4 id="name-extension-mechanism">
+<a href="#section-8.5.1" class="section-number selfRef">8.5.1. </a><a href="#name-extension-mechanism" class="section-name selfRef">Extension Mechanism</a>
+          </h4>
+<p id="section-8.5.1-1">To support innovation and domain-specific specialization, the taxonomy <span class="bcp14">MUST</span> allow third parties to register custom terms via a controlled submission process.<a href="#section-8.5.1-1" class="pilcrow">¶</a></p>
+<div id="extension-requirements">
+<section id="section-8.5.1.1">
+            <h5 id="name-extension-requirements">
+<a href="#section-8.5.1.1" class="section-number selfRef">8.5.1.1. </a><a href="#name-extension-requirements" class="section-name selfRef">Extension Requirements</a>
+            </h5>
+<p id="section-8.5.1.1-1">An extension submission <span class="bcp14">MUST</span>:<a href="#section-8.5.1.1-1" class="pilcrow">¶</a></p>
+<ul class="normal">
+<li class="normal" id="section-8.5.1.1-2.1">
+                <p id="section-8.5.1.1-2.1.1">Declare a unique namespace (e.g., vendorX:, industryGroupY:).<a href="#section-8.5.1.1-2.1.1" class="pilcrow">¶</a></p>
+</li>
+              <li class="normal" id="section-8.5.1.1-2.2">
+                <p id="section-8.5.1.1-2.2.1">Clearly define its relationship to existing concepts (e.g., subClassOf, equivalentClass).<a href="#section-8.5.1.1-2.2.1" class="pilcrow">¶</a></p>
+</li>
+              <li class="normal" id="section-8.5.1.1-2.3">
+                <p id="section-8.5.1.1-2.3.1">Include all required registry fields (as above).<a href="#section-8.5.1.1-2.3.1" class="pilcrow">¶</a></p>
+</li>
+              <li class="normal" id="section-8.5.1.1-2.4">
+                <p id="section-8.5.1.1-2.4.1">Demonstrate necessity: why existing terms are insufficient.<a href="#section-8.5.1.1-2.4.1" class="pilcrow">¶</a></p>
+</li>
+              <li class="normal" id="section-8.5.1.1-2.5">
+                <p id="section-8.5.1.1-2.5.1">Include privacy risk assessment if the term introduces sensitive or novel data practices.<a href="#section-8.5.1.1-2.5.1" class="pilcrow">¶</a></p>
+</li>
+            </ul>
+</section>
+</div>
+<div id="extension-and-deprecation-policy">
+<section id="section-8.5.1.2">
+            <h5 id="name-extension-and-deprecation-p">
+<a href="#section-8.5.1.2" class="section-number selfRef">8.5.1.2. </a><a href="#name-extension-and-deprecation-p" class="section-name selfRef">Extension and Deprecation Policy</a>
+            </h5>
+<p id="section-8.5.1.2-1">Extensions: Entities <span class="bcp14">MAY</span> submit new terms with a custom namespace (e.g., vendorX:) as long as relationships to core terms (e.g., subClassOf) are clearly declared.<a href="#section-8.5.1.2-1" class="pilcrow">¶</a></p>
+<p id="section-8.5.1.2-2">Deprecation: Deprecated terms remain in the registry with status marked as deprecated. These terms <span class="bcp14">MUST NOT</span> be used in future policy declarations but <span class="bcp14">MAY</span> be preserved for historical validation.<a href="#section-8.5.1.2-2" class="pilcrow">¶</a></p>
+</section>
+</div>
+</section>
+</div>
+<div id="access-methods">
+<section id="section-8.5.2">
+          <h4 id="name-access-methods">
+<a href="#section-8.5.2" class="section-number selfRef">8.5.2. </a><a href="#name-access-methods" class="section-name selfRef">Access Methods</a>
+          </h4>
+<p id="section-8.5.2-1">The registry <span class="bcp14">SHALL</span> be made publicly available via:<a href="#section-8.5.2-1" class="pilcrow">¶</a></p>
+<ul class="normal">
+<li class="normal" id="section-8.5.2-2.1">
+              <p id="section-8.5.2-2.1.1">A web-accessible HTML directory with search and browse capabilities<a href="#section-8.5.2-2.1.1" class="pilcrow">¶</a></p>
+</li>
+            <li class="normal" id="section-8.5.2-2.2">
+              <p id="section-8.5.2-2.2.1">A machine-readable API for tool and device integration<a href="#section-8.5.2-2.2.1" class="pilcrow">¶</a></p>
+</li>
+            <li class="normal" id="section-8.5.2-2.3">
+              <p id="section-8.5.2-2.3.1">Regular snapshots for offline validation<a href="#section-8.5.2-2.3.1" class="pilcrow">¶</a></p>
+</li>
+          </ul>
+</section>
+</div>
+</section>
+</div>
 </section>
 </div>
 <div id="sec-normative-references">
-<section id="section-5">
+<section id="section-9">
       <h2 id="name-normative-references">
-<a href="#section-5" class="section-number selfRef">5. </a><a href="#name-normative-references" class="section-name selfRef">Normative References</a>
+<a href="#section-9" class="section-number selfRef">9. </a><a href="#name-normative-references" class="section-name selfRef">Normative References</a>
       </h2>
 <dl class="references">
 <dt id="RFC2119">[RFC2119]</dt>
       <dd>
 <span class="refAuthor">Bradner, S.</span>, <span class="refTitle">"Key words for use in RFCs to Indicate Requirement Levels"</span>, <span class="seriesInfo">BCP 14</span>, <span class="seriesInfo">RFC 2119</span>, <span class="seriesInfo">DOI 10.17487/RFC2119</span>, <time datetime="1997-03" class="refDate">March 1997</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc2119">https://www.rfc-editor.org/rfc/rfc2119</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="RFC3986">[RFC3986]</dt>
+      <dd>
+<span class="refAuthor">Berners-Lee, T.</span>, <span class="refAuthor">Fielding, R.</span>, and <span class="refAuthor">L. Masinter</span>, <span class="refTitle">"Uniform Resource Identifier (URI): Generic Syntax"</span>, <span class="seriesInfo">STD 66</span>, <span class="seriesInfo">RFC 3986</span>, <span class="seriesInfo">DOI 10.17487/RFC3986</span>, <time datetime="2005-01" class="refDate">January 2005</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc3986">https://www.rfc-editor.org/rfc/rfc3986</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="RFC8126">[RFC8126]</dt>
+      <dd>
+<span class="refAuthor">Cotton, M.</span>, <span class="refAuthor">Leiba, B.</span>, and <span class="refAuthor">T. Narten</span>, <span class="refTitle">"Guidelines for Writing an IANA Considerations Section in RFCs"</span>, <span class="seriesInfo">BCP 26</span>, <span class="seriesInfo">RFC 8126</span>, <span class="seriesInfo">DOI 10.17487/RFC8126</span>, <time datetime="2017-06" class="refDate">June 2017</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc8126">https://www.rfc-editor.org/rfc/rfc8126</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 <dt id="RFC8174">[RFC8174]</dt>
     <dd>
@@ -1237,11 +1822,11 @@ appear in all capitals, as shown here.<a href="#section-2-1" class="pilcrow">¶<
 <a href="#name-authors-address" class="section-name selfRef">Author's Address</a>
       </h2>
 <address class="vcard">
-        <div dir="auto" class="left"><span class="fn nameRole">Your Name Here</span></div>
-<div dir="auto" class="left"><span class="org">Your Organization Here</span></div>
+        <div dir="auto" class="left"><span class="fn nameRole">Daniel Smullen</span></div>
+<div dir="auto" class="left"><span class="org">CableLabs</span></div>
 <div class="email">
 <span>Email:</span>
-<a href="mailto:your.email@example.com" class="email">your.email@example.com</a>
+<a href="mailto:d.smullen@cablelabs.com" class="email">d.smullen@cablelabs.com</a>
 </div>
 </address>
 </section>
