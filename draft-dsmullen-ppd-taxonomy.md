@@ -208,7 +208,7 @@ Policies referencing this taxonomy can be expressed in a structured format such 
 
 ## Tamper resistance
 
-Devices must not forge or misrepresent declared purposes. 
+Devices must not forge or misrepresent declared purposes.
 Term identifiers MAY include cryptographic hashes for integrity.
 All entries MUST be tamper-resistant and digitally signed where applicable.
 Devices SHALL reject policies using unrecognized or invalid terms.
@@ -219,7 +219,7 @@ Policy enforcement relies on exact matching; hash-based identifiers may be used.
 
 ## Cross-device reasoning
 
-Shared taxonomy supports detecting conflicts or inconsistencies in multi-device settings. 
+Shared taxonomy supports detecting conflicts or inconsistencies in multi-device settings.
 
 
 
