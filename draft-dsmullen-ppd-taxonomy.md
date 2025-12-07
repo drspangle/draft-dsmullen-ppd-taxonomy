@@ -41,7 +41,7 @@ informative:
 
 --- abstract
 
-This document defines a standardized taxonomy for describing data handling practices of Internet-connected devices within home networks. It complements the Privacy Preference Declaration (PPD) Protocol by providing the necessary vocabulary and semantic structure to represent and reason about data types, purposes, actions, sources, and destinations. This taxonomy supports both machine reasoning and human interpretation and can be implemented using ontological frameworks such as OWL-DL.
+This document defines a standardized taxonomy for describing data handling practices of Internet-connected devices within home networks. It complements the Privacy Preference Declaration (PPD) Protocol and architecture by providing the necessary vocabulary and semantic structure to represent and reason about data types, purposes, actions, sources, and destinations. This taxonomy supports both machine reasoning and human interpretation and can be implemented using ontological frameworks such as OWL-DL.
 
 
 --- middle
