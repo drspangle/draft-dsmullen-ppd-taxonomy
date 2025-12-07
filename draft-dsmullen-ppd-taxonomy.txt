@@ -5,7 +5,7 @@
 Network Working Group                                         D. Smullen
 Internet-Draft                                                B. Scriber
 Intended status: Informational                                 CableLabs
-Expires: 4 December 2025                                     2 June 2025
+Expires: 10 June 2026                                    7 December 2025
 
 
                 Privacy Preference Declaration Taxonomy
@@ -16,11 +16,11 @@ Abstract
    This document defines a standardized taxonomy for describing data
    handling practices of Internet-connected devices within home
    networks.  It complements the Privacy Preference Declaration (PPD)
-   Protocol by providing the necessary vocabulary and semantic structure
-   to represent and reason about data types, purposes, actions, sources,
-   and destinations.  This taxonomy supports both machine reasoning and
-   human interpretation and can be implemented using ontological
-   frameworks such as OWL-DL.
+   Protocol and architecture by providing the necessary vocabulary and
+   semantic structure to represent and reason about data types,
+   purposes, actions, sources, and destinations.  This taxonomy supports
+   both machine reasoning and human interpretation and can be
+   implemented using ontological frameworks such as OWL-DL.
 
 About This Document
 
@@ -50,7 +50,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 4 December 2025.
+   This Internet-Draft will expire on 10 June 2026.
 
 Copyright Notice
 
