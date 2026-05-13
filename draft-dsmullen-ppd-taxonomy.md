@@ -41,323 +41,213 @@ informative:
 
 --- abstract
 
-This document defines a standardized taxonomy for describing data handling practices of Internet-connected devices within home networks. It complements the Privacy Preference Declaration (PPD) Protocol and architecture by providing the necessary vocabulary and semantic structure to represent and reason about data types, purposes, actions, sources, and destinations. This taxonomy supports both machine reasoning and human interpretation and can be implemented using ontological frameworks such as OWL-DL.
+This document defines the core vocabulary and extension model used by Privacy Preference Declarations (PPDs) to describe data handling in home networks. It complements {{?I-D.draft-dsmullen-ppd-architecture}} and {{?I-D.draft-dsmullen-ppd-protocol}} by standardizing term spaces for data types, purposes, actions, sources, destinations, and selected constraints. Stable term identifiers are the primary semantic hook. Baseline participant-facing protocol messages use compact identifiers plus taxonomy context rather than requiring full ontology exchange on the wire.
 
 
 --- middle
 
 # Introduction
 
-The effectiveness of the Privacy Preference Declaration (PPD) architecture depends on a shared understanding of the semantics of privacy preferences. (TODO: reference the main architecture i-d here.)
-A well-structured taxonomy enables the clear articulation of user-defined privacy constraints and provides a common language for devices to report their data handling practices.
+The Privacy Preference Declaration (PPD) architecture depends on a shared understanding of privacy-related semantics. {{?I-D.draft-dsmullen-ppd-architecture}} defines the roles, trust boundaries, and lifecycle. {{?I-D.draft-dsmullen-ppd-protocol}} defines the participant-facing message flow and object structure. This document defines the vocabulary those messages use.
 
-This document introduces such a taxonomy, allowing policy declarations to express what kind of data is being handled, why it is being handled, how it is used, where it originates and is sent, and who is involved.
-These taxonomic categories enable reasoning over complex privacy configurations and enforceable policies.
+The baseline PPD protocol carries atomic descriptive statements from device-side participants and atomic effective-policy rules from the household side. This taxonomy defines the meaning of the terms used in those statements and rules. It does not define a household policy authoring workflow, a conflict-resolution procedure, or a full reasoning engine.
 
-To support interoperability and consistency, the taxonomy defined herein is coupled with a centralized registry governed by IANA or a designated authority.
-This registry ensures that all terms used in privacy declarations are semantically defined, unambiguous, and maintained through a community-driven process.
-The registry plays a critical role in policy validation, enforcement logic, and device interoperability across ecosystems.
-
-
+The taxonomy is designed to be useful in constrained operational environments. It therefore separates the stable meaning of terms from any richer external semantic framework that might also describe them. Implementations can map these terms to richer vocabularies or ontology representations where useful, but such machinery is not required for baseline participant-facing interoperability.
 
 # Conventions and Definitions
 
 {::boilerplate bcp14-tagged}
 
-
 # Design Goals
 
-* Semantic Clarity: Enable precise and unambiguous expression of privacy concepts.
-* Machine Reasoning: Support ontology-based reasoning to detect policy violations or mismatches.
-* Extensibility: Allow addition of new concepts without disrupting existing deployments.
-* Alignment: Reflect terminology familiar from privacy regulations (e.g., GDPR, CCPA).
-* Registry Governance: Ensure terms are publicly documented, versioned, and governed through a formal review process to maintain ecosystem coherence.
-* Validation Support: Facilitate automated validation of policies and declarations using machine-readable registry definitions.
-* Interoperability: Promote uniform understanding of privacy semantics across diverse vendors and devices, backed by a shared taxonomy registry.
-
+* Semantic Clarity: Provide stable, unambiguous meanings for privacy-related terms used in PPD messages.
+* Core Primitive Coverage: Standardize the dimensions needed by the baseline protocol rule and statement model.
+* Compact Operational Use: Support compact identifiers in participant-facing JSON messages.
+* Extensibility Without Fragmentation: Allow organization-specific vocabularies while requiring mapping back to shared core primitives.
+* Validation and Comparison Support: Enable comparison of participant assertions and household policy without forcing every deployment to use a single heavy semantic framework.
+* Interoperability: Preserve a shared vocabulary floor across vendors, device classes, and household deployments.
 
 # Core Taxonomy Structure
 
-The taxonomy consists of five orthogonal but interrelated categories.
-These categories reference the concepts defined by Contextual Integrity theory in describing data flows. (TODO: cite this properly as an informative reference)
+The baseline taxonomy consists of five core dimensions plus selected qualifier terms. These dimensions are used together in atomic declaration statements and atomic effective-policy rules.
 
 ## Data Type (What)
 
-Defines the nature of the data being collected, used, or transmitted.
+Data Type terms identify the kind of data being collected, used, transferred, retained, or deleted.
 
-Examples:
+Illustrative core terms include:
 
-* temperatureReading
-* videoCapture
-* locationCoordinate
-* audioTranscript
-* deviceIdentifier
-* healthStatus
-
-This dimension aligns with data classification in privacy laws and informs sensitivity.
+* ppd:temperatureReading
+* ppd:videoFrame
+* ppd:eventClip
+* ppd:audioSample
+* ppd:deviceIdentifier
 
 ## Purpose (Why)
 
-Describes the rationale for processing the data.
+Purpose terms identify the reason or operational objective for the handling.
 
-Examples:
+Illustrative core terms include:
 
-* coreFunctionality (e.g., heating control)
-* analytics
-* advertising
-* securityMonitoring
-* personalization
-* diagnostics
-
-Each purpose can be mapped to categories of lawful basis for processing under regulations like GDPR (e.g., contract, consent, legitimateInterest).
+* ppd:coreFunctionality
+* ppd:motionDetection
+* ppd:remoteViewing
+* ppd:analytics
+* ppd:advertising
+* ppd:diagnostics
 
 ## Action (How)
 
-Specifies what is being done with the data.
+Action terms identify what is being done with the data.
 
-Subclasses:
+Illustrative core terms include:
 
-* collection (retrieval or ingestion)
-* usage (processing or decision-making)
-* transfer (sharing externally)
-* retention (storage over time)
-* deletion (erasure procedures)
+* ppd:collection
+* ppd:usage
+* ppd:transfer
+* ppd:retention
+* ppd:deletion
 
-These actions enable both auditing and fine-grained controls.
+## Source (From Where)
 
-## Source and Destination (Where and To Whom)
+Source terms identify the origin of the handled data in the relevant processing path.
 
-Defines the data origin and endpoint.
+Illustrative core terms include:
 
-Source may be, in the abstract:
+* ppd:userInput
+* ppd:sensor
+* ppd:cameraSensor
+* ppd:microphone
+* ppd:derivedData
 
-* userInput
-* sensor
-* inferred (e.g., derived from other data)
-* thirdPartyImport
+## Destination (To Where)
 
-Destination may include, in the abstract:
+Destination terms identify the endpoint or trust boundary to which the handling applies.
 
-* localProcessing
-* cloudStorage
-* manufacturerServer
-* thirdPartyPartner
-* dataBroker
+Illustrative core terms include:
 
-Concrete examples of these abstract categories of source and destination may also be used, such as {{!RFC3986}}.
-This classification enables constraints on data flow (e.g., local-only, no third-party sharing).
+* ppd:localProcessing
+* ppd:vendorCloud
+* ppd:thirdPartyPartner
+* ppd:dataBroker
 
+## Constraint Qualifiers
 
-# Ontological Representation
+The baseline protocol also allows structured qualifiers through the constraints object. This document defines the initial qualifier term spaces used by that object.
 
-To support semantic reasoning, the taxonomy is expressed in OWL-DL (Web Ontology Language - Description Logic). (TODO: perhaps add a normative reference to this?)
-This allows:
+### Retention
 
-* Inference of non-compliance: e.g., if a device claims to process only temperatureReading for coreFunctionality, but attempts to collect locationCoordinate for advertising.
-* Subclassing and equivalence: Allowing extension through subClassOf and equivalentClass definitions.
-* Integration with existing vocabularies: Such as Data Privacy Vocabulary (DPV), and schema.org. (TODO: add an informative reference to DPV)
+Retention terms qualify how long the described or allowed handling can persist.
 
-## Example OWL Classes
+Illustrative core terms include:
 
-~~~
-<owl:Class rdf:ID="DataType"/>
-<owl:Class rdf:ID="temperatureReading">
-  <rdfs:subClassOf rdf:resource="#DataType"/>
-</owl:Class>
+* ppd:ephemeral
+* ppd:shortLived
+* ppd:householdDefinedRetention
 
-<owl:Class rdf:ID="Purpose"/>
-<owl:Class rdf:ID="coreFunctionality">
-  <rdfs:subClassOf rdf:resource="#Purpose"/>
-</owl:Class>
+### Locality
 
-<owl:ObjectProperty rdf:ID="hasPurpose">
-  <rdfs:domain rdf:resource="#DataHandlingAction"/>
-  <rdfs:range rdf:resource="#Purpose"/>
-</owl:ObjectProperty>
-~~~
+Locality terms qualify the trust boundary or placement within which the described or allowed handling can occur.
 
-# Use in Privacy Policies
+Illustrative core terms include:
 
-Policies referencing this taxonomy can be expressed in a structured format such as JSON-LD or RDF/XML, allowing for both enforcement at runtime and static policy analysis. (TODO: add normative references here)
+* ppd:inHomeOnly
+* ppd:householdApprovedRemoteService
+* ppd:thirdPartyProhibited
 
-## Sample Policy Statement (JSON-LD)
+# Identifier Model
 
-~~~
+## Stable Term Identifiers
+
+Stable term identifiers are the primary semantic hook in this taxonomy. The baseline core vocabulary uses the reserved prefix ppd:. A term such as ppd:temperatureReading or ppd:localProcessing derives its meaning from the stable taxonomy definition associated with that identifier.
+
+A taxonomy release identifier can identify the vocabulary snapshot used for validation, reproducibility, or documentation. However, release metadata does not replace the term identifier itself as the source of meaning.
+
+## Compact Wire Form
+
+{{?I-D.draft-dsmullen-ppd-protocol}} defines compact term identifiers as the participant-facing wire format. The protocol's Taxonomy Context Object carries:
+
+* a taxonomy release identifier; and
+* any required non-core prefix declarations.
+
+This keeps participant-facing messages compact while preserving stable semantics.
+
+## Extension Namespaces and Core-Primitive Mapping
+
+Organizations MAY define additional terms outside the baseline ppd: vocabulary. When such terms appear in participant-facing protocol messages, the sender MUST provide the required non-core prefix declarations through the protocol's taxonomy context.
+
+Extension terms SHOULD document how they map to the shared core primitives defined in this document. That mapping is what allows vendor- or ecosystem-specific vocabulary to coexist with interoperable baseline processing.
+
+For example, an organization might define:
+
+* vendorx:airQualityIndex
+* vendorx:buildingOccupancyEstimate
+* vendorx:regionalComplianceArchive
+
+Such terms can be useful, but they SHOULD still explain how they relate to shared core dimensions and qualifiers so that participants and household policy services can compare them meaningfully.
+
+# Use in PPD Messages
+
+The protocol and taxonomy have different jobs:
+
+* the protocol carries which atomic combinations a participant asserts or a household policy applies; and
+* the taxonomy defines what the terms used in those combinations mean.
+
+This distinction matters. A flat bag of supported data types, purposes, actions, and destinations is not enough to describe which combinations actually apply to a participant. The protocol therefore carries atomic declaration statements and atomic policy rules, while this taxonomy defines the term spaces and qualifier meanings used in those objects.
+
+A declaration statement example is:
+
+~~~ json
 {
-  "@context": "http://example.org/ppd-taxonomy",
-  "@type": "Policy",
-  "appliesTo": "device:smart-thermostat-123",
-  "allows": {
-    "action": "collection",
-    "data": "temperatureReading",
-    "purpose": "coreFunctionality",
-    "destination": "localProcessing"
-  },
-  "prohibits": [
-    {
-      "action": "transfer",
-      "data": "temperatureReading",
-      "destination": "thirdPartyPartner"
-    },
-    {
-      "action": "collection",
-      "data": "locationCoordinate"
-    }
-  ]
+  "statement_id": "event-clip-remote-viewing",
+  "data_type": "ppd:eventClip",
+  "purpose": "ppd:remoteViewing",
+  "action": "ppd:transfer",
+  "source": "ppd:cameraSensor",
+  "destination": "ppd:vendorCloud",
+  "constraints": {
+    "retention": "ppd:shortLived"
+  }
 }
 ~~~
 
+A corresponding effective-policy rule example is:
 
+~~~ json
+{
+  "rule_id": "r2",
+  "data_type": "ppd:eventClip",
+  "purpose": "ppd:remoteViewing",
+  "action": "ppd:transfer",
+  "source": "ppd:cameraSensor",
+  "destination": "ppd:vendorCloud",
+  "effect": "allow",
+  "constraints": {
+    "retention": "ppd:shortLived",
+    "locality": "ppd:householdApprovedRemoteService"
+  }
+}
+~~~
+
+The taxonomy defines the meaning of the identifiers in these objects. The protocol defines how those objects are carried, validated, acknowledged, and kept current.
+
+# Relationship to Richer Semantic Frameworks
+
+This taxonomy is intentionally lighter than a full ontology language or rights-expression framework. Implementations MAY publish auxiliary representations, mappings, or tool-specific serializations when useful. For example, organizations might maintain internal ontology, graph, or policy-analysis artifacts that map to the stable identifiers defined here.
+
+However, baseline participant-facing interoperability does not require OWL, RDF, JSON-LD, or comparable machinery on the wire. The participant-facing contract remains compact term identifiers plus the protocol-defined taxonomy context.
 
 # Security Considerations
 
-## Tamper resistance
+Semantic drift, ambiguous extensions, and unresolved terms can undermine privacy signaling even when transport security is strong.
 
-Devices must not forge or misrepresent declared purposes.
-Term identifiers MAY include cryptographic hashes for integrity.
-All entries MUST be tamper-resistant and digitally signed where applicable.
-Devices SHALL reject policies using unrecognized or invalid terms.
+Organizations publishing extension vocabularies SHOULD document stable meanings and mappings back to shared core primitives. Participant-facing services and participants SHOULD NOT silently treat unresolved or unusable taxonomy terms as equivalent to known terms.
 
-## Immutable references
-
-Policy enforcement relies on exact matching; hash-based identifiers may be used.
-
-## Cross-device reasoning
-
-Shared taxonomy supports detecting conflicts or inconsistencies in multi-device settings.
-
-
+When unresolved or unsupported terms appear in participant-facing protocol messages, the handling defined by {{?I-D.draft-dsmullen-ppd-protocol}} applies. In particular, unresolved terms in normative policy content are more serious than unresolved descriptive detail because they can change the meaning of an allowed or denied handling path.
 
 # IANA Considerations
 
-This specification requests the creation of a new IANA registry titled:
-
-Privacy Preference Declaration (PPD) Taxonomy Registry
-
-This registry defines structured terms for use in Privacy Preference Declarations, organized across five core categories: DataType, Purpose, Action, Source, and Destination.
-It is intended to support semantic validation, enforcement, and interoperability in privacy-aware networked systems.
-
-## Purpose and Justification
-
-The Privacy Taxonomy Registry described in this document serves as the authoritative catalog of privacy-related semantic terms used across the Privacy Preference Declaration (PPD) architecture.
-Managed under the Internet Assigned Numbers Authority (IANA), this registry provides a consistent, governed vocabulary to ensure interoperability, enforcement, and semantic alignment among privacy declarations, devices, and policy engines.
-
-Unlike many traditional IANA registries that define protocol-level constructs such as status codes or media types, the Privacy Taxonomy Registry defines semantically rich terms suitable for reasoning over privacy constraints.
-Each term is designed to be both human-readable and machine-processable, enabling automated policy enforcement, auditing, and semantic validation in distributed environments like home networks.
-The registry helps prevent semantic drift, ensures privacy declarations are interpretable across vendor ecosystems, and provides a compliance anchor point for policy analysis and device certification.
-It supports a unified approach to policy expression that is extensible yet constrained by formal definitions, such as those expressed in OWL-DL.
-This registry distinguishes itself by supporting semantic reasoning and structured validation, not just name-value mappings.
-It is foundational to privacy-preserving automation.
-
-## Registry and Extension Mechanism
-
-The success of the Privacy Preference Declaration framework depends on a shared, extensible, and authoritative vocabulary of privacy-related concepts.
-A unified taxonomy ensures that:
-
-* Users can write meaningful, enforceable policies with well-understood terms.
-* Device manufacturers can interpret and comply with these policies using standard semantics.
-* Policy processing engines can reason over device declarations and user constraints for compatibility, conflicts, or enforcement.
-
-Without a centralized governance model, the ecosystem risks semantic drift — where different devices interpret similar terms differently, or invent new, incompatible terms — undermining both interoperability and policy clarity.
-
-### Taxonomy Registry
-
-A central Privacy Taxonomy Registry SHALL be established and governed by a standards organization (e.g., IETF/IANA, or an independent Privacy Policy Consortium).
-This registry SHALL:
-
-* Host the canonical definitions for core taxonomy terms.
-* Publish OWL-DL and JSON-LD serializations for tooling.
-* Allow versioning and deprecation of terms.
-* Accept vetted community-submitted extensions via a structured process.
-* Provide a human-readable portal and machine-readable API for lookup and validation.
-
-## Registry Structure
-
-Each entry in the registry MUST include the following fields:
-
-* term_id: Globally unique identifier (e.g., ppd:purpose.analytics, ppd:dataType.temperature)
-
-* category: One of: DataType, Purpose, Action, Source, Destination
-
-* definition: Human-readable description of the term
-
-* owl_definition: OWL-DL class or property definition
-
-* examples: At least one real-world usage scenario
-
-* status: Enum: active, deprecated, or experimental
-
-* submitted_by: Name of contributing entity (organization or individual)
-
-* date_registered: ISO timestamp of official inclusion
-
-* version: Semantic versioning identifier (e.g., 1.0.0)
-
-* references: Optional legal or technical citations (e.g., GDPR, RFCs)
-
-All entries MUST conform to this structure and be encoded in both machine-readable (JSON-LD, RDF/XML) and human-readable formats.
-
-## Initial Registry Contents
-
-IANA SHALL initialize the registry with the baseline terms defined in this document's core taxonomy. These include:
-
-* Core Data Types: temperatureReading, locationCoordinate, audioRecording, videoStream, deviceIdentifier, userPreference, biometricData, healthData, presenceIndicator
-
-* Core Purposes: coreFunctionality, security, personalization, analytics, advertising, diagnostics, regulatoryCompliance
-
-* Core Actions: collection, usage, transfer, retention, deletion
-
-* Core Sources: sensor, userInput, thirdPartyImport, derivedData
-
-* Core Destinations: localProcessing, cloudStorage, manufacturerServer, thirdPartyPartner, dataBroker
-
-Each of these SHALL be registered with complete metadata as described above.
-
-## Registry Management
-
-The registry SHALL be maintained under the “Expert Review” policy defined in {{!RFC8126}}.
-The designated expert(s) will evaluate submissions for:
-
-* Conformance with the OWL-DL ontology
-
-* Semantic clarity and non-ambiguity
-
-* Necessity and non-duplication
-
-* Privacy and security impact (if applicable)
-
-The review process MUST include a public comment period and the ability to appeal decisions.
-
-### Extension Mechanism
-
-To support innovation and domain-specific specialization, the taxonomy MUST allow third parties to register custom terms via a controlled submission process.
-
-#### Extension Requirements
-
-An extension submission MUST:
-
-* Declare a unique namespace (e.g., vendorX:, industryGroupY:).
-* Clearly define its relationship to existing concepts (e.g., subClassOf, equivalentClass).
-* Include all required registry fields (as above).
-* Demonstrate necessity: why existing terms are insufficient.
-* Include privacy risk assessment if the term introduces sensitive or novel data practices.
-
-
-#### Extension and Deprecation Policy
-
-Extensions: Entities MAY submit new terms with a custom namespace (e.g., vendorX:) as long as relationships to core terms (e.g., subClassOf) are clearly declared.
-
-Deprecation: Deprecated terms remain in the registry with status marked as deprecated. These terms MUST NOT be used in future policy declarations but MAY be preserved for historical validation.
-
-### Access Methods
-
-The registry SHALL be made publicly available via:
-
-* A web-accessible HTML directory with search and browse capabilities
-
-* A machine-readable API for tool and device integration
-
-* Regular snapshots for offline validation
+This document requests no IANA actions.
 
 
 --- back
@@ -365,4 +255,4 @@ The registry SHALL be made publicly available via:
 # Acknowledgments
 {:numbered="false"}
 
-TODO acknowledge.
+The authors thank the participants in the related PPD architecture, protocol, and implementation discussions for the feedback that shaped this taxonomy direction.
