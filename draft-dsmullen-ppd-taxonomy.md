@@ -161,7 +161,7 @@ Illustrative core terms include:
 
 Stable term identifiers are the primary semantic hook in this taxonomy. The baseline core vocabulary uses the reserved prefix ppd:. A term such as ppd:temperatureReading or ppd:localProcessing derives its meaning from the stable taxonomy definition associated with that identifier.
 
-A taxonomy release identifier can identify the vocabulary snapshot used for validation, reproducibility, or documentation. However, release metadata does not replace the term identifier itself as the source of meaning.
+A taxonomy release identifier can identify the vocabulary snapshot used for validation, reproducibility, or documentation. For example, a deployment might use a release identifier such as `ppd-core-2026-05`. However, release metadata does not replace the term identifier itself as the source of meaning.
 
 ## Compact Wire Form
 
