@@ -4,17 +4,17 @@ abbrev: "PPDTaxonomy"
 category: info
 
 docname: draft-dsmullen-ppd-taxonomy-latest
-submissiontype: IETF  # also: "independent", "editorial", "IAB", or "IRTF"
 number:
 date:
-consensus: true
+consensus: false
 v: 3
 # area: AREA
 # workgroup: WG Working Group
 keyword:
- - next generation
- - unicorn
- - sparkling distributed ledger
+ - privacy preferences
+ - home networks
+ - internet of things
+ - data taxonomy
 venue:
 #  group: WG
 #  type: Working Group
