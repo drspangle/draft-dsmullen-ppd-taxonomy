@@ -5,7 +5,7 @@
 Network Working Group                                         D. Smullen
 Internet-Draft                                                B. Scriber
 Intended status: Informational                                 CableLabs
-Expires: 19 November 2026                                    18 May 2026
+Expires: 20 November 2026                                    19 May 2026
 
 
                 Privacy Preference Declaration Taxonomy
@@ -51,7 +51,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 19 November 2026.
+   This Internet-Draft will expire on 20 November 2026.
 
 Copyright Notice
 
@@ -428,12 +428,16 @@ Table of Contents
    [I-D.draft-dsmullen-ppd-architecture]
               Smullen, D. and B. Scriber, "Privacy Preference
               Declaration for Home Networks", Work in Progress,
-              Internet-Draft, draft-dsmullen-ppd-architecture-05, 7 May
+              Internet-Draft, draft-dsmullen-ppd-architecture-06, 18 May
               2026, <https://datatracker.ietf.org/doc/html/draft-
-              dsmullen-ppd-architecture-05>.
+              dsmullen-ppd-architecture-06>.
 
    [I-D.draft-dsmullen-ppd-protocol]
-              "*** BROKEN REFERENCE ***".
+              Smullen, D. and B. Scriber, "Privacy Preference
+              Declaration Protocol Specification", Work in Progress,
+              Internet-Draft, draft-dsmullen-ppd-protocol-00, 18 May
+              2026, <https://datatracker.ietf.org/doc/html/draft-
+              dsmullen-ppd-protocol-00>.
 
 Acknowledgments
 
