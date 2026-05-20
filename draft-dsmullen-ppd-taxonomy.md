@@ -465,12 +465,16 @@ For example:
 This keeps the qualifier machine-comparable while still allowing broader
 sovereignty concerns to be expressed through more concrete baseline semantics.
 
-Jurisdiction participates in semantic comparison, but only within a clearly
-identified scoped subcase.
-
 This document defines the qualifier family and the scoped-semantics rule, but
 it does not yet define a closed baseline set of jurisdiction vocabulary
-values.
+values. In this revision, `jurisdiction` is therefore a structured qualifier
+family shell rather than a fully populated baseline value hierarchy.
+
+Baseline interoperable computation can still validate that a jurisdiction
+qualifier is well-formed and scoped correctly, but semantic comparison of
+jurisdiction values requires a later taxonomy revision or deployment profile
+that defines shared jurisdiction vocabulary and reduction rules for the scoped
+subcase in question.
 
 # Subsumption and Comparison
 
@@ -491,14 +495,15 @@ subsumption:
 * `source`
 * `destination`
 * `processing_boundary`
-* `jurisdiction`, within a fixed scoped subcase
 
 The following do not use baseline subsumption:
 
 * `action`, which remains a flat enumerable family and therefore compares by
   exact identity or exact reduction to a core action value; and
 * `retention`, which uses its own categorical or quantitative comparison
-  semantics rather than a generic taxonomy hierarchy.
+  semantics rather than a generic taxonomy hierarchy; and
+* `jurisdiction`, which in this revision defines qualifier structure and scope
+  rules but not yet a closed baseline value hierarchy.
 
 This document does not define a full conflict-resolution procedure. It defines
 the semantic basis that allows comparison to remain computable and
@@ -562,7 +567,10 @@ or "required". Those meanings belong in policy rules, not in taxonomy terms.
 
 That relationship can include equivalence or broader/narrower placement where
 the field participates in subsumption, or exact reduction where it does not, so
-long as it preserves computable comparison against the shared core floor.
+long as it preserves computable comparison against the shared core floor. For
+`jurisdiction`, baseline participant-facing use further depends on a later
+taxonomy revision or deployment profile that defines the shared scoped
+jurisdiction vocabulary being used.
 
 For field families that participate in subsumption, a non-core refinement
 MUST identify exactly one immediate broader term and MUST remain reducible by
