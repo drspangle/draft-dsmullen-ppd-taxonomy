@@ -225,6 +225,112 @@ The current working rule is:
 - `indefinite` should mean that no bounded upper limit is expressed, not merely
   "long-lived".
 
+## Processing Boundary Direction
+
+The current preferred direction is to replace the vague `locality` framing with
+a narrower qualifier family centered on where processing is allowed to execute.
+
+The current preferred family name is:
+
+- `processing_boundary`
+
+The current intended semantics are:
+
+- this qualifier family constrains where `use` or `inference` may occur;
+- it may be relevant to some collection-side processing cases, but it is not a
+  generic destination or recipient model; and
+- it should not do the main semantic work for `transfer`, because `destination`
+  already carries the receiving endpoint or handling target.
+
+Current candidate baseline values:
+
+- `on-device-only`
+- `in-home-only`
+- `approved-remote-processing`
+
+The current direction is that terms such as `thirdPartyProhibited` or
+`householdApprovedRemoteService` are poor fits for this family because they are
+recipient/trust-domain oriented rather than true processing-placement terms.
+
+## Jurisdiction Direction
+
+The current preferred direction is to keep `jurisdiction` as a qualifier family
+name only if the relevant subcase is explicitly specified.
+
+That means the baseline should avoid an underspecified flat form like:
+
+- `jurisdiction = X`
+
+and instead require the qualifier to say what aspect it governs, such as:
+
+- processing
+- storage
+- transfer
+
+This treats `sovereignty` as the broader motivating policy concern while
+keeping the actual baseline qualifier more precise and machine-comparable.
+
+## Comparison Direction
+
+The current preferred direction is that comparison should be based on
+subsumption rather than exact token equality alone.
+
+That means:
+
+- role-fillers and relevant qualifier values may stand in broader/narrower
+  semantic relationships;
+- equivalence should be understood as two-way subsumption; and
+- comparison should be dimension-sensitive rather than treated as one generic
+  string-matching problem.
+
+This direction is important because:
+
+- household policy may be stated at one level of abstraction while participant
+  declarations are stated at another;
+- exact-match only comparison is too weak for a serious privacy dataflow model;
+  and
+- the baseline PPD model needs a bounded semantic relationship model rather
+  than open-ended ontology reasoning.
+
+### Current Subsumption Participation Direction
+
+The current preferred direction is:
+
+- `data_type`: participates in subsumption
+- `purpose`: participates in subsumption
+- `source`: participates in subsumption
+- `destination`: participates in subsumption
+- `action`: does not participate in subsumption and should remain a flat
+  enumerable action family
+- `retention`: does not participate in subsumption in the same way as the core
+  role-fillers; it is a specifier family whose comparison depends on its own
+  categorical or quantitative semantics
+- `processing_boundary`: participates in subsumption
+- `jurisdiction`: participates in subsumption, but only within an explicitly
+  scoped subcase such as processing, storage, or transfer
+
+### Why Subsumption Matters
+
+The key role of subsumption is not only comparison between already standardized
+core terms.
+
+It is also the mechanism that keeps extension terms interoperable.
+
+If a deployment, vendor, or ecosystem introduces a non-core extension term for
+one of the roles that participates in subsumption, that extension should be
+required to declare its semantic relationship to the relevant core concept or
+concepts.
+
+In other words:
+
+- extension is not just new naming;
+- extension requires explicit placement relative to the core semantic model; and
+- otherwise the extension term cannot be compared reliably against household
+  policy or participant declarations built on the shared core.
+
+This is one of the main reasons the taxonomy needs an explicit extension and
+mapping contract rather than only a namespace mechanism.
+
 ## Near-Term Goal
 
 The immediate goal is not to perfect the taxonomy. The goal is to make the

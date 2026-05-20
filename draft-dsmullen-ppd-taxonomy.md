@@ -41,43 +41,138 @@ informative:
 
 --- abstract
 
-This document defines the core vocabulary and extension model used by Privacy Preference Declarations (PPDs) to describe data handling in home networks. It complements {{?I-D.draft-dsmullen-ppd-architecture}} and {{?I-D.draft-dsmullen-ppd-protocol}} by standardizing term spaces for data types, purposes, actions, sources, destinations, and selected constraints. Stable term identifiers are the primary semantic hook. Baseline participant-facing protocol messages use compact identifiers plus taxonomy context rather than requiring full ontology exchange on the wire.
+This document defines the core vocabulary, comparison model, and extension
+discipline used by Privacy Preference Declarations (PPDs) to express atomic
+privacy-relevant dataflows in home networks. It complements the companion PPD
+architecture and protocol work by standardizing the semantic roles used in
+participant declarations and household policy rules. The core vocabulary is
+the mandatory shared semantic floor for baseline participant-facing
+interoperability. Richer ecosystem-specific vocabularies remain possible, but
+comparison-relevant non-core terms need explicit relationships to the shared
+core so they remain computable. Baseline participant-facing protocol messages
+use compact identifiers plus taxonomy context rather than requiring full
+ontology exchange on the wire.
 
 
 --- middle
 
 # Introduction
 
-The Privacy Preference Declaration (PPD) architecture depends on a shared understanding of privacy-related semantics. {{?I-D.draft-dsmullen-ppd-architecture}} defines the roles, trust boundaries, and lifecycle. {{?I-D.draft-dsmullen-ppd-protocol}} defines the participant-facing message flow and object structure. This document defines the vocabulary those messages use.
+The Privacy Preference Declaration (PPD) architecture depends on a shared
+understanding of privacy-related semantics.
+{{?I-D.draft-dsmullen-ppd-architecture}} defines the roles, trust boundaries,
+and lifecycle. {{?I-D.draft-dsmullen-ppd-protocol}} defines the
+participant-facing message flow and object structure. This document defines the
+semantic roles and qualifier families used by those messages.
 
-The baseline PPD protocol carries atomic descriptive statements from device-side participants and atomic effective-policy rules from the household side. This taxonomy defines the meaning of the terms used in those statements and rules. It does not define a household policy authoring workflow, a conflict-resolution procedure, or a full reasoning engine.
+The baseline PPD protocol carries atomic descriptive statements from
+device-side participants and atomic effective-policy rules from the household
+side. This taxonomy treats those statements and rules as atomic
+privacy-relevant dataflows. It defines the meaning of the role-fillers used in
+those dataflows and the minimum semantic discipline needed to compare them
+coherently across devices, vendors, and household deployments.
 
-The taxonomy is designed to be useful in constrained operational environments. It therefore separates the stable meaning of terms from any richer external semantic framework that might also describe them. Implementations can map these terms to richer vocabularies or ontology representations where useful, but such machinery is not required for baseline participant-facing interoperability.
+The taxonomy is designed to be useful in constrained operational environments.
+It therefore separates the stable meaning of core terms from any richer
+external semantic framework that might also describe them. Implementations MAY
+use richer vocabularies, ontology representations, or local policy-analysis
+artifacts where useful, but baseline participant-facing interoperability
+depends on a shared computable semantic floor rather than on a full external
+reasoning stack.
 
 # Conventions and Definitions
 
 {::boilerplate bcp14-tagged}
 
+# Core Semantic Model
+
+The foundational semantic unit in this taxonomy is an atomic privacy-relevant
+dataflow.
+
+In the baseline PPD model:
+
+* a Device Declaration Statement describes one participant-side dataflow case;
+* a Policy Rule describes one household-side normative dataflow case; and
+* comparison between participant behavior and household policy is grounded in
+  comparison of those dataflows.
+
+A baseline atomic dataflow contains these five core role-fillers:
+
+* `data_type`
+* `purpose`
+* `action`
+* `source`
+* `destination`
+
+It can also carry structured dataflow qualifiers.
+
+The rule effect, such as `allow` or `deny`, is not part of the dataflow tuple
+itself. It belongs to the household-side policy-rule layer defined by
+{{?I-D.draft-dsmullen-ppd-protocol}}.
+
+This document does not define a household policy authoring workflow, a full
+conflict-resolution procedure, or a general reasoning engine. It defines the
+minimum semantic structure needed so participant declarations and household
+policy can be compared in an interoperable way.
+
 # Design Goals
 
-* Semantic Clarity: Provide stable, unambiguous meanings for privacy-related terms used in PPD messages.
-* Core Primitive Coverage: Standardize the dimensions needed by the baseline protocol rule and statement model.
-* Compact Operational Use: Support compact identifiers in participant-facing JSON messages.
-* Extensibility Without Fragmentation: Allow organization-specific vocabularies while requiring mapping back to shared core primitives.
-* Validation and Comparison Support: Enable comparison of participant assertions and household policy without forcing every deployment to use a single heavy semantic framework.
-* Interoperability: Preserve a shared vocabulary floor across vendors, device classes, and household deployments.
+* Semantic Clarity: Provide stable, unambiguous meanings for privacy-related
+  terms used in PPD messages.
+* Core Primitive Coverage: Standardize the semantic roles needed by the
+  baseline protocol rule and statement model.
+* Compact Operational Use: Support compact identifiers in participant-facing
+  JSON messages.
+* Extensibility Without Fragmentation: Allow organization-specific
+  vocabularies while requiring comparison-relevant extensions to remain
+  reducible to the shared core.
+* Validation and Comparison Support: Enable comparison of participant
+  assertions and household policy without forcing every deployment to use a
+  single heavy semantic framework.
+* Interoperability: Preserve a shared computable semantic floor across
+  vendors, device classes, and household deployments.
+
+# Core Semantic Floor and Extension Model
+
+The baseline PPD core vocabulary is not intended to be the only vocabulary
+used in real deployments. Device vendors, service providers, vertical
+ecosystems, and user-facing policy tools are expected to introduce richer
+concepts over time.
+
+The purpose of the core vocabulary is different. It provides the minimum
+shared semantic substrate against which participant declarations and household
+policy can still be interpreted and compared when those richer vocabularies
+are present.
+
+For baseline participant-facing interoperability:
+
+* core terms define the shared semantic floor;
+* richer non-core terms MAY be used through the taxonomy context mechanism
+  defined by {{?I-D.draft-dsmullen-ppd-protocol}}; and
+* when a non-core term or qualifier fills a comparison-relevant role, it MUST
+  be defined with an explicit relationship or reduction to one or more core
+  concepts sufficient to keep the term computable against the shared core
+  model.
+
+Terms that do not carry such a relationship can still be locally meaningful,
+but they are outside baseline interoperable computation.
 
 # Core Taxonomy Structure
 
-The baseline taxonomy consists of five core dimensions plus selected qualifier terms. These dimensions are used together in atomic declaration statements and atomic effective-policy rules.
+The baseline taxonomy consists of five core role-filler families plus selected
+dataflow qualifier families. These are used together in atomic declaration
+statements and atomic effective-policy rules.
 
 ## Data Type (What)
 
-Data Type terms identify the kind of data being collected, used, transferred, retained, or deleted.
+Data Type terms identify the kind of data involved in the dataflow.
+Data Type participates in semantic comparison and can support
+broader-than/narrower-than relationships.
 
-Illustrative core terms include:
+Initial core terms include:
 
 * ppd:temperatureReading
+* ppd:humidityReading
 * ppd:videoFrame
 * ppd:eventClip
 * ppd:audioSample
@@ -86,33 +181,40 @@ Illustrative core terms include:
 ## Purpose (Why)
 
 Purpose terms identify the reason or operational objective for the handling.
+Purpose participates in semantic comparison and can support broader-than/
+narrower-than relationships.
 
-Illustrative core terms include:
+Initial core terms include:
 
 * ppd:coreFunctionality
+* ppd:remoteMonitoring
 * ppd:motionDetection
 * ppd:remoteViewing
+* ppd:productImprovement
 * ppd:analytics
 * ppd:advertising
 * ppd:diagnostics
 
 ## Action (How)
 
-Action terms identify what is being done with the data.
+Action terms identify the privacy-relevant operation being performed.
+Unlike several of the other role-fillers, the baseline action family is
+intentionally flat rather than hierarchical.
 
-Illustrative core terms include:
+Initial core terms include:
 
 * ppd:collection
-* ppd:usage
+* ppd:use
 * ppd:transfer
-* ppd:retention
-* ppd:deletion
+* ppd:inference
 
 ## Source (From Where)
 
-Source terms identify the origin of the handled data in the relevant processing path.
+Source terms identify the origin of the handled data in the relevant
+processing path. Source participates in semantic comparison and can support
+broader-than/narrower-than relationships.
 
-Illustrative core terms include:
+Initial core terms include:
 
 * ppd:userInput
 * ppd:sensor
@@ -122,38 +224,121 @@ Illustrative core terms include:
 
 ## Destination (To Where)
 
-Destination terms identify the endpoint or trust boundary to which the handling applies.
+Destination terms identify the receiving endpoint or handling target to which
+the dataflow applies. Destination participates in semantic comparison and can
+support broader-than/narrower-than relationships.
 
-Illustrative core terms include:
+Initial core terms include:
 
 * ppd:localProcessing
 * ppd:vendorCloud
-* ppd:thirdPartyPartner
+* ppd:thirdPartyService
 * ppd:dataBroker
 
-## Constraint Qualifiers
+## Dataflow Qualifiers
 
-The baseline protocol also allows structured qualifiers through the constraints object. This document defines the initial qualifier term spaces used by that object.
+The baseline protocol also allows structured qualifiers through the
+`constraints` object. This document defines the initial qualifier families
+used by that object.
 
 ### Retention
 
-Retention terms qualify how long the described or allowed handling can persist.
+Retention qualifies how long the relevant data or resulting artifact may
+persist after the action in question.
 
-Illustrative core terms include:
+Retention is action-sensitive. In particular:
+
+* for `collection`, retention qualifies whether the collected result is
+  allowed to persist after collection;
+* for `use`, retention qualifies how long the data or resulting artifact may
+  remain available for that use;
+* for `transfer`, retention qualifies downstream persistence by the receiving
+  side rather than only the sender's local storage duration; and
+* for `inference`, retention qualifies how long inferred output may persist.
+
+The baseline retention model distinguishes two strong named poles:
 
 * ppd:ephemeral
-* ppd:shortLived
-* ppd:householdDefinedRetention
+* ppd:indefinite
 
-### Locality
+`ppd:ephemeral` means the handling is not intended to result in durable
+persistence beyond the immediate handling context.
 
-Locality terms qualify the trust boundary or placement within which the described or allowed handling can occur.
+`ppd:indefinite` means no bounded upper retention limit is expressed in the
+rule.
 
-Illustrative core terms include:
+Bounded retention periods are expected to require more specific refinements,
+including explicit duration values, in later revisions or deployment profiles.
 
+Retention comparison does not use a generic taxonomy subsumption hierarchy in
+the same way as `data_type`, `purpose`, `source`, or `destination`.
+
+### Processing Boundary
+
+Processing Boundary qualifies where a processing operation may execute or
+remain. This family is most natural for `use` and `inference`. It is not the
+primary semantic mechanism for describing transfer recipients, because
+`destination` already fills that role.
+
+Initial core terms include:
+
+* ppd:onDeviceOnly
 * ppd:inHomeOnly
-* ppd:householdApprovedRemoteService
-* ppd:thirdPartyProhibited
+* ppd:approvedRemoteProcessing
+
+Processing Boundary participates in semantic comparison and can support
+broader-than/narrower-than relationships.
+
+### Jurisdiction
+
+Jurisdiction qualifies the legal or regulatory domain relevant to the
+dataflow.
+
+Jurisdiction is intentionally not treated as a single flat label. Any use of a
+jurisdiction qualifier MUST identify the scoped subcase it constrains, such as:
+
+* processing
+* storage
+* transfer
+
+The scoped subcase is part of the qualifier meaning. A jurisdiction
+constraint on processing is not automatically equivalent to the same
+jurisdiction constraint on storage or transfer.
+
+This keeps the qualifier machine-comparable while still allowing broader
+sovereignty concerns to be expressed through more concrete baseline semantics.
+
+Jurisdiction participates in semantic comparison, but only within a clearly
+identified scoped subcase.
+
+# Subsumption and Comparison
+
+Baseline comparison is not limited to exact token equality.
+
+For comparison-relevant role-fillers and qualifier families that participate in
+subsumption:
+
+* a term can be broader than another term;
+* a term can be narrower than another term; and
+* two terms are equivalent when each subsumes the other.
+
+In the current baseline model:
+
+* `data_type` participates in subsumption;
+* `purpose` participates in subsumption;
+* `source` participates in subsumption;
+* `destination` participates in subsumption;
+* `processing_boundary` participates in subsumption;
+* `jurisdiction` participates in subsumption within a fixed scoped subcase;
+* `action` remains a flat enumerable family and therefore compares by exact
+  identity or exact reduction to a core action value rather than by
+  broader-than/narrower-than subsumption; and
+* `retention` uses its own categorical or quantitative comparison semantics
+  rather than a generic taxonomy hierarchy.
+
+This document does not define a full conflict-resolution procedure. It defines
+the semantic basis that allows comparison to remain computable and
+interoperable.
 
 # Identifier Model
 
@@ -174,9 +359,20 @@ This keeps participant-facing messages compact while preserving stable semantics
 
 ## Extension Namespaces and Core-Primitive Mapping
 
-Organizations MAY define additional terms outside the baseline ppd: vocabulary. When such terms appear in participant-facing protocol messages, the sender MUST provide the required non-core prefix declarations through the protocol's taxonomy context.
+Organizations MAY define additional terms outside the baseline `ppd:`
+vocabulary. When such terms appear in participant-facing protocol messages, the
+sender MUST provide the required non-core prefix declarations through the
+protocol's taxonomy context.
 
-Extension terms SHOULD document how they map to the shared core primitives defined in this document. That mapping is what allows vendor- or ecosystem-specific vocabulary to coexist with interoperable baseline processing.
+For comparison-relevant roles, namespace declaration alone is not enough.
+When a non-core term fills `data_type`, `purpose`, `action`, `source`,
+`destination`, `processing_boundary`, or a scoped `jurisdiction` role, that
+term MUST be defined with the semantic relationship or exact reduction by
+which it is reduced to one or more shared core concepts.
+
+That relationship can include equivalence or broader/narrower placement where
+the role participates in subsumption, or exact reduction where it does not, so
+long as it preserves computable comparison against the shared core floor.
 
 For example, an organization might define:
 
@@ -184,7 +380,9 @@ For example, an organization might define:
 * vendorx:buildingOccupancyEstimate
 * vendorx:regionalComplianceArchive
 
-Such terms can be useful, but they SHOULD still explain how they relate to shared core dimensions and qualifiers so that participants and household policy services can compare them meaningfully.
+Such terms can be useful, but they remain baseline-interoperable only when
+their relationship to the relevant core roles is explicit enough that
+participants and household policy services can compare them meaningfully.
 
 # Use in PPD Messages
 
@@ -195,18 +393,22 @@ The protocol and taxonomy have different jobs:
 
 This distinction matters. A flat bag of supported data types, purposes, actions, and destinations is not enough to describe which combinations actually apply to a participant. The protocol therefore carries atomic declaration statements and atomic policy rules, while this taxonomy defines the term spaces and qualifier meanings used in those objects.
 
+When those objects use non-core comparison-relevant terms, the objects remain
+baseline-computable only if those terms are reducible to the shared core model
+through the extension and mapping rules above.
+
 A declaration statement example is:
 
 ~~~ json
 {
-  "statement_id": "event-clip-remote-viewing",
-  "data_type": "ppd:eventClip",
-  "purpose": "ppd:remoteViewing",
+  "statement_id": "temperature-product-improvement",
+  "data_type": "ppd:temperatureReading",
+  "purpose": "ppd:productImprovement",
   "action": "ppd:transfer",
-  "source": "ppd:cameraSensor",
+  "source": "ppd:sensor",
   "destination": "ppd:vendorCloud",
   "constraints": {
-    "retention": "ppd:shortLived"
+    "retention": "ppd:indefinite"
   }
 }
 ~~~
@@ -215,16 +417,15 @@ A corresponding effective-policy rule example is:
 
 ~~~ json
 {
-  "rule_id": "r2",
-  "data_type": "ppd:eventClip",
-  "purpose": "ppd:remoteViewing",
-  "action": "ppd:transfer",
+  "rule_id": "r1",
+  "data_type": "ppd:videoFrame",
+  "purpose": "ppd:motionDetection",
+  "action": "ppd:use",
   "source": "ppd:cameraSensor",
-  "destination": "ppd:vendorCloud",
+  "destination": "ppd:localProcessing",
   "effect": "allow",
   "constraints": {
-    "retention": "ppd:shortLived",
-    "locality": "ppd:householdApprovedRemoteService"
+    "processing_boundary": "ppd:onDeviceOnly"
   }
 }
 ~~~
@@ -233,15 +434,25 @@ The taxonomy defines the meaning of the identifiers in these objects. The protoc
 
 # Relationship to Richer Semantic Frameworks
 
-This taxonomy is intentionally lighter than a full ontology language or rights-expression framework. Implementations MAY publish auxiliary representations, mappings, or tool-specific serializations when useful. For example, organizations might maintain internal ontology, graph, or policy-analysis artifacts that map to the stable identifiers defined here.
+This taxonomy is intentionally lighter than a full ontology language or
+rights-expression framework. Implementations MAY publish auxiliary
+representations, mappings, or tool-specific serializations when useful. For
+example, organizations might maintain internal ontology, graph, or
+policy-analysis artifacts that map to the stable identifiers defined here.
 
-However, baseline participant-facing interoperability does not require OWL, RDF, JSON-LD, or comparable machinery on the wire. The participant-facing contract remains compact term identifiers plus the protocol-defined taxonomy context.
+However, baseline participant-facing interoperability does not require OWL,
+RDF, JSON-LD, or comparable machinery on the wire. The participant-facing
+contract remains compact term identifiers plus the protocol-defined taxonomy
+context, backed by the shared core semantic floor defined here.
 
 # Security Considerations
 
 Semantic drift, ambiguous extensions, and unresolved terms can undermine privacy signaling even when transport security is strong.
 
-Organizations publishing extension vocabularies SHOULD document stable meanings and mappings back to shared core primitives. Participant-facing services and participants SHOULD NOT silently treat unresolved or unusable taxonomy terms as equivalent to known terms.
+Organizations publishing extension vocabularies for comparison-relevant roles
+need stable meanings and explicit reduction back to the shared core primitives.
+Participant-facing services and participants SHOULD NOT silently treat
+unresolved, unmapped, or unusable taxonomy terms as equivalent to known terms.
 
 When unresolved or unsupported terms appear in participant-facing protocol messages, the handling defined by {{?I-D.draft-dsmullen-ppd-protocol}} applies. In particular, unresolved terms in normative policy content are more serious than unresolved descriptive detail because they can change the meaning of an allowed or denied handling path.
 

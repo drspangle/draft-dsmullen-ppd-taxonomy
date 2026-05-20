@@ -57,3 +57,21 @@ It is not part of the rendered Internet-Draft.
 - Added `internal-notes/cross-draft-coordination.md` to record the current
   architecture/protocol/taxonomy coordination findings and the recommended
   sequencing for future draft edits.
+- Recorded the current direction that the second qualifier family should be
+  reframed away from vague `locality` language and toward a narrower
+  `processing_boundary` concept focused on where `use` and `inference` may
+  execute.
+- Recorded the current direction that `jurisdiction` can work as a qualifier
+  family only if the relevant subcase, such as processing, storage, or
+  transfer, is explicitly specified rather than left implicit.
+- Recorded the current direction that comparison should be grounded in
+  subsumption rather than exact token equality, with equivalence understood as
+  two-way subsumption.
+- Recorded the current direction that `action` should remain a flat enumerable
+  family rather than a subsumption hierarchy.
+- Recorded the current direction that `retention` is a specifier family rather
+  than a normal subsumption hierarchy, while `processing_boundary` and
+  `jurisdiction` should participate in subsumption.
+- Recorded the current direction that extension terms filling roles that
+  participate in subsumption must declare their semantic relationship to the
+  relevant core concepts or they cannot be compared reliably.
