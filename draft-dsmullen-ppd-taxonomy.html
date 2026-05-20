@@ -1437,7 +1437,9 @@ space of home-IoT data categories, service roles, or policy-authoring
 concepts. Its purpose is to define the minimum shared set of computable
 primitives to which richer vocabularies can be related.
 Later taxonomy releases can add terms, but the initial core terms defined here
-are the mandatory baseline floor for interoperable computation.<a href="#section-6-2" class="pilcrow">¶</a></p>
+are the mandatory baseline floor for interoperable computation.
+The definitions in this section define the baseline meaning of those initial
+core terms.<a href="#section-6-2" class="pilcrow">¶</a></p>
 <div id="data-type-what">
 <section id="section-6.1">
         <h3 id="name-data-type-what">
@@ -1507,7 +1509,7 @@ or performance of the product or service beyond the immediate user session.<a hr
 </li>
           <li class="normal" id="section-6.2-3.6">
             <p id="section-6.2-3.6.1"><code>ppd:analytics</code>: handling used to derive operational, behavioral, or
-statistical insight beyond immediate device operation.<a href="#section-6.2-3.6.1" class="pilcrow">¶</a></p>
+statistical insight beyond immediate device operation or troubleshooting.<a href="#section-6.2-3.6.1" class="pilcrow">¶</a></p>
 </li>
           <li class="normal" id="section-6.2-3.7">
             <p id="section-6.2-3.7.1"><code>ppd:advertising</code>: handling used to target, deliver, measure, or optimize
@@ -1575,8 +1577,8 @@ sensing path.<a href="#section-6.4-3.3.1" class="pilcrow">¶</a></p>
             <p id="section-6.4-3.4.1"><code>ppd:microphone</code>: data directly observed from an audio-capture sensing path.<a href="#section-6.4-3.4.1" class="pilcrow">¶</a></p>
 </li>
           <li class="normal" id="section-6.4-3.5">
-            <p id="section-6.4-3.5.1"><code>ppd:derivedData</code>: data produced from prior data through transformation,
-aggregation, inference, or similar derivation.<a href="#section-6.4-3.5.1" class="pilcrow">¶</a></p>
+            <p id="section-6.4-3.5.1"><code>ppd:derivedData</code>: data whose immediate origin is prior data processing
+rather than direct user input or direct sensing.<a href="#section-6.4-3.5.1" class="pilcrow">¶</a></p>
 </li>
         </ul>
 </section>
@@ -1683,16 +1685,20 @@ primary semantic mechanism for describing transfer recipients, because
 <p id="section-6.6.2-2">In the baseline model, <code>processing_boundary</code> is therefore primarily a
 qualifier on <code>use</code> and <code>inference</code> dataflows rather than a general qualifier
 on <code>transfer</code>.<a href="#section-6.6.2-2" class="pilcrow">¶</a></p>
-<p id="section-6.6.2-3">Initial core terms include:<a href="#section-6.6.2-3" class="pilcrow">¶</a></p>
+<p id="section-6.6.2-3">The initial core term set is:<a href="#section-6.6.2-3" class="pilcrow">¶</a></p>
 <ul class="normal">
 <li class="normal" id="section-6.6.2-4.1">
-              <p id="section-6.6.2-4.1.1">ppd:onDeviceOnly<a href="#section-6.6.2-4.1.1" class="pilcrow">¶</a></p>
+              <p id="section-6.6.2-4.1.1"><code>ppd:onDeviceOnly</code>: the relevant processing is constrained to execute on the
+participant device itself.<a href="#section-6.6.2-4.1.1" class="pilcrow">¶</a></p>
 </li>
             <li class="normal" id="section-6.6.2-4.2">
-              <p id="section-6.6.2-4.2.1">ppd:inHomeOnly<a href="#section-6.6.2-4.2.1" class="pilcrow">¶</a></p>
+              <p id="section-6.6.2-4.2.1"><code>ppd:inHomeOnly</code>: the relevant processing is constrained to execute within
+the household-local trust boundary rather than in a remote service
+environment.<a href="#section-6.6.2-4.2.1" class="pilcrow">¶</a></p>
 </li>
             <li class="normal" id="section-6.6.2-4.3">
-              <p id="section-6.6.2-4.3.1">ppd:approvedRemoteProcessing<a href="#section-6.6.2-4.3.1" class="pilcrow">¶</a></p>
+              <p id="section-6.6.2-4.3.1"><code>ppd:approvedRemoteProcessing</code>: the relevant processing is allowed to occur
+in an approved remote service environment.<a href="#section-6.6.2-4.3.1" class="pilcrow">¶</a></p>
 </li>
           </ul>
 <p id="section-6.6.2-5">Processing Boundary participates in semantic comparison and can support
@@ -1705,7 +1711,9 @@ broader-than/narrower-than relationships.<a href="#section-6.6.2-5" class="pilcr
 <a href="#section-6.6.3" class="section-number selfRef">6.6.3. </a><a href="#name-jurisdiction" class="section-name selfRef">Jurisdiction</a>
           </h4>
 <p id="section-6.6.3-1">Jurisdiction qualifies the legal or regulatory domain relevant to the
-dataflow.<a href="#section-6.6.3-1" class="pilcrow">¶</a></p>
+dataflow. It is intended for cases where a policy needs to constrain the legal
+domain under which handling occurs, not merely the physical placement of a
+processor or store.<a href="#section-6.6.3-1" class="pilcrow">¶</a></p>
 <p id="section-6.6.3-2">Jurisdiction is intentionally not treated as a single flat label. Any use of a
 jurisdiction qualifier <span class="bcp14">MUST</span> identify the scoped subcase it constrains, such as:<a href="#section-6.6.3-2" class="pilcrow">¶</a></p>
 <ul class="normal">
@@ -1722,13 +1730,28 @@ jurisdiction qualifier <span class="bcp14">MUST</span> identify the scoped subca
 <p id="section-6.6.3-4">The scoped subcase is part of the qualifier meaning. A jurisdiction
 constraint on processing is not automatically equivalent to the same
 jurisdiction constraint on storage or transfer.<a href="#section-6.6.3-4" class="pilcrow">¶</a></p>
-<p id="section-6.6.3-5">This keeps the qualifier machine-comparable while still allowing broader
-sovereignty concerns to be expressed through more concrete baseline semantics.<a href="#section-6.6.3-5" class="pilcrow">¶</a></p>
-<p id="section-6.6.3-6">Jurisdiction participates in semantic comparison, but only within a clearly
-identified scoped subcase.<a href="#section-6.6.3-6" class="pilcrow">¶</a></p>
-<p id="section-6.6.3-7">This document defines the qualifier family and the scoped-semantics rule, but
+<p id="section-6.6.3-5">For example:<a href="#section-6.6.3-5" class="pilcrow">¶</a></p>
+<ul class="normal">
+<li class="normal" id="section-6.6.3-6.1">
+              <p id="section-6.6.3-6.1.1">a processing-scoped jurisdiction qualifier can constrain the legal domain
+under which processing is permitted to occur;<a href="#section-6.6.3-6.1.1" class="pilcrow">¶</a></p>
+</li>
+            <li class="normal" id="section-6.6.3-6.2">
+              <p id="section-6.6.3-6.2.1">a storage-scoped jurisdiction qualifier can constrain the legal domain under
+which retained data may be kept; and<a href="#section-6.6.3-6.2.1" class="pilcrow">¶</a></p>
+</li>
+            <li class="normal" id="section-6.6.3-6.3">
+              <p id="section-6.6.3-6.3.1">a transfer-scoped jurisdiction qualifier can constrain the legal domain to
+which a transfer recipient may belong.<a href="#section-6.6.3-6.3.1" class="pilcrow">¶</a></p>
+</li>
+          </ul>
+<p id="section-6.6.3-7">This keeps the qualifier machine-comparable while still allowing broader
+sovereignty concerns to be expressed through more concrete baseline semantics.<a href="#section-6.6.3-7" class="pilcrow">¶</a></p>
+<p id="section-6.6.3-8">Jurisdiction participates in semantic comparison, but only within a clearly
+identified scoped subcase.<a href="#section-6.6.3-8" class="pilcrow">¶</a></p>
+<p id="section-6.6.3-9">This document defines the qualifier family and the scoped-semantics rule, but
 it does not yet define a closed baseline set of jurisdiction vocabulary
-values.<a href="#section-6.6.3-7" class="pilcrow">¶</a></p>
+values.<a href="#section-6.6.3-9" class="pilcrow">¶</a></p>
 </section>
 </div>
 </section>
@@ -1867,13 +1890,16 @@ long as it preserves computable comparison against the shared core floor.<a href
 <p id="section-8.4-4">For example, an organization might define:<a href="#section-8.4-4" class="pilcrow">¶</a></p>
 <ul class="normal">
 <li class="normal" id="section-8.4-5.1">
-            <p id="section-8.4-5.1.1">vendorx:airQualityIndex<a href="#section-8.4-5.1.1" class="pilcrow">¶</a></p>
+            <p id="section-8.4-5.1.1"><code>vendorx:cameraStillFrame</code> as a narrower <code>data_type</code> under
+<code>ppd:videoFrame</code>;<a href="#section-8.4-5.1.1" class="pilcrow">¶</a></p>
 </li>
           <li class="normal" id="section-8.4-5.2">
-            <p id="section-8.4-5.2.1">vendorx:buildingOccupancyEstimate<a href="#section-8.4-5.2.1" class="pilcrow">¶</a></p>
+            <p id="section-8.4-5.2.1"><code>vendorx:predictiveMaintenance</code> as a narrower <code>purpose</code> under
+<code>ppd:diagnostics</code>; or<a href="#section-8.4-5.2.1" class="pilcrow">¶</a></p>
 </li>
           <li class="normal" id="section-8.4-5.3">
-            <p id="section-8.4-5.3.1">vendorx:regionalComplianceArchive<a href="#section-8.4-5.3.1" class="pilcrow">¶</a></p>
+            <p id="section-8.4-5.3.1"><code>vendorx:edgeHubOnly</code> as a narrower <code>processing_boundary</code> under
+<code>ppd:inHomeOnly</code>.<a href="#section-8.4-5.3.1" class="pilcrow">¶</a></p>
 </li>
         </ul>
 <p id="section-8.4-6">Such terms can be useful, but they remain baseline-interoperable only when
