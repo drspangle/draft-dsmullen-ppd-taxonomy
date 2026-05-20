@@ -348,13 +348,22 @@ expected to appear as narrower refinements of these broader source categories.
 ## Destination (To Where)
 
 Destination terms identify the receiving endpoint or handling target to which
-the dataflow applies. Destination participates in semantic comparison and can
-support broader-than/narrower-than relationships.
+the dataflow applies. For `transfer`, Destination identifies the recipient or
+recipient-side handling context. For `use` and `inference`, Destination
+identifies the handling context in which that operation takes place.
+Destination participates in semantic comparison and can support
+broader-than/narrower-than relationships.
+
+Destination does not by itself express a placement restriction on how a `use`
+or `inference` operation executes inside that handling context. More specific
+execution restrictions belong in the `processing_boundary` qualifier family.
+The two are related but not interchangeable.
 
 The initial core term set is:
 
-* `ppd:localProcessing`: a handling target that remains on the participant or
-  within a household-local processing environment rather than a remote service.
+* `ppd:localProcessing`: a handling target that remains within the participant
+  or household-local handling context rather than introducing a remote
+  recipient or remote service environment.
 * `ppd:vendorCloud`: a remote service environment operated by the device or
   service vendor.
 * `ppd:thirdPartyService`: a remote service environment operated by an entity
@@ -421,6 +430,14 @@ primary semantic mechanism for describing transfer recipients, because
 In the baseline model, `processing_boundary` is therefore primarily a
 qualifier on `use` and `inference` dataflows rather than a general qualifier
 on `transfer`.
+
+`processing_boundary` does not replace `destination`. `Destination` identifies
+the handling target or recipient context to which the dataflow applies.
+`processing_boundary` further constrains where a `use` or `inference`
+operation may execute within that context. For example, a `use` dataflow with
+`destination=ppd:localProcessing` can still be further narrowed by
+`processing_boundary=ppd:onDeviceOnly` or
+`processing_boundary=ppd:inHomeOnly`.
 
 The initial core term set is:
 
