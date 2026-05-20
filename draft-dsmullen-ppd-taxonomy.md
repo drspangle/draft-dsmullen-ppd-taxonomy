@@ -356,11 +356,11 @@ expected to appear as narrower refinements of these broader source categories.
 
 ## Destination (To Where)
 
-Destination terms identify the receiving endpoint or handling target to which
-the dataflow applies. For `transfer`, Destination identifies the recipient or
-recipient-side handling context. For `use` and `inference`, Destination
-identifies the handling context in which that operation takes place.
-Destination participates in semantic comparison and can support
+Destination terms identify the recipient-side or handling-side context to
+which the dataflow applies. For `transfer`, Destination identifies the
+recipient or recipient-side handling context. For `use` and `inference`,
+Destination identifies the handling context in which that operation takes
+place. Destination participates in semantic comparison and can support
 broader-than/narrower-than relationships.
 
 Destination does not by itself express a placement restriction on how a `use`
@@ -368,17 +368,29 @@ or `inference` operation executes inside that handling context. More specific
 execution restrictions belong in the `processing_boundary` qualifier family.
 The two are related but not interchangeable.
 
+Destination classifies semantic handling context, not organization identity.
+Named entities such as a particular company or service brand are not
+themselves core destination terms. If such identifiers are introduced through
+non-core refinements, their role-specific meaning still needs to reduce to one
+of the destination categories below.
+
 The initial core term set is:
 
-* `ppd:localProcessing`: a handling target that remains within the participant
-  or household-local handling context rather than introducing a remote
-  recipient or remote service environment.
-* `ppd:vendorCloud`: a remote service environment operated by the device or
-  service vendor.
-* `ppd:thirdPartyService`: a remote service environment operated by an entity
-  other than the device or service vendor.
-* `ppd:dataBroker`: a recipient whose role includes acquiring, exchanging, or
-  redisclosing data as a commercial data asset.
+* `ppd:householdContext`: a handling context that remains within the
+  participant or household-local relationship rather than introducing a remote
+  external service or audience.
+* `ppd:vendorContext`: a handling context operated by, or acting on behalf of,
+  the participant's primary device or service vendor.
+* `ppd:thirdPartyContext`: a handling context operated by an entity outside
+  the participant's primary vendor or household relationship.
+* `ppd:publicAudience`: a disclosure context in which data is made available
+  to the public or to an open audience rather than to a bounded service
+  relationship.
+
+Terms such as vendor cloud, household controller, partner analytics service,
+data broker, public feed, or other more specific recipient or handling
+contexts are expected to appear as narrower refinements of these broader
+destination categories.
 
 ## Dataflow Qualifiers
 
@@ -444,7 +456,7 @@ on `transfer`.
 the handling target or recipient context to which the dataflow applies.
 `processing_boundary` further constrains where a `use` or `inference`
 operation may execute within that context. For example, a `use` dataflow with
-`destination=ppd:localProcessing` can still be further narrowed by
+`destination=ppd:householdContext` can still be further narrowed by
 `processing_boundary=ppd:onDeviceOnly` or
 `processing_boundary=ppd:inHomeOnly`.
 
@@ -541,7 +553,7 @@ interoperable.
 
 Stable term identifiers are the primary semantic hook in this taxonomy. The
 baseline core vocabulary uses the reserved prefix `ppd:`. A term such as
-`ppd:sensorData` or `ppd:localProcessing` derives its meaning from the stable
+`ppd:sensorData` or `ppd:householdContext` derives its meaning from the stable
 taxonomy definition associated with that identifier.
 
 A taxonomy release identifier can identify the vocabulary snapshot used for validation, reproducibility, or documentation. For example, a deployment might use a release identifier such as `ppd-core-2026-05`. However, release metadata does not replace the term identifier itself as the source of meaning.
@@ -615,6 +627,18 @@ For example, an organization might define:
 * `vendorx:edgeHubOnly` as a narrower `processing_boundary` under
   `ppd:inHomeOnly`.
 
+Destination refinements follow the same rule. For example:
+
+* `vendorx:vendorCloudService` can be a narrower `destination` under
+  `ppd:vendorContext`;
+* `vendorx:dataBrokerService` can be a narrower `destination` under
+  `ppd:thirdPartyContext`; and
+* a named entity such as `vendorx:exampleServices` is only meaningful if the
+  refinement defines which destination role is involved. The same organization
+  might reduce to `ppd:vendorContext` when acting as the participant's own
+  vendor service, or to `ppd:thirdPartyContext` when acting as an unrelated
+  recipient.
+
 Such terms can be useful, but they remain baseline-interoperable only when
 their relationship to the relevant core fields is explicit enough that
 participants and household policy services can compare them meaningfully.
@@ -644,7 +668,7 @@ A declaration statement example is:
   "purpose": "ppd:analyticsAndImprovement",
   "action": "ppd:transfer",
   "source": "ppd:participantObserved",
-  "destination": "ppd:vendorCloud",
+  "destination": "ppd:vendorContext",
   "constraints": {
     "retention": "ppd:indefinite"
   }
@@ -660,7 +684,7 @@ A corresponding effective-policy rule example is:
   "purpose": "ppd:security",
   "action": "ppd:use",
   "source": "ppd:participantObserved",
-  "destination": "ppd:localProcessing",
+  "destination": "ppd:householdContext",
   "effect": "allow",
   "constraints": {
     "processing_boundary": "ppd:onDeviceOnly"
