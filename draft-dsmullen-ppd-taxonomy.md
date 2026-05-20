@@ -167,6 +167,8 @@ The baseline core is intentionally small. It is not meant to exhaust the full
 space of home-IoT data categories, service roles, or policy-authoring
 concepts. Its purpose is to define the minimum shared set of computable
 primitives to which richer vocabularies can be related.
+Later taxonomy releases can add terms, but the initial core terms defined here
+are the mandatory baseline floor for interoperable computation.
 
 ## Data Type (What)
 
@@ -174,14 +176,20 @@ Data Type terms identify the kind of data involved in the dataflow.
 Data Type participates in semantic comparison and can support
 broader-than/narrower-than relationships.
 
-Initial core terms include:
+The initial core term set is:
 
-* ppd:temperatureReading
-* ppd:humidityReading
-* ppd:videoFrame
-* ppd:eventClip
-* ppd:audioSample
-* ppd:deviceIdentifier
+* `ppd:temperatureReading`: a measured temperature value associated with the
+  participant device, its immediate environment, or an observed space.
+* `ppd:humidityReading`: a measured humidity value associated with the
+  participant device, its immediate environment, or an observed space.
+* `ppd:videoFrame`: image or video-capture content obtained from a camera-like
+  sensing path.
+* `ppd:eventClip`: a bounded media segment retained or emitted because a
+  triggering event or condition occurred.
+* `ppd:audioSample`: audio-capture content obtained from a microphone-like
+  sensing path.
+* `ppd:deviceIdentifier`: an identifier associated with a device, participant,
+  or device instance.
 
 ## Purpose (Why)
 
@@ -189,16 +197,24 @@ Purpose terms identify the reason or operational objective for the handling.
 Purpose participates in semantic comparison and can support broader-than/
 narrower-than relationships.
 
-Initial core terms include:
+The initial core term set is:
 
-* ppd:coreFunctionality
-* ppd:remoteMonitoring
-* ppd:motionDetection
-* ppd:remoteViewing
-* ppd:productImprovement
-* ppd:analytics
-* ppd:advertising
-* ppd:diagnostics
+* `ppd:coreFunctionality`: handling directly necessary to deliver the primary
+  user-facing function of the device or service.
+* `ppd:remoteMonitoring`: handling used to expose current or recent device or
+  environment state to an authorized remote observer.
+* `ppd:motionDetection`: handling used to detect, classify, or respond to
+  motion or occupancy-related events.
+* `ppd:remoteViewing`: handling used to present captured media or live capture
+  output to an authorized remote viewer.
+* `ppd:productImprovement`: handling used to improve the quality, reliability,
+  or performance of the product or service beyond the immediate user session.
+* `ppd:analytics`: handling used to derive operational, behavioral, or
+  statistical insight beyond immediate device operation.
+* `ppd:advertising`: handling used to target, deliver, measure, or optimize
+  promotional or marketing activity.
+* `ppd:diagnostics`: handling used to troubleshoot, maintain, secure, or
+  repair the device or service.
 
 ## Action (How)
 
@@ -206,12 +222,16 @@ Action terms identify the privacy-relevant operation being performed.
 Unlike several of the other role-fillers, the baseline action family is
 intentionally flat rather than hierarchical.
 
-Initial core terms include:
+The initial core term set is:
 
-* ppd:collection
-* ppd:use
-* ppd:transfer
-* ppd:inference
+* `ppd:collection`: acquiring, observing, or accepting data into the handling
+  context of the participant or service.
+* `ppd:use`: operating on data within the current handling context without
+  disclosing it to a different recipient.
+* `ppd:transfer`: disclosing, transmitting, or otherwise making data available
+  to a different recipient or handling context.
+* `ppd:inference`: deriving new data, classifications, or conclusions from
+  existing data.
 
 ## Source (From Where)
 
@@ -219,13 +239,17 @@ Source terms identify the origin of the handled data in the relevant
 processing path. Source participates in semantic comparison and can support
 broader-than/narrower-than relationships.
 
-Initial core terms include:
+The initial core term set is:
 
-* ppd:userInput
-* ppd:sensor
-* ppd:cameraSensor
-* ppd:microphone
-* ppd:derivedData
+* `ppd:userInput`: data intentionally provided by a user through direct
+  interaction with the participant, service, or associated control surface.
+* `ppd:sensor`: data directly observed from a sensing path associated with the
+  participant or its environment.
+* `ppd:cameraSensor`: data directly observed from an image- or video-capture
+  sensing path.
+* `ppd:microphone`: data directly observed from an audio-capture sensing path.
+* `ppd:derivedData`: data produced from prior data through transformation,
+  aggregation, inference, or similar derivation.
 
 ## Destination (To Where)
 
@@ -233,12 +257,16 @@ Destination terms identify the receiving endpoint or handling target to which
 the dataflow applies. Destination participates in semantic comparison and can
 support broader-than/narrower-than relationships.
 
-Initial core terms include:
+The initial core term set is:
 
-* ppd:localProcessing
-* ppd:vendorCloud
-* ppd:thirdPartyService
-* ppd:dataBroker
+* `ppd:localProcessing`: a handling target that remains on the participant or
+  within a household-local processing environment rather than a remote service.
+* `ppd:vendorCloud`: a remote service environment operated by the device or
+  service vendor.
+* `ppd:thirdPartyService`: a remote service environment operated by an entity
+  other than the device or service vendor.
+* `ppd:dataBroker`: a recipient whose role includes acquiring, exchanging, or
+  redisclosing data as a commercial data asset.
 
 ## Dataflow Qualifiers
 
@@ -281,10 +309,10 @@ persistence beyond the immediate handling context.
 `ppd:indefinite` means no bounded upper retention limit is expressed in the
 rule.
 
-Bounded retention periods are expected to require more specific refinements,
-including explicit duration values, in later revisions or deployment profiles.
-The baseline compact participant-facing form therefore uses categorical
-retention values only.
+Bounded retention periods are expected to require more specific quantitative
+refinements, including explicit duration values and units, in later revisions
+or deployment profiles. The baseline compact participant-facing form defined
+here therefore standardizes only the categorical retention values above.
 
 Retention comparison does not use a generic taxonomy subsumption hierarchy in
 the same way as `data_type`, `purpose`, `source`, or `destination`.
@@ -372,6 +400,22 @@ Stable term identifiers are the primary semantic hook in this taxonomy. The base
 
 A taxonomy release identifier can identify the vocabulary snapshot used for validation, reproducibility, or documentation. For example, a deployment might use a release identifier such as `ppd-core-2026-05`. However, release metadata does not replace the term identifier itself as the source of meaning.
 
+## Stability of Term Meanings
+
+Once published, a stable term identifier MUST NOT be silently reassigned an
+incompatible meaning in a later taxonomy release.
+
+Later releases MAY:
+
+* add new terms;
+* clarify the prose associated with an existing term when the clarification
+  does not change its comparison semantics; and
+* deprecate a term for future use while preserving its published meaning for
+  reproducibility and comparison of existing content.
+
+If a later release needs materially different semantics, it MUST define a new
+term identifier rather than repurposing the old one.
+
 ## Compact Wire Form
 
 {{?I-D.draft-dsmullen-ppd-protocol}} defines compact term identifiers as the participant-facing wire format. The protocol's Taxonomy Context Object carries:
@@ -389,11 +433,12 @@ vocabulary. When such terms appear in participant-facing protocol messages, the
 sender MUST provide the required non-core prefix declarations through the
 protocol's taxonomy context.
 
-For comparison-relevant roles, namespace declaration alone is not enough.
-When a non-core term fills `data_type`, `purpose`, `action`, `source`,
-`destination`, `processing_boundary`, or a scoped `jurisdiction` role, that
-term MUST be defined with the semantic relationship or exact reduction by
-which it is reduced to one or more shared core concepts.
+For comparison-relevant roles and qualifier families, namespace declaration
+alone is not enough. When a non-core term fills `data_type`, `purpose`,
+`action`, `source`, or `destination`, or supplies a non-core `retention`,
+`processing_boundary`, or scoped `jurisdiction` qualifier value, that term
+MUST be defined with the semantic relationship or exact reduction by which it
+is reduced to one or more shared core concepts.
 
 That relationship can include equivalence or broader/narrower placement where
 the role participates in subsumption, or exact reduction where it does not, so

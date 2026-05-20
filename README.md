@@ -9,8 +9,8 @@ This is the working area for the individual Internet-Draft, "Privacy Preference 
 * [Individual Draft](https://datatracker.ietf.org/doc/html/draft-dsmullen-ppd-taxonomy)
 * [Compare Editor's Copy to Individual Draft](https://drspangle.github.io/draft-dsmullen-ppd-taxonomy/#go.draft-dsmullen-ppd-taxonomy.diff)
 
-Use this repository for the draft source and local render workflow for this
-draft only.
+Use this repository for the draft source, local render workflow, and local
+working notes for this draft only.
 
 ## Workstation Bootstrap
 
@@ -22,6 +22,16 @@ python3 scripts/setup_draft_workstation.py bootstrap
 
 There is intentionally no shared workspace bootstrap. This bootstrap configures
 only this repository.
+
+If you are preparing for Datatracker submission, bootstrap the submission
+toolchain too:
+
+```sh
+python3 scripts/setup_draft_workstation.py bootstrap --submission-tools
+```
+
+That native path keeps the Node/npm dependency repo-local under `.tooling/`
+when `npm` is not already installed on the workstation.
 
 Validation steps for this repository are in [WORKSTATION-VALIDATION.md](WORKSTATION-VALIDATION.md).
 
@@ -35,8 +45,11 @@ Validation steps for this repository are in [WORKSTATION-VALIDATION.md](WORKSTAT
 ## Start Here
 
 1. Bootstrap the local render workflow with `python3 scripts/setup_draft_workstation.py bootstrap`.
-2. Validate the local setup with [WORKSTATION-VALIDATION.md](WORKSTATION-VALIDATION.md).
-3. Build the draft with `make`.
+2. If you intend to run pre-submit checks, bootstrap the native submission toolchain with `python3 scripts/setup_draft_workstation.py bootstrap --submission-tools`.
+3. Validate the local setup with [WORKSTATION-VALIDATION.md](WORKSTATION-VALIDATION.md).
+4. Build the draft with `make`.
+5. Run `python3 scripts/setup_draft_workstation.py validate-submission` before final submission work.
+6. Use [internal-notes/README.md](internal-notes/README.md) for local working notes.
 
 On Windows, prefer native POSIX tooling when available. Use WSL only as an
 explicit fallback:
@@ -64,3 +77,10 @@ $ make
 
 Command line usage requires that you have the necessary software installed.  See
 [the instructions](https://github.com/martinthomson/i-d-template/blob/main/doc/SETUP.md).
+
+To exercise the pre-submit path that generates the next versioned XML and runs
+`idnits`, use:
+
+```sh
+$ python3 scripts/setup_draft_workstation.py validate-submission
+```

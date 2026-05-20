@@ -5,6 +5,7 @@ from the rendered Internet-Draft contents.
 
 Use this directory to capture:
 
+- build, render, GitHub Pages, and Datatracker submission workflow notes
 - taxonomy-draft editorial history
 - open modeling questions that are not yet ready to become draft text
 - local and external source-material pointers that inform taxonomy scope
@@ -14,6 +15,8 @@ Do not put settled taxonomy semantics here if they belong in the draft itself.
 
 ## Files
 
+- `template-operations.md`: build, render, GitHub Pages, and Datatracker
+  submission workflow notes
 - `draft-work-log.md`: running log of taxonomy-draft changes, criticism, and
   design decisions
 - `source-material.md`: local PPD repository inputs that should shape the
