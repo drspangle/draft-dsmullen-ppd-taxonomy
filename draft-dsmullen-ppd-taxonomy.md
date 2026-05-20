@@ -97,10 +97,6 @@ reasoning stack.
 The foundational semantic unit in this taxonomy is an atomic privacy-relevant
 dataflow.
 
-In the baseline PPD model, an atomic privacy-relevant dataflow is the
-fundamental semantic element over which participant declarations and household
-policy rules are compared.
-
 In the baseline PPD model:
 
 * a Device Declaration Statement describes one participant-side dataflow case;
@@ -398,9 +394,10 @@ here as `ppd:vendorProvided`; the fact that the vendor may have derived it
 from prior data is a deeper provenance question outside the baseline source
 semantics defined in this revision.
 
-Terms such as sensor, camera sensor, microphone, weather-feed data, gateway
-state feeds, and more specific third-party or vendor-origin categories are
-expected to appear as narrower refinements of these broader source categories.
+Terms such as camera sensor observation, microphone observation, household
+gateway feed, vendor profile feed, and more specific third-party or
+vendor-origin categories are expected to appear as narrower refinements of
+these broader source categories.
 
 ## Destination (To Where)
 
