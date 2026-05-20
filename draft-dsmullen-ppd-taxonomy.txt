@@ -78,15 +78,16 @@ Table of Contents
    4.  Design Goals
    5.  Core Semantic Floor and Extension Model
    6.  Core Taxonomy Structure
-     6.1.  Data Type (What)
-     6.2.  Purpose (Why)
-     6.3.  Action (How)
-     6.4.  Source (From Where)
-     6.5.  Destination (To Where)
-     6.6.  Dataflow Qualifiers
-       6.6.1.  Retention
-       6.6.2.  Processing Boundary
-       6.6.3.  Jurisdiction
+     6.1.  Semantic Validity of Terms and Refinements
+     6.2.  Data Type (What)
+     6.3.  Purpose (Why)
+     6.4.  Action (How)
+     6.5.  Source (From Where)
+     6.6.  Destination (To Where)
+     6.7.  Dataflow Qualifiers
+       6.7.1.  Retention
+       6.7.2.  Processing Boundary
+       6.7.3.  Jurisdiction
    7.  Subsumption and Comparison
    8.  Identifier Model
      8.1.  Stable Term Identifiers
@@ -152,10 +153,6 @@ Table of Contents
    The foundational semantic unit in this taxonomy is an atomic privacy-
    relevant dataflow.
 
-   In the baseline PPD model, an atomic privacy-relevant dataflow is the
-   fundamental semantic element over which participant declarations and
-   household policy rules are compared.
-
    In the baseline PPD model:
 
    *  a Device Declaration Statement describes one participant-side
@@ -180,6 +177,15 @@ Table of Contents
    *  destination
 
    It can also carry structured dataflow qualifiers.
+
+   In this document, dataflow refers to the structured semantic object
+   being compared.  Action identifies the specific privacy-relevant
+   operation within that object.  Handling is used as a general umbrella
+   term for the collection, use, transfer, or inference of data
+   represented by an atomic dataflow.  Processing is used more narrowly
+   for execution semantics, such as those constrained by
+   processing_boundary.  Operation is reserved for protocol operations
+   defined by [I-D.draft-dsmullen-ppd-protocol].
 
    The rule effect, such as allow or deny, is not part of the dataflow
    tuple itself.  It belongs to the household-side policy-rule layer
@@ -294,7 +300,48 @@ Table of Contents
    taxonomy refinement.  Such modality belongs in the policy-rule layer
    rather than in the taxonomy term itself.
 
-6.1.  Data Type (What)
+6.1.  Semantic Validity of Terms and Refinements
+
+   The baseline core and extension model defined here is intentionally
+   strict about semantic validity.  This is necessary to preserve
+   interoperable comparison rather than allowing locally convenient but
+   semantically unstable labels to appear participant-facing on the
+   wire.
+
+   For baseline participant-facing use:
+
+   *  a term or qualifier value MUST belong to exactly one field family
+      or qualifier family defined by this document or a later compatible
+      taxonomy specification;
+
+   *  a term or qualifier value MUST follow the classification rule of
+      the family in which it appears;
+
+   *  a term or qualifier value MUST NOT collapse multiple semantic axes
+      that this document models separately, such as destination identity
+      plus policy modality, or data type plus origin history;
+
+   *  a refinement in a family that supports subsumption MUST preserve
+      and specialize the meaning of its broader term rather than
+      contradicting, negating, or semantically escaping it;
+
+   *  if a local concept cannot be placed in one family without relying
+      on multiple immediate broader terms in that same family, it is not
+      a valid single refinement for baseline comparison; and
+
+   *  if a local concept spans multiple semantic dimensions modeled
+      separately by this taxonomy, it MUST be decomposed across the
+      corresponding fields or qualifier families rather than encoded
+      into one overloaded taxonomy term; and if that decomposition
+      yields multiple distinct handling cases, those cases MUST be
+      represented as separate atomic dataflows.
+
+   These validity rules apply equally to core terms and non-core
+   participant- facing refinements.  A syntactically well-formed
+   namespaced identifier is not enough to make a term valid for baseline
+   comparison.
+
+6.2.  Data Type (What)
 
    Data Type terms identify the kind of data involved in the dataflow.
    Data Type participates in semantic comparison and supports broader-
@@ -342,7 +389,7 @@ Table of Contents
    what that data means, while the fact that it was inferred from prior
    data is captured separately through the source field.
 
-6.2.  Purpose (Why)
+6.3.  Purpose (Why)
 
    Purpose terms identify the reason or operational objective for the
    handling.  Purpose participates in semantic comparison and supports
@@ -352,7 +399,8 @@ Table of Contents
    reflect the high-level purpose categories commonly seen in privacy
    notices and policy documents, while leaving room for narrower
    operational purposes below it.  These categories are based on why the
-   handling occurs in the rule at issue, not on product-feature labels.
+   handling occurs in the rule at issue, not on product-feature labels,
+   recipient identity, data type, action, or policy modality.
 
    The initial core term set is:
 
@@ -387,22 +435,27 @@ Table of Contents
    specific analytical or security purposes are expected to appear as
    narrower refinements of these broader core purposes.
 
+   A purpose refinement MUST preserve and specialize the reason
+   expressed by its broader term.  A purpose term MUST NOT collapse
+   purpose together with another semantic axis such as recipient
+   category, retention, data type, or policy effect.
+
    Feature labels that can serve more than one broad purpose are not
    good floor categories by themselves.  For example, a motion-detection
    feature may support ppd:coreFunctionality, ppd:security, or another
    narrower purpose depending on the actual rule context.
 
    When a real handling path genuinely serves multiple purposes, that
-   ambiguity SHOULD NOT be collapsed into one purpose label.  Instead,
-   the handling should normally be represented as separate atomic
-   dataflows, each with its own purpose classification.  This is not
-   only a comparison convenience.  It also improves transparency by
-   making it easier for a household, an implementer, or an automated
-   policy-analysis function to identify and reason about specific
-   sensitive purposes, specific data types, and the exact handling paths
-   to which they apply.
+   ambiguity MUST NOT be collapsed into one purpose label.  For baseline
+   participant-facing use, the handling MUST instead be represented as
+   separate atomic dataflows, each with its own purpose classification.
+   This is not only a comparison convenience.  It also improves
+   transparency by making it easier for a household, an implementer, or
+   an automated policy-analysis function to identify and reason about
+   specific sensitive purposes, specific data types, and the exact
+   handling paths to which they apply.
 
-6.3.  Action (How)
+6.4.  Action (How)
 
    Action terms identify the privacy-relevant operation being performed.
    Unlike several of the other core fields, the baseline action
@@ -422,11 +475,13 @@ Table of Contents
    *  ppd:inference: deriving new data, classifications, or conclusions
       from existing data.
 
-6.4.  Source (From Where)
+6.5.  Source (From Where)
 
-   Source terms identify the origin of the handled data in the relevant
-   processing path.  Source participates in semantic comparison and
-   supports broader-than/narrower-than relationships.
+   Source terms identify the immediate origin of the handled data as it
+   enters the current handling step.  Source does not attempt to encode
+   full provenance or multi-step lineage.  Source participates in
+   semantic comparison and supports broader-than/narrower-than
+   relationships.
 
    The initial core term set is:
 
@@ -441,31 +496,42 @@ Table of Contents
       part of its own operation, status reporting, logging, or internal
       state handling.
 
-   *  ppd:householdProvided: data supplied by another household-local
-      device, controller, gateway, or local service.
+   *  ppd:householdProvided: data directly supplied to the current
+      handling step by another household-local device, controller,
+      gateway, or local service.
 
-   *  ppd:vendorProvided: data supplied by a service associated with the
-      device or service vendor.
+   *  ppd:vendorProvided: data directly supplied to the current handling
+      step by a service associated with the device or service vendor.
 
-   *  ppd:thirdPartyProvided: data supplied by a third party outside the
-      participant's primary vendor or household relationship.
+   *  ppd:thirdPartyProvided: data directly supplied to the current
+      handling step by a third party outside the participant's primary
+      vendor or household relationship.
 
    *  ppd:derivedFromPriorData: data whose immediate origin is prior
-      data processing rather than direct provision or direct
-      observation.
+      data processing within the current handling path rather than
+      direct observation, direct user provision, or direct supply from a
+      household, vendor, or third-party context.
 
-   Terms such as sensor, camera sensor, microphone, weather-feed data,
-   gateway state feeds, and more specific third-party or vendor-origin
-   categories are expected to appear as narrower refinements of these
-   broader source categories.
+   When a provided category such as ppd:vendorProvided is used, this
+   field does not also attempt to encode deeper upstream lineage inside
+   that supplying context.  For example, a vendor-delivered inference
+   result is still classified here as ppd:vendorProvided; the fact that
+   the vendor may have derived it from prior data is a deeper provenance
+   question outside the baseline source semantics defined in this
+   revision.
 
-6.5.  Destination (To Where)
+   Terms such as camera sensor observation, microphone observation,
+   household gateway feed, vendor profile feed, and more specific third-
+   party or vendor-origin categories are expected to appear as narrower
+   refinements of these broader source categories.
 
-   Destination terms identify the receiving endpoint or handling target
-   to which the dataflow applies.  For transfer, Destination identifies
-   the recipient or recipient-side handling context.  For use and
-   inference, Destination identifies the handling context in which that
-   operation takes place.  Destination participates in semantic
+6.6.  Destination (To Where)
+
+   Destination terms identify the recipient-side or handling-side
+   context to which the dataflow applies.  For transfer, Destination
+   identifies the recipient or recipient-side handling context.  For use
+   and inference, Destination identifies the handling context in which
+   that operation takes place.  Destination participates in semantic
    comparison and can support broader-than/narrower-than relationships.
 
    Destination does not by itself express a placement restriction on how
@@ -474,22 +540,36 @@ Table of Contents
    processing_boundary qualifier family.  The two are related but not
    interchangeable.
 
+   Destination classifies semantic handling context, not organization
+   identity.  Named entities such as a particular company or service
+   brand are not themselves core destination terms.  If such identifiers
+   are introduced through non-core refinements, their role-specific
+   meaning still needs to reduce to one of the destination categories
+   below.
+
    The initial core term set is:
 
-   *  ppd:localProcessing: a handling target that remains within the
-      participant or household-local handling context rather than
-      introducing a remote recipient or remote service environment.
+   *  ppd:householdContext: a handling context that remains within the
+      participant or household-local relationship rather than
+      introducing a remote external service or audience.
 
-   *  ppd:vendorCloud: a remote service environment operated by the
-      device or service vendor.
+   *  ppd:vendorContext: a handling context operated by, or acting on
+      behalf of, the participant's primary device or service vendor.
 
-   *  ppd:thirdPartyService: a remote service environment operated by an
-      entity other than the device or service vendor.
+   *  ppd:thirdPartyContext: a handling context operated by an entity
+      outside the participant's primary vendor or household
+      relationship.
 
-   *  ppd:dataBroker: a recipient whose role includes acquiring,
-      exchanging, or redisclosing data as a commercial data asset.
+   *  ppd:publicAudience: a disclosure context in which data is made
+      available to the public or to an open audience rather than to a
+      bounded service relationship.
 
-6.6.  Dataflow Qualifiers
+   Terms such as vendor cloud, household controller, partner analytics
+   service, data broker, public feed, or other more specific recipient
+   or handling contexts are expected to appear as narrower refinements
+   of these broader destination categories.
+
+6.7.  Dataflow Qualifiers
 
    The baseline protocol also allows structured qualifiers through the
    constraints object.  This document defines the initial qualifier
@@ -505,7 +585,7 @@ Table of Contents
    participant-facing uses that attach a qualifier family outside its
    defined applicability are invalid.
 
-6.6.1.  Retention
+6.7.1.  Retention
 
    Retention qualifies how long the relevant data or resulting artifact
    may persist after the action in question.
@@ -547,7 +627,7 @@ Table of Contents
    hierarchy in the same way as data_type, purpose, source, or
    destination.
 
-6.6.2.  Processing Boundary
+6.7.2.  Processing Boundary
 
    Processing Boundary qualifies where a processing operation may
    execute or remain.  This family is most natural for use and
@@ -563,7 +643,7 @@ Table of Contents
    identifies the handling target or recipient context to which the
    dataflow applies. processing_boundary further constrains where a use
    or inference operation may execute within that context.  For example,
-   a use dataflow with destination=ppd:localProcessing can still be
+   a use dataflow with destination=ppd:householdContext can still be
    further narrowed by processing_boundary=ppd:onDeviceOnly or
    processing_boundary=ppd:inHomeOnly.
 
@@ -582,7 +662,7 @@ Table of Contents
    Processing Boundary participates in semantic comparison and can
    support broader-than/narrower-than relationships.
 
-6.6.3.  Jurisdiction
+6.7.3.  Jurisdiction
 
    Jurisdiction qualifies the legal or regulatory domain relevant to the
    dataflow.  It is intended for cases where a policy needs to constrain
@@ -678,7 +758,7 @@ Table of Contents
 
    Stable term identifiers are the primary semantic hook in this
    taxonomy.  The baseline core vocabulary uses the reserved prefix
-   ppd:. A term such as ppd:sensorData or ppd:localProcessing derives
+   ppd:. A term such as ppd:sensorData or ppd:householdContext derives
    its meaning from the stable taxonomy definition associated with that
    identifier.
 
@@ -734,6 +814,11 @@ Table of Contents
    relationship or exact reduction by which it is reduced to one or more
    shared core concepts.
 
+   A non-core term that does not satisfy the semantic validity
+   conditions above is invalid taxonomy content for baseline
+   participant-facing use, even if the identifier syntax and namespace
+   declaration are otherwise well-formed.
+
    Non-core terms also MUST NOT introduce policy modality into the
    taxonomy layer.  An extension term can refine a field or qualifier
    concept, but it cannot turn that concept into an encoded policy
@@ -769,10 +854,31 @@ Table of Contents
    *  vendorx:edgeHubOnly as a narrower processing_boundary under
       ppd:inHomeOnly.
 
+   Destination refinements follow the same rule.  For example:
+
+   *  vendorx:vendorCloudService can be a narrower destination under
+      ppd:vendorContext;
+
+   *  vendorx:dataBrokerService can be a narrower destination under
+      ppd:thirdPartyContext; and
+
+   *  a named entity such as vendorx:exampleServices is only meaningful
+      if the refinement defines which destination role is involved.  The
+      same organization might reduce to ppd:vendorContext when acting as
+      the participant's own vendor service, or to ppd:thirdPartyContext
+      when acting as an unrelated recipient.
+
    Such terms can be useful, but they remain baseline-interoperable only
    when their relationship to the relevant core fields is explicit
    enough that participants and household policy services can compare
    them meaningfully.
+
+   This document does not define who is authorized to publish extension
+   vocabularies, how ecosystems vet them, or what registry or profile
+   structure may later be used to manage them.  Those governance and
+   publication-trust questions are out of scope for this revision.  The
+   focus here is narrower: what participant-facing terms and refinements
+   are semantically valid for baseline interoperable computation.
 
 9.  Use in PPD Messages
 
@@ -808,7 +914,7 @@ Table of Contents
      "purpose": "ppd:analyticsAndImprovement",
      "action": "ppd:transfer",
      "source": "ppd:participantObserved",
-     "destination": "ppd:vendorCloud",
+     "destination": "ppd:vendorContext",
      "constraints": {
        "retention": "ppd:indefinite"
      }
@@ -822,7 +928,7 @@ Table of Contents
      "purpose": "ppd:security",
      "action": "ppd:use",
      "source": "ppd:participantObserved",
-     "destination": "ppd:localProcessing",
+     "destination": "ppd:householdContext",
      "effect": "allow",
      "constraints": {
        "processing_boundary": "ppd:onDeviceOnly"
