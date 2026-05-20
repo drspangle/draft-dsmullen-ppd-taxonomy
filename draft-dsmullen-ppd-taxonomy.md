@@ -812,16 +812,13 @@ The taxonomy defines the meaning of the identifiers in these objects. The protoc
 
 # Relationship to Richer Semantic Frameworks
 
-This taxonomy is intentionally lighter than a full ontology language or
-rights-expression framework. Implementations MAY publish auxiliary
-representations, mappings, or tool-specific serializations when useful. For
-example, organizations might maintain internal ontology, graph, or
-policy-analysis artifacts that map to the stable identifiers defined here.
-
-However, baseline participant-facing interoperability does not require OWL,
-RDF, JSON-LD, or comparable machinery on the wire. The participant-facing
-contract remains compact term identifiers plus the protocol-defined taxonomy
-context, backed by the shared core semantic floor defined here.
+Implementations MAY maintain richer local semantic artifacts, mappings, or
+tool-specific representations where useful. However, baseline participant-
+facing interoperability does not depend on carrying a full ontology or graph
+model on the wire. The participant-facing contract remains the compact term
+identifiers and taxonomy context defined by
+{{?I-D.draft-dsmullen-ppd-protocol}}, backed by the shared semantic floor
+defined here.
 
 # Security Considerations
 
