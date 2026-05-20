@@ -88,6 +88,14 @@ artifacts where useful, but baseline participant-facing interoperability
 depends on a shared computable semantic floor rather than on a full external
 reasoning stack.
 
+The rest of this document does four things:
+
+* it defines the core fields that make up an atomic PPD dataflow;
+* it defines the initial qualifier families used with those fields;
+* it defines the comparison model used to relate core and non-core terms; and
+* it defines what makes a participant-facing term or refinement semantically
+  valid or invalid for baseline use.
+
 # Conventions and Definitions
 
 {::boilerplate bcp14-tagged}
@@ -113,6 +121,15 @@ A baseline atomic dataflow contains these five core fields:
 * `destination`
 
 It can also carry structured dataflow qualifiers.
+
+One compact example is a camera that uses observed media data for a security
+function within the household context. That handling can be described as one
+atomic dataflow with `data_type=ppd:contentData`,
+`purpose=ppd:security`, `action=ppd:use`,
+`source=ppd:participantObserved`,
+`destination=ppd:householdContext`, and
+`processing_boundary=ppd:onDeviceOnly`. The field and qualifier sections
+below explain how each part of such a dataflow is classified.
 
 In this document, `dataflow` refers to the structured semantic object being
 compared. `Action` identifies the specific privacy-relevant operation within
@@ -230,27 +247,27 @@ about semantic validity. This is necessary to preserve interoperable
 comparison rather than allowing locally convenient but semantically unstable
 labels to appear participant-facing on the wire.
 
-For baseline participant-facing use:
+A term or qualifier value is semantically valid for baseline participant-
+facing use only if all of the following are true:
 
-* a term or qualifier value MUST belong to exactly one field family or
-  qualifier family defined by this document or a later compatible taxonomy
-  specification;
-* a term or qualifier value MUST follow the classification rule of the family
-  in which it appears;
-* a term or qualifier value MUST NOT collapse multiple semantic axes that this
-  document models separately, such as destination identity plus policy
-  modality, or data type plus origin history;
-* a refinement in a family that supports subsumption MUST preserve and
-  specialize the meaning of its broader term rather than contradicting,
+* it belongs to exactly one field family or qualifier family defined by this
+  document or by a later compatible taxonomy specification;
+* it follows the classification rule of the family in which it appears;
+* it does not collapse multiple semantic axes that this document models
+  separately, such as destination identity plus policy modality, or data type
+  plus origin history;
+* if it is a refinement in a family that supports subsumption, it preserves
+  and specializes the meaning of its broader term rather than contradicting,
   negating, or semantically escaping it;
 * if a local concept cannot be placed in one family without relying on
   multiple immediate broader terms in that same family, it is not a valid
-  single refinement for baseline comparison; and
+  single refinement for baseline comparison;
 * if a local concept spans multiple semantic dimensions modeled separately by
-  this taxonomy, it MUST be decomposed across the corresponding fields or
+  this taxonomy, it is decomposed across the corresponding fields or
   qualifier families rather than encoded into one overloaded taxonomy term;
-  and if that decomposition yields multiple distinct handling cases, those
-  cases MUST be represented as separate atomic dataflows.
+  and
+* if that decomposition yields multiple distinct handling cases, those cases
+  are represented as separate atomic dataflows.
 
 These validity rules apply equally to core terms and non-core participant-
 facing refinements. A syntactically well-formed namespaced identifier is not
@@ -259,6 +276,8 @@ enough to make a term valid for baseline comparison.
 ## Data Type (What)
 
 Data Type terms identify the kind of data involved in the dataflow.
+Classification rule: classify by what the data is.
+
 Data Type participates in semantic comparison and supports
 broader-than/narrower-than relationships.
 
@@ -288,6 +307,9 @@ The initial core term set is:
 * `ppd:usageData`: data about interaction with the device, service, or
   associated interfaces.
 
+For example, a thermostat reading is `ppd:sensorData`, an account nickname is
+`ppd:profileData`, and a doorbell video clip is `ppd:contentData`.
+
 Terms such as temperature readings, humidity readings, audio samples, video
 frames, event clips, device identifiers, crash logs, and occupancy estimates
 are expected to appear as narrower refinements of these broader core data
@@ -299,6 +321,8 @@ that it was inferred from prior data is captured separately through the
 ## Purpose (Why)
 
 Purpose terms identify the reason or operational objective for the handling.
+Classification rule: classify by why the current handling step occurs.
+
 Purpose participates in semantic comparison and supports broader-than/
 narrower-than relationships.
 
@@ -334,6 +358,11 @@ product improvement, anomaly detection, and more specific analytical or
 security purposes are expected to appear as narrower refinements of these
 broader core purposes.
 
+For example, a resident-requested live view can refine under
+`ppd:coreFunctionality`, intrusion-alert scoring can refine under
+`ppd:security`, and product-quality analysis can refine under
+`ppd:analyticsAndImprovement`.
+
 A purpose refinement MUST preserve and specialize the reason expressed by its
 broader term. A purpose term MUST NOT collapse purpose together with another
 semantic axis such as recipient category, retention, data type, or policy
@@ -356,6 +385,8 @@ and the exact handling paths to which they apply.
 ## Action (How)
 
 Action terms identify the privacy-relevant operation being performed.
+Classification rule: classify by which privacy-relevant operation occurs.
+
 Unlike several of the other core fields, the baseline action vocabulary is
 intentionally flat rather than hierarchical.
 
@@ -376,6 +407,8 @@ Source terms identify the immediate origin of the handled data as it enters
 the current handling step. Source does not attempt to encode full provenance
 or multi-step lineage. Source participates in semantic comparison and
 supports broader-than/narrower-than relationships.
+Classification rule: classify by the immediate origin of the data as it
+enters the current handling step.
 
 The initial core term set is:
 
@@ -409,6 +442,11 @@ gateway feed, vendor profile feed, and more specific third-party or
 vendor-origin categories are expected to appear as narrower refinements of
 these broader source categories.
 
+For example, a camera frame captured by the participant is
+`ppd:participantObserved`, a cloud-supplied account profile is
+`ppd:vendorProvided`, and an occupancy score computed earlier in the same
+handling path is `ppd:derivedFromPriorData`.
+
 ## Destination (To Where)
 
 Destination terms identify the recipient-side or handling-side context to
@@ -417,6 +455,8 @@ recipient or recipient-side handling context. For `use` and `inference`,
 Destination identifies the handling context in which that operation takes
 place. Destination participates in semantic comparison and can support
 broader-than/narrower-than relationships.
+Classification rule: classify by the recipient-side or handling-side context
+to which the current handling step applies.
 
 Destination does not by itself express a placement restriction on how a `use`
 or `inference` operation executes inside that handling context. More specific
@@ -447,6 +487,10 @@ data broker, public feed, or other more specific recipient or handling
 contexts are expected to appear as narrower refinements of these broader
 destination categories.
 
+For example, sending data to the device vendor is `ppd:vendorContext`, using
+data within a household hub is `ppd:householdContext`, and publishing data to
+an open feed is `ppd:publicAudience`.
+
 ## Dataflow Qualifiers
 
 The baseline protocol also allows structured qualifiers through the
@@ -466,6 +510,8 @@ qualifier family outside its defined applicability are invalid.
 
 Retention qualifies how long the relevant data or resulting artifact may
 persist after the action in question.
+Classification rule: classify by how long the relevant data or artifact may
+persist after the scoped action.
 
 Retention is action-sensitive. In particular:
 
@@ -502,6 +548,8 @@ Processing Boundary qualifies where a processing operation may execute or
 remain. This family is most natural for `use` and `inference`. It is not the
 primary semantic mechanism for describing transfer recipients, because
 `destination` already identifies the transfer target.
+Classification rule: classify by where `use` or `inference` may execute
+within the applicable handling context.
 
 In the baseline model, `processing_boundary` is therefore primarily a
 qualifier on `use` and `inference` dataflows rather than a general qualifier
@@ -534,6 +582,8 @@ Jurisdiction qualifies the legal or regulatory domain relevant to the
 dataflow. It is intended for cases where a policy needs to constrain the legal
 domain under which handling occurs, not merely the physical placement of a
 processor or store.
+Classification rule: classify by the scoped legal or regulatory domain
+relevant to the handling step.
 
 Jurisdiction is intentionally not treated as a single flat label. Any use of a
 jurisdiction qualifier MUST identify the scoped subcase it constrains, such as:
