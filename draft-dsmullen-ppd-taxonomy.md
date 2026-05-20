@@ -300,7 +300,8 @@ The core Purpose set is intentionally broad. It is designed to reflect the
 high-level purpose categories commonly seen in privacy notices and policy
 documents, while leaving room for narrower operational purposes below it.
 These categories are based on why the handling occurs in the rule at issue,
-not on product-feature labels.
+not on product-feature labels, recipient identity, data type, action, or
+policy modality.
 
 The initial core term set is:
 
@@ -327,19 +328,24 @@ product improvement, anomaly detection, and more specific analytical or
 security purposes are expected to appear as narrower refinements of these
 broader core purposes.
 
+A purpose refinement MUST preserve and specialize the reason expressed by its
+broader term. A purpose term MUST NOT collapse purpose together with another
+semantic axis such as recipient category, retention, data type, or policy
+effect.
+
 Feature labels that can serve more than one broad purpose are not good floor
 categories by themselves. For example, a motion-detection feature may support
 `ppd:coreFunctionality`, `ppd:security`, or another narrower purpose depending
 on the actual rule context.
 
 When a real handling path genuinely serves multiple purposes, that ambiguity
-SHOULD NOT be collapsed into one purpose label. Instead, the handling should
-normally be represented as separate atomic dataflows, each with its own
-purpose classification. This is not only a comparison convenience. It also
-improves transparency by making it easier for a household, an implementer, or
-an automated policy-analysis function to identify and reason about specific
-sensitive purposes, specific data types, and the exact handling paths to which
-they apply.
+MUST NOT be collapsed into one purpose label. For baseline participant-facing
+use, the handling MUST instead be represented as separate atomic dataflows,
+each with its own purpose classification. This is not only a comparison
+convenience. It also improves transparency by making it easier for a
+household, an implementer, or an automated policy-analysis function to
+identify and reason about specific sensitive purposes, specific data types,
+and the exact handling paths to which they apply.
 
 ## Action (How)
 
