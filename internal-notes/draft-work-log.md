@@ -99,3 +99,17 @@ It is not part of the rendered Internet-Draft.
   - working out how named entities such as specific companies should relate to
     semantic destination categories without collapsing those concerns into one
     taxonomy term.
+- Tightened the rendered taxonomy draft so `purpose`, `source`, and
+  `destination` each carry clearer classification rules, explicit invalidity
+  boundaries, and small concrete examples that make the floor model easier to
+  follow.
+- Added a short reader-orientation map and a compact running dataflow example
+  near the front of the draft so first-time readers can understand the model
+  before they hit the denser semantic-validity and extension sections.
+- Compressed the richer-semantic-framework discussion so it states the
+  participant-facing boundary without spending much space on ontology or graph
+  background that is not necessary to read the draft.
+- Current near-term status: the taxonomy draft looks close to a defensible
+  next Datatracker revision, but before submitting again it should get one
+  more human read focused on compression, repeated phrasing, and whether `Use
+  in PPD Messages` still carries more explanation than it needs.
