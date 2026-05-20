@@ -163,6 +163,11 @@ The baseline taxonomy consists of five core role-filler families plus selected
 dataflow qualifier families. These are used together in atomic declaration
 statements and atomic effective-policy rules.
 
+The baseline core is intentionally small. It is not meant to exhaust the full
+space of home-IoT data categories, service roles, or policy-authoring
+concepts. Its purpose is to define the minimum shared set of computable
+primitives to which richer vocabularies can be related.
+
 ## Data Type (What)
 
 Data Type terms identify the kind of data involved in the dataflow.
@@ -241,6 +246,15 @@ The baseline protocol also allows structured qualifiers through the
 `constraints` object. This document defines the initial qualifier families
 used by that object.
 
+The protocol wire object remains named `constraints`, but its members are
+semantically qualifiers on atomic dataflows.
+
+Qualifier families are action-sensitive. They are not a free-form bag of
+attributes that apply equally to every action. A qualifier family is only
+valid where this document or a later specification defines its meaning for the
+relevant action context. Baseline participant-facing uses that attach a
+qualifier family outside its defined applicability are invalid.
+
 ### Retention
 
 Retention qualifies how long the relevant data or resulting artifact may
@@ -269,6 +283,8 @@ rule.
 
 Bounded retention periods are expected to require more specific refinements,
 including explicit duration values, in later revisions or deployment profiles.
+The baseline compact participant-facing form therefore uses categorical
+retention values only.
 
 Retention comparison does not use a generic taxonomy subsumption hierarchy in
 the same way as `data_type`, `purpose`, `source`, or `destination`.
@@ -279,6 +295,10 @@ Processing Boundary qualifies where a processing operation may execute or
 remain. This family is most natural for `use` and `inference`. It is not the
 primary semantic mechanism for describing transfer recipients, because
 `destination` already fills that role.
+
+In the baseline model, `processing_boundary` is therefore primarily a
+qualifier on `use` and `inference` dataflows rather than a general qualifier
+on `transfer`.
 
 Initial core terms include:
 
@@ -310,6 +330,10 @@ sovereignty concerns to be expressed through more concrete baseline semantics.
 
 Jurisdiction participates in semantic comparison, but only within a clearly
 identified scoped subcase.
+
+This document defines the qualifier family and the scoped-semantics rule, but
+it does not yet define a closed baseline set of jurisdiction vocabulary
+values.
 
 # Subsumption and Comparison
 
@@ -355,7 +379,8 @@ A taxonomy release identifier can identify the vocabulary snapshot used for vali
 * a taxonomy release identifier; and
 * any required non-core prefix declarations.
 
-This keeps participant-facing messages compact while preserving stable semantics.
+This keeps participant-facing messages compact while preserving stable
+semantics.
 
 ## Extension Namespaces and Core-Primitive Mapping
 
@@ -392,6 +417,9 @@ The protocol and taxonomy have different jobs:
 * the taxonomy defines what the terms used in those combinations mean.
 
 This distinction matters. A flat bag of supported data types, purposes, actions, and destinations is not enough to describe which combinations actually apply to a participant. The protocol therefore carries atomic declaration statements and atomic policy rules, while this taxonomy defines the term spaces and qualifier meanings used in those objects.
+
+The protocol wire object for qualifiers is named `constraints`, but the
+semantics described here are qualifier semantics on those atomic dataflows.
 
 When those objects use non-core comparison-relevant terms, the objects remain
 baseline-computable only if those terms are reducible to the shared core model
@@ -453,6 +481,10 @@ Organizations publishing extension vocabularies for comparison-relevant roles
 need stable meanings and explicit reduction back to the shared core primitives.
 Participant-facing services and participants SHOULD NOT silently treat
 unresolved, unmapped, or unusable taxonomy terms as equivalent to known terms.
+
+When comparison-relevant extension terms cannot be reduced to the shared core,
+the correct baseline result is failure or indeterminate handling, not silent
+fallback to a broader local guess.
 
 When unresolved or unsupported terms appear in participant-facing protocol messages, the handling defined by {{?I-D.draft-dsmullen-ppd-protocol}} applies. In particular, unresolved terms in normative policy content are more serious than unresolved descriptive detail because they can change the meaning of an allowed or denied handling path.
 
