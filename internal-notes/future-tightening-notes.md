@@ -16,7 +16,7 @@ Follow-up work should:
   taxonomy;
 - continue pressure-testing the split between `destination` and
   `processing_boundary`; and
-- determine whether the current `localProcessing` term is the right floor
+- determine whether the current `householdContext` term is the right floor
   category or whether it still hides too much structure.
 
 The main risk is that destination terms remain broad enough to be useful but
@@ -49,7 +49,7 @@ Named entities such as a specific company, service brand, or product family
 do not fit cleanly into the same layer as the semantic destination categories
 defined by the taxonomy.
 
-For example, a destination like "Google" could plausibly map to multiple
+For example, a destination like "ExampleServices" could plausibly map to multiple
 semantic destination categories depending on which service, role, or handling
 context is actually involved.
 
@@ -67,3 +67,24 @@ Follow-up work should determine:
 The current direction should remain conservative: semantic taxonomy terms
 classify what kind of destination or handling context is involved, while
 entity identity is likely a distinct concern.
+
+## 4. Provenance and Lineage-Sensitive Policy
+
+The current `source` model is intentionally limited to immediate origin in the
+current handling step. It does not attempt to encode full provenance or
+multi-step lineage.
+
+This keeps the baseline participant-facing model compact and computable, but
+it leaves open later work for policies that care about deeper derivation
+history or inherited sensitivity.
+
+Follow-up work should determine:
+
+- whether a later taxonomy revision needs an explicit provenance or lineage
+  concept distinct from `source`;
+- whether lineage-sensitive policies are common enough in home-IoT practice to
+  justify that added complexity;
+- how such a concept would interact with `data_type`, `source`, and
+  `inference`; and
+- whether deeper provenance should remain out of the baseline participant-
+  facing model and only appear in richer profiles or auxiliary metadata.
