@@ -114,6 +114,14 @@ A baseline atomic dataflow contains these five core fields:
 
 It can also carry structured dataflow qualifiers.
 
+In this document, `dataflow` refers to the structured semantic object being
+compared. `Action` identifies the specific privacy-relevant operation within
+that object. `Handling` is used as a general umbrella term for the
+collection, use, transfer, or inference of data represented by an atomic
+dataflow. `Processing` is used more narrowly for execution semantics, such as
+those constrained by `processing_boundary`. `Operation` is reserved for
+protocol operations defined by {{?I-D.draft-dsmullen-ppd-protocol}}.
+
 The rule effect, such as `allow` or `deny`, is not part of the dataflow tuple
 itself. It belongs to the household-side policy-rule layer defined by
 {{?I-D.draft-dsmullen-ppd-protocol}}.
@@ -238,9 +246,11 @@ For baseline participant-facing use:
 * if a local concept cannot be placed in one family without relying on
   multiple immediate broader terms in that same family, it is not a valid
   single refinement for baseline comparison; and
-* if a local concept spans multiple policy-relevant dimensions, it SHOULD be
-  decomposed across separate fields, qualifiers, or atomic dataflows rather
-  than encoded into one overloaded taxonomy term.
+* if a local concept spans multiple semantic dimensions modeled separately by
+  this taxonomy, it MUST be decomposed across the corresponding fields or
+  qualifier families rather than encoded into one overloaded taxonomy term;
+  and if that decomposition yields multiple distinct handling cases, those
+  cases MUST be represented as separate atomic dataflows.
 
 These validity rules apply equally to core terms and non-core participant-
 facing refinements. A syntactically well-formed namespaced identifier is not
