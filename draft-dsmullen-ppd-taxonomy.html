@@ -1429,6 +1429,10 @@ but they are outside baseline interoperable computation.<a href="#section-5-5" c
 <p id="section-6-1">The baseline taxonomy consists of five core role-filler families plus selected
 dataflow qualifier families. These are used together in atomic declaration
 statements and atomic effective-policy rules.<a href="#section-6-1" class="pilcrow">¶</a></p>
+<p id="section-6-2">The baseline core is intentionally small. It is not meant to exhaust the full
+space of home-IoT data categories, service roles, or policy-authoring
+concepts. Its purpose is to define the minimum shared set of computable
+primitives to which richer vocabularies can be related.<a href="#section-6-2" class="pilcrow">¶</a></p>
 <div id="data-type-what">
 <section id="section-6.1">
         <h3 id="name-data-type-what">
@@ -1583,6 +1587,13 @@ support broader-than/narrower-than relationships.<a href="#section-6.5-1" class=
 <p id="section-6.6-1">The baseline protocol also allows structured qualifiers through the
 <code>constraints</code> object. This document defines the initial qualifier families
 used by that object.<a href="#section-6.6-1" class="pilcrow">¶</a></p>
+<p id="section-6.6-2">The protocol wire object remains named <code>constraints</code>, but its members are
+semantically qualifiers on atomic dataflows.<a href="#section-6.6-2" class="pilcrow">¶</a></p>
+<p id="section-6.6-3">Qualifier families are action-sensitive. They are not a free-form bag of
+attributes that apply equally to every action. A qualifier family is only
+valid where this document or a later specification defines its meaning for the
+relevant action context. Baseline participant-facing uses that attach a
+qualifier family outside its defined applicability are invalid.<a href="#section-6.6-3" class="pilcrow">¶</a></p>
 <div id="retention">
 <section id="section-6.6.1">
           <h4 id="name-retention">
@@ -1622,7 +1633,9 @@ persistence beyond the immediate handling context.<a href="#section-6.6.1-6" cla
 <p id="section-6.6.1-7"><code>ppd:indefinite</code> means no bounded upper retention limit is expressed in the
 rule.<a href="#section-6.6.1-7" class="pilcrow">¶</a></p>
 <p id="section-6.6.1-8">Bounded retention periods are expected to require more specific refinements,
-including explicit duration values, in later revisions or deployment profiles.<a href="#section-6.6.1-8" class="pilcrow">¶</a></p>
+including explicit duration values, in later revisions or deployment profiles.
+The baseline compact participant-facing form therefore uses categorical
+retention values only.<a href="#section-6.6.1-8" class="pilcrow">¶</a></p>
 <p id="section-6.6.1-9">Retention comparison does not use a generic taxonomy subsumption hierarchy in
 the same way as <code>data_type</code>, <code>purpose</code>, <code>source</code>, or <code>destination</code>.<a href="#section-6.6.1-9" class="pilcrow">¶</a></p>
 </section>
@@ -1636,20 +1649,23 @@ the same way as <code>data_type</code>, <code>purpose</code>, <code>source</code
 remain. This family is most natural for <code>use</code> and <code>inference</code>. It is not the
 primary semantic mechanism for describing transfer recipients, because
 <code>destination</code> already fills that role.<a href="#section-6.6.2-1" class="pilcrow">¶</a></p>
-<p id="section-6.6.2-2">Initial core terms include:<a href="#section-6.6.2-2" class="pilcrow">¶</a></p>
+<p id="section-6.6.2-2">In the baseline model, <code>processing_boundary</code> is therefore primarily a
+qualifier on <code>use</code> and <code>inference</code> dataflows rather than a general qualifier
+on <code>transfer</code>.<a href="#section-6.6.2-2" class="pilcrow">¶</a></p>
+<p id="section-6.6.2-3">Initial core terms include:<a href="#section-6.6.2-3" class="pilcrow">¶</a></p>
 <ul class="normal">
-<li class="normal" id="section-6.6.2-3.1">
-              <p id="section-6.6.2-3.1.1">ppd:onDeviceOnly<a href="#section-6.6.2-3.1.1" class="pilcrow">¶</a></p>
+<li class="normal" id="section-6.6.2-4.1">
+              <p id="section-6.6.2-4.1.1">ppd:onDeviceOnly<a href="#section-6.6.2-4.1.1" class="pilcrow">¶</a></p>
 </li>
-            <li class="normal" id="section-6.6.2-3.2">
-              <p id="section-6.6.2-3.2.1">ppd:inHomeOnly<a href="#section-6.6.2-3.2.1" class="pilcrow">¶</a></p>
+            <li class="normal" id="section-6.6.2-4.2">
+              <p id="section-6.6.2-4.2.1">ppd:inHomeOnly<a href="#section-6.6.2-4.2.1" class="pilcrow">¶</a></p>
 </li>
-            <li class="normal" id="section-6.6.2-3.3">
-              <p id="section-6.6.2-3.3.1">ppd:approvedRemoteProcessing<a href="#section-6.6.2-3.3.1" class="pilcrow">¶</a></p>
+            <li class="normal" id="section-6.6.2-4.3">
+              <p id="section-6.6.2-4.3.1">ppd:approvedRemoteProcessing<a href="#section-6.6.2-4.3.1" class="pilcrow">¶</a></p>
 </li>
           </ul>
-<p id="section-6.6.2-4">Processing Boundary participates in semantic comparison and can support
-broader-than/narrower-than relationships.<a href="#section-6.6.2-4" class="pilcrow">¶</a></p>
+<p id="section-6.6.2-5">Processing Boundary participates in semantic comparison and can support
+broader-than/narrower-than relationships.<a href="#section-6.6.2-5" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="jurisdiction">
@@ -1679,6 +1695,9 @@ jurisdiction constraint on storage or transfer.<a href="#section-6.6.3-4" class=
 sovereignty concerns to be expressed through more concrete baseline semantics.<a href="#section-6.6.3-5" class="pilcrow">¶</a></p>
 <p id="section-6.6.3-6">Jurisdiction participates in semantic comparison, but only within a clearly
 identified scoped subcase.<a href="#section-6.6.3-6" class="pilcrow">¶</a></p>
+<p id="section-6.6.3-7">This document defines the qualifier family and the scoped-semantics rule, but
+it does not yet define a closed baseline set of jurisdiction vocabulary
+values.<a href="#section-6.6.3-7" class="pilcrow">¶</a></p>
 </section>
 </div>
 </section>
@@ -1767,7 +1786,8 @@ interoperable.<a href="#section-7-6" class="pilcrow">¶</a></p>
             <p id="section-8.2-2.2.1">any required non-core prefix declarations.<a href="#section-8.2-2.2.1" class="pilcrow">¶</a></p>
 </li>
         </ul>
-<p id="section-8.2-3">This keeps participant-facing messages compact while preserving stable semantics.<a href="#section-8.2-3" class="pilcrow">¶</a></p>
+<p id="section-8.2-3">This keeps participant-facing messages compact while preserving stable
+semantics.<a href="#section-8.2-3" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="extension-namespaces-and-core-primitive-mapping">
@@ -1821,11 +1841,13 @@ participants and household policy services can compare them meaningfully.<a href
 </li>
       </ul>
 <p id="section-9-3">This distinction matters. A flat bag of supported data types, purposes, actions, and destinations is not enough to describe which combinations actually apply to a participant. The protocol therefore carries atomic declaration statements and atomic policy rules, while this taxonomy defines the term spaces and qualifier meanings used in those objects.<a href="#section-9-3" class="pilcrow">¶</a></p>
-<p id="section-9-4">When those objects use non-core comparison-relevant terms, the objects remain
+<p id="section-9-4">The protocol wire object for qualifiers is named <code>constraints</code>, but the
+semantics described here are qualifier semantics on those atomic dataflows.<a href="#section-9-4" class="pilcrow">¶</a></p>
+<p id="section-9-5">When those objects use non-core comparison-relevant terms, the objects remain
 baseline-computable only if those terms are reducible to the shared core model
-through the extension and mapping rules above.<a href="#section-9-4" class="pilcrow">¶</a></p>
-<p id="section-9-5">A declaration statement example is:<a href="#section-9-5" class="pilcrow">¶</a></p>
-<div class="lang-json sourcecode" id="section-9-6">
+through the extension and mapping rules above.<a href="#section-9-5" class="pilcrow">¶</a></p>
+<p id="section-9-6">A declaration statement example is:<a href="#section-9-6" class="pilcrow">¶</a></p>
+<div class="lang-json sourcecode" id="section-9-7">
 <pre>
 {
   "statement_id": "temperature-product-improvement",
@@ -1838,10 +1860,10 @@ through the extension and mapping rules above.<a href="#section-9-4" class="pilc
     "retention": "ppd:indefinite"
   }
 }
-</pre><a href="#section-9-6" class="pilcrow">¶</a>
+</pre><a href="#section-9-7" class="pilcrow">¶</a>
 </div>
-<p id="section-9-7">A corresponding effective-policy rule example is:<a href="#section-9-7" class="pilcrow">¶</a></p>
-<div class="lang-json sourcecode" id="section-9-8">
+<p id="section-9-8">A corresponding effective-policy rule example is:<a href="#section-9-8" class="pilcrow">¶</a></p>
+<div class="lang-json sourcecode" id="section-9-9">
 <pre>
 {
   "rule_id": "r1",
@@ -1855,9 +1877,9 @@ through the extension and mapping rules above.<a href="#section-9-4" class="pilc
     "processing_boundary": "ppd:onDeviceOnly"
   }
 }
-</pre><a href="#section-9-8" class="pilcrow">¶</a>
+</pre><a href="#section-9-9" class="pilcrow">¶</a>
 </div>
-<p id="section-9-9">The taxonomy defines the meaning of the identifiers in these objects. The protocol defines how those objects are carried, validated, acknowledged, and kept current.<a href="#section-9-9" class="pilcrow">¶</a></p>
+<p id="section-9-10">The taxonomy defines the meaning of the identifiers in these objects. The protocol defines how those objects are carried, validated, acknowledged, and kept current.<a href="#section-9-10" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="relationship-to-richer-semantic-frameworks">
@@ -1886,7 +1908,10 @@ context, backed by the shared core semantic floor defined here.<a href="#section
 need stable meanings and explicit reduction back to the shared core primitives.
 Participant-facing services and participants <span class="bcp14">SHOULD NOT</span> silently treat
 unresolved, unmapped, or unusable taxonomy terms as equivalent to known terms.<a href="#section-11-2" class="pilcrow">¶</a></p>
-<p id="section-11-3">When unresolved or unsupported terms appear in participant-facing protocol messages, the handling defined by <span>[<a href="#I-D.draft-dsmullen-ppd-protocol" class="cite xref">I-D.draft-dsmullen-ppd-protocol</a>]</span> applies. In particular, unresolved terms in normative policy content are more serious than unresolved descriptive detail because they can change the meaning of an allowed or denied handling path.<a href="#section-11-3" class="pilcrow">¶</a></p>
+<p id="section-11-3">When comparison-relevant extension terms cannot be reduced to the shared core,
+the correct baseline result is failure or indeterminate handling, not silent
+fallback to a broader local guess.<a href="#section-11-3" class="pilcrow">¶</a></p>
+<p id="section-11-4">When unresolved or unsupported terms appear in participant-facing protocol messages, the handling defined by <span>[<a href="#I-D.draft-dsmullen-ppd-protocol" class="cite xref">I-D.draft-dsmullen-ppd-protocol</a>]</span> applies. In particular, unresolved terms in normative policy content are more serious than unresolved descriptive detail because they can change the meaning of an allowed or denied handling path.<a href="#section-11-4" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="iana-considerations">

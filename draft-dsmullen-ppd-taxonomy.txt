@@ -232,6 +232,11 @@ Table of Contents
    selected dataflow qualifier families.  These are used together in
    atomic declaration statements and atomic effective-policy rules.
 
+   The baseline core is intentionally small.  It is not meant to exhaust
+   the full space of home-IoT data categories, service roles, or policy-
+   authoring concepts.  Its purpose is to define the minimum shared set
+   of computable primitives to which richer vocabularies can be related.
+
 6.1.  Data Type (What)
 
    Data Type terms identify the kind of data involved in the dataflow.
@@ -332,6 +337,16 @@ Table of Contents
    constraints object.  This document defines the initial qualifier
    families used by that object.
 
+   The protocol wire object remains named constraints, but its members
+   are semantically qualifiers on atomic dataflows.
+
+   Qualifier families are action-sensitive.  They are not a free-form
+   bag of attributes that apply equally to every action.  A qualifier
+   family is only valid where this document or a later specification
+   defines its meaning for the relevant action context.  Baseline
+   participant-facing uses that attach a qualifier family outside its
+   defined applicability are invalid.
+
 6.6.1.  Retention
 
    Retention qualifies how long the relevant data or resulting artifact
@@ -366,7 +381,8 @@ Table of Contents
 
    Bounded retention periods are expected to require more specific
    refinements, including explicit duration values, in later revisions
-   or deployment profiles.
+   or deployment profiles.  The baseline compact participant-facing form
+   therefore uses categorical retention values only.
 
    Retention comparison does not use a generic taxonomy subsumption
    hierarchy in the same way as data_type, purpose, source, or
@@ -378,6 +394,10 @@ Table of Contents
    execute or remain.  This family is most natural for use and
    inference.  It is not the primary semantic mechanism for describing
    transfer recipients, because destination already fills that role.
+
+   In the baseline model, processing_boundary is therefore primarily a
+   qualifier on use and inference dataflows rather than a general
+   qualifier on transfer.
 
    Initial core terms include:
 
@@ -415,6 +435,10 @@ Table of Contents
 
    Jurisdiction participates in semantic comparison, but only within a
    clearly identified scoped subcase.
+
+   This document defines the qualifier family and the scoped-semantics
+   rule, but it does not yet define a closed baseline set of
+   jurisdiction vocabulary values.
 
 7.  Subsumption and Comparison
 
@@ -533,6 +557,10 @@ Table of Contents
    this taxonomy defines the term spaces and qualifier meanings used in
    those objects.
 
+   The protocol wire object for qualifiers is named constraints, but the
+   semantics described here are qualifier semantics on those atomic
+   dataflows.
+
    When those objects use non-core comparison-relevant terms, the
    objects remain baseline-computable only if those terms are reducible
    to the shared core model through the extension and mapping rules
@@ -596,6 +624,10 @@ Table of Contents
    the shared core primitives.  Participant-facing services and
    participants SHOULD NOT silently treat unresolved, unmapped, or
    unusable taxonomy terms as equivalent to known terms.
+
+   When comparison-relevant extension terms cannot be reduced to the
+   shared core, the correct baseline result is failure or indeterminate
+   handling, not silent fallback to a broader local guess.
 
    When unresolved or unsupported terms appear in participant-facing
    protocol messages, the handling defined by
