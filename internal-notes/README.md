@@ -27,3 +27,5 @@ Do not put settled taxonomy semantics here if they belong in the draft itself.
   vocabulary, extension model, and source-selection rules
 - `cross-draft-coordination.md`: current coordination findings and sequencing
   across the taxonomy, protocol, and architecture drafts
+- `future-tightening-notes.md`: deferred follow-up work on destination terms,
+  anti-abuse/conformance rules, and named-entity handling

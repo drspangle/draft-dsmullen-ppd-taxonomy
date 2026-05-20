@@ -75,3 +75,27 @@ It is not part of the rendered Internet-Draft.
 - Recorded the current direction that extension terms filling roles that
   participate in subsumption must declare their semantic relationship to the
   relevant core concepts or they cannot be compared reliably.
+
+## 2026-05-20
+
+- Tightened the rendered taxonomy draft so `data_type` now follows a single
+  classification axis and no longer mixes derivation history into the
+  `data_type` family.
+- Tightened the rendered taxonomy draft so `jurisdiction` is no longer
+  overstated as a fully populated baseline value hierarchy; in this revision it
+  is a structured qualifier family shell with scoped semantics awaiting later
+  vocabulary/profile work.
+- Tightened the rendered taxonomy draft so `destination` and
+  `processing_boundary` are distinguished explicitly rather than being left to
+  implication.
+- Tightened the rendered taxonomy draft so genuinely multi-purpose handling is
+  described as separate atomic dataflows, both for machine comparison and for
+  better human transparency.
+- Added `internal-notes/future-tightening-notes.md` to capture the next
+  non-blocking areas of work:
+  - refining baseline destination terms;
+  - improving conformance/validation to reduce taxonomy abuse or deliberate
+    misclassification; and
+  - working out how named entities such as specific companies should relate to
+    semantic destination categories without collapsing those concerns into one
+    taxonomy term.
