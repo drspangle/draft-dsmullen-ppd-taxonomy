@@ -1228,10 +1228,13 @@ ontology exchange on the wire.<a href="#section-abstract-1" class="pilcrow">¶</
                 <p id="section-toc.1-1.8.2.1.1"><a href="#section-8.1" class="auto internal xref">8.1</a>.  <a href="#name-stable-term-identifiers" class="internal xref">Stable Term Identifiers</a></p>
 </li>
               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.8.2.2">
-                <p id="section-toc.1-1.8.2.2.1"><a href="#section-8.2" class="auto internal xref">8.2</a>.  <a href="#name-compact-wire-form" class="internal xref">Compact Wire Form</a></p>
+                <p id="section-toc.1-1.8.2.2.1"><a href="#section-8.2" class="auto internal xref">8.2</a>.  <a href="#name-stability-of-term-meanings" class="internal xref">Stability of Term Meanings</a></p>
 </li>
               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.8.2.3">
-                <p id="section-toc.1-1.8.2.3.1"><a href="#section-8.3" class="auto internal xref">8.3</a>.  <a href="#name-extension-namespaces-and-co" class="internal xref">Extension Namespaces and Core-Primitive Mapping</a></p>
+                <p id="section-toc.1-1.8.2.3.1"><a href="#section-8.3" class="auto internal xref">8.3</a>.  <a href="#name-compact-wire-form" class="internal xref">Compact Wire Form</a></p>
+</li>
+              <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.8.2.4">
+                <p id="section-toc.1-1.8.2.4.1"><a href="#section-8.4" class="auto internal xref">8.4</a>.  <a href="#name-extension-namespaces-and-co" class="internal xref">Extension Namespaces and Core-Primitive Mapping</a></p>
 </li>
             </ul>
 </li>
@@ -1432,7 +1435,9 @@ statements and atomic effective-policy rules.<a href="#section-6-1" class="pilcr
 <p id="section-6-2">The baseline core is intentionally small. It is not meant to exhaust the full
 space of home-IoT data categories, service roles, or policy-authoring
 concepts. Its purpose is to define the minimum shared set of computable
-primitives to which richer vocabularies can be related.<a href="#section-6-2" class="pilcrow">¶</a></p>
+primitives to which richer vocabularies can be related.
+Later taxonomy releases can add terms, but the initial core terms defined here
+are the mandatory baseline floor for interoperable computation.<a href="#section-6-2" class="pilcrow">¶</a></p>
 <div id="data-type-what">
 <section id="section-6.1">
         <h3 id="name-data-type-what">
@@ -1441,25 +1446,31 @@ primitives to which richer vocabularies can be related.<a href="#section-6-2" cl
 <p id="section-6.1-1">Data Type terms identify the kind of data involved in the dataflow.
 Data Type participates in semantic comparison and can support
 broader-than/narrower-than relationships.<a href="#section-6.1-1" class="pilcrow">¶</a></p>
-<p id="section-6.1-2">Initial core terms include:<a href="#section-6.1-2" class="pilcrow">¶</a></p>
+<p id="section-6.1-2">The initial core term set is:<a href="#section-6.1-2" class="pilcrow">¶</a></p>
 <ul class="normal">
 <li class="normal" id="section-6.1-3.1">
-            <p id="section-6.1-3.1.1">ppd:temperatureReading<a href="#section-6.1-3.1.1" class="pilcrow">¶</a></p>
+            <p id="section-6.1-3.1.1"><code>ppd:temperatureReading</code>: a measured temperature value associated with the
+participant device, its immediate environment, or an observed space.<a href="#section-6.1-3.1.1" class="pilcrow">¶</a></p>
 </li>
           <li class="normal" id="section-6.1-3.2">
-            <p id="section-6.1-3.2.1">ppd:humidityReading<a href="#section-6.1-3.2.1" class="pilcrow">¶</a></p>
+            <p id="section-6.1-3.2.1"><code>ppd:humidityReading</code>: a measured humidity value associated with the
+participant device, its immediate environment, or an observed space.<a href="#section-6.1-3.2.1" class="pilcrow">¶</a></p>
 </li>
           <li class="normal" id="section-6.1-3.3">
-            <p id="section-6.1-3.3.1">ppd:videoFrame<a href="#section-6.1-3.3.1" class="pilcrow">¶</a></p>
+            <p id="section-6.1-3.3.1"><code>ppd:videoFrame</code>: image or video-capture content obtained from a camera-like
+sensing path.<a href="#section-6.1-3.3.1" class="pilcrow">¶</a></p>
 </li>
           <li class="normal" id="section-6.1-3.4">
-            <p id="section-6.1-3.4.1">ppd:eventClip<a href="#section-6.1-3.4.1" class="pilcrow">¶</a></p>
+            <p id="section-6.1-3.4.1"><code>ppd:eventClip</code>: a bounded media segment retained or emitted because a
+triggering event or condition occurred.<a href="#section-6.1-3.4.1" class="pilcrow">¶</a></p>
 </li>
           <li class="normal" id="section-6.1-3.5">
-            <p id="section-6.1-3.5.1">ppd:audioSample<a href="#section-6.1-3.5.1" class="pilcrow">¶</a></p>
+            <p id="section-6.1-3.5.1"><code>ppd:audioSample</code>: audio-capture content obtained from a microphone-like
+sensing path.<a href="#section-6.1-3.5.1" class="pilcrow">¶</a></p>
 </li>
           <li class="normal" id="section-6.1-3.6">
-            <p id="section-6.1-3.6.1">ppd:deviceIdentifier<a href="#section-6.1-3.6.1" class="pilcrow">¶</a></p>
+            <p id="section-6.1-3.6.1"><code>ppd:deviceIdentifier</code>: an identifier associated with a device, participant,
+or device instance.<a href="#section-6.1-3.6.1" class="pilcrow">¶</a></p>
 </li>
         </ul>
 </section>
@@ -1472,31 +1483,39 @@ broader-than/narrower-than relationships.<a href="#section-6.1-1" class="pilcrow
 <p id="section-6.2-1">Purpose terms identify the reason or operational objective for the handling.
 Purpose participates in semantic comparison and can support broader-than/
 narrower-than relationships.<a href="#section-6.2-1" class="pilcrow">¶</a></p>
-<p id="section-6.2-2">Initial core terms include:<a href="#section-6.2-2" class="pilcrow">¶</a></p>
+<p id="section-6.2-2">The initial core term set is:<a href="#section-6.2-2" class="pilcrow">¶</a></p>
 <ul class="normal">
 <li class="normal" id="section-6.2-3.1">
-            <p id="section-6.2-3.1.1">ppd:coreFunctionality<a href="#section-6.2-3.1.1" class="pilcrow">¶</a></p>
+            <p id="section-6.2-3.1.1"><code>ppd:coreFunctionality</code>: handling directly necessary to deliver the primary
+user-facing function of the device or service.<a href="#section-6.2-3.1.1" class="pilcrow">¶</a></p>
 </li>
           <li class="normal" id="section-6.2-3.2">
-            <p id="section-6.2-3.2.1">ppd:remoteMonitoring<a href="#section-6.2-3.2.1" class="pilcrow">¶</a></p>
+            <p id="section-6.2-3.2.1"><code>ppd:remoteMonitoring</code>: handling used to expose current or recent device or
+environment state to an authorized remote observer.<a href="#section-6.2-3.2.1" class="pilcrow">¶</a></p>
 </li>
           <li class="normal" id="section-6.2-3.3">
-            <p id="section-6.2-3.3.1">ppd:motionDetection<a href="#section-6.2-3.3.1" class="pilcrow">¶</a></p>
+            <p id="section-6.2-3.3.1"><code>ppd:motionDetection</code>: handling used to detect, classify, or respond to
+motion or occupancy-related events.<a href="#section-6.2-3.3.1" class="pilcrow">¶</a></p>
 </li>
           <li class="normal" id="section-6.2-3.4">
-            <p id="section-6.2-3.4.1">ppd:remoteViewing<a href="#section-6.2-3.4.1" class="pilcrow">¶</a></p>
+            <p id="section-6.2-3.4.1"><code>ppd:remoteViewing</code>: handling used to present captured media or live capture
+output to an authorized remote viewer.<a href="#section-6.2-3.4.1" class="pilcrow">¶</a></p>
 </li>
           <li class="normal" id="section-6.2-3.5">
-            <p id="section-6.2-3.5.1">ppd:productImprovement<a href="#section-6.2-3.5.1" class="pilcrow">¶</a></p>
+            <p id="section-6.2-3.5.1"><code>ppd:productImprovement</code>: handling used to improve the quality, reliability,
+or performance of the product or service beyond the immediate user session.<a href="#section-6.2-3.5.1" class="pilcrow">¶</a></p>
 </li>
           <li class="normal" id="section-6.2-3.6">
-            <p id="section-6.2-3.6.1">ppd:analytics<a href="#section-6.2-3.6.1" class="pilcrow">¶</a></p>
+            <p id="section-6.2-3.6.1"><code>ppd:analytics</code>: handling used to derive operational, behavioral, or
+statistical insight beyond immediate device operation.<a href="#section-6.2-3.6.1" class="pilcrow">¶</a></p>
 </li>
           <li class="normal" id="section-6.2-3.7">
-            <p id="section-6.2-3.7.1">ppd:advertising<a href="#section-6.2-3.7.1" class="pilcrow">¶</a></p>
+            <p id="section-6.2-3.7.1"><code>ppd:advertising</code>: handling used to target, deliver, measure, or optimize
+promotional or marketing activity.<a href="#section-6.2-3.7.1" class="pilcrow">¶</a></p>
 </li>
           <li class="normal" id="section-6.2-3.8">
-            <p id="section-6.2-3.8.1">ppd:diagnostics<a href="#section-6.2-3.8.1" class="pilcrow">¶</a></p>
+            <p id="section-6.2-3.8.1"><code>ppd:diagnostics</code>: handling used to troubleshoot, maintain, secure, or
+repair the device or service.<a href="#section-6.2-3.8.1" class="pilcrow">¶</a></p>
 </li>
         </ul>
 </section>
@@ -1509,19 +1528,23 @@ narrower-than relationships.<a href="#section-6.2-1" class="pilcrow">¶</a></p>
 <p id="section-6.3-1">Action terms identify the privacy-relevant operation being performed.
 Unlike several of the other role-fillers, the baseline action family is
 intentionally flat rather than hierarchical.<a href="#section-6.3-1" class="pilcrow">¶</a></p>
-<p id="section-6.3-2">Initial core terms include:<a href="#section-6.3-2" class="pilcrow">¶</a></p>
+<p id="section-6.3-2">The initial core term set is:<a href="#section-6.3-2" class="pilcrow">¶</a></p>
 <ul class="normal">
 <li class="normal" id="section-6.3-3.1">
-            <p id="section-6.3-3.1.1">ppd:collection<a href="#section-6.3-3.1.1" class="pilcrow">¶</a></p>
+            <p id="section-6.3-3.1.1"><code>ppd:collection</code>: acquiring, observing, or accepting data into the handling
+context of the participant or service.<a href="#section-6.3-3.1.1" class="pilcrow">¶</a></p>
 </li>
           <li class="normal" id="section-6.3-3.2">
-            <p id="section-6.3-3.2.1">ppd:use<a href="#section-6.3-3.2.1" class="pilcrow">¶</a></p>
+            <p id="section-6.3-3.2.1"><code>ppd:use</code>: operating on data within the current handling context without
+disclosing it to a different recipient.<a href="#section-6.3-3.2.1" class="pilcrow">¶</a></p>
 </li>
           <li class="normal" id="section-6.3-3.3">
-            <p id="section-6.3-3.3.1">ppd:transfer<a href="#section-6.3-3.3.1" class="pilcrow">¶</a></p>
+            <p id="section-6.3-3.3.1"><code>ppd:transfer</code>: disclosing, transmitting, or otherwise making data available
+to a different recipient or handling context.<a href="#section-6.3-3.3.1" class="pilcrow">¶</a></p>
 </li>
           <li class="normal" id="section-6.3-3.4">
-            <p id="section-6.3-3.4.1">ppd:inference<a href="#section-6.3-3.4.1" class="pilcrow">¶</a></p>
+            <p id="section-6.3-3.4.1"><code>ppd:inference</code>: deriving new data, classifications, or conclusions from
+existing data.<a href="#section-6.3-3.4.1" class="pilcrow">¶</a></p>
 </li>
         </ul>
 </section>
@@ -1534,22 +1557,26 @@ intentionally flat rather than hierarchical.<a href="#section-6.3-1" class="pilc
 <p id="section-6.4-1">Source terms identify the origin of the handled data in the relevant
 processing path. Source participates in semantic comparison and can support
 broader-than/narrower-than relationships.<a href="#section-6.4-1" class="pilcrow">¶</a></p>
-<p id="section-6.4-2">Initial core terms include:<a href="#section-6.4-2" class="pilcrow">¶</a></p>
+<p id="section-6.4-2">The initial core term set is:<a href="#section-6.4-2" class="pilcrow">¶</a></p>
 <ul class="normal">
 <li class="normal" id="section-6.4-3.1">
-            <p id="section-6.4-3.1.1">ppd:userInput<a href="#section-6.4-3.1.1" class="pilcrow">¶</a></p>
+            <p id="section-6.4-3.1.1"><code>ppd:userInput</code>: data intentionally provided by a user through direct
+interaction with the participant, service, or associated control surface.<a href="#section-6.4-3.1.1" class="pilcrow">¶</a></p>
 </li>
           <li class="normal" id="section-6.4-3.2">
-            <p id="section-6.4-3.2.1">ppd:sensor<a href="#section-6.4-3.2.1" class="pilcrow">¶</a></p>
+            <p id="section-6.4-3.2.1"><code>ppd:sensor</code>: data directly observed from a sensing path associated with the
+participant or its environment.<a href="#section-6.4-3.2.1" class="pilcrow">¶</a></p>
 </li>
           <li class="normal" id="section-6.4-3.3">
-            <p id="section-6.4-3.3.1">ppd:cameraSensor<a href="#section-6.4-3.3.1" class="pilcrow">¶</a></p>
+            <p id="section-6.4-3.3.1"><code>ppd:cameraSensor</code>: data directly observed from an image- or video-capture
+sensing path.<a href="#section-6.4-3.3.1" class="pilcrow">¶</a></p>
 </li>
           <li class="normal" id="section-6.4-3.4">
-            <p id="section-6.4-3.4.1">ppd:microphone<a href="#section-6.4-3.4.1" class="pilcrow">¶</a></p>
+            <p id="section-6.4-3.4.1"><code>ppd:microphone</code>: data directly observed from an audio-capture sensing path.<a href="#section-6.4-3.4.1" class="pilcrow">¶</a></p>
 </li>
           <li class="normal" id="section-6.4-3.5">
-            <p id="section-6.4-3.5.1">ppd:derivedData<a href="#section-6.4-3.5.1" class="pilcrow">¶</a></p>
+            <p id="section-6.4-3.5.1"><code>ppd:derivedData</code>: data produced from prior data through transformation,
+aggregation, inference, or similar derivation.<a href="#section-6.4-3.5.1" class="pilcrow">¶</a></p>
 </li>
         </ul>
 </section>
@@ -1562,19 +1589,23 @@ broader-than/narrower-than relationships.<a href="#section-6.4-1" class="pilcrow
 <p id="section-6.5-1">Destination terms identify the receiving endpoint or handling target to which
 the dataflow applies. Destination participates in semantic comparison and can
 support broader-than/narrower-than relationships.<a href="#section-6.5-1" class="pilcrow">¶</a></p>
-<p id="section-6.5-2">Initial core terms include:<a href="#section-6.5-2" class="pilcrow">¶</a></p>
+<p id="section-6.5-2">The initial core term set is:<a href="#section-6.5-2" class="pilcrow">¶</a></p>
 <ul class="normal">
 <li class="normal" id="section-6.5-3.1">
-            <p id="section-6.5-3.1.1">ppd:localProcessing<a href="#section-6.5-3.1.1" class="pilcrow">¶</a></p>
+            <p id="section-6.5-3.1.1"><code>ppd:localProcessing</code>: a handling target that remains on the participant or
+within a household-local processing environment rather than a remote service.<a href="#section-6.5-3.1.1" class="pilcrow">¶</a></p>
 </li>
           <li class="normal" id="section-6.5-3.2">
-            <p id="section-6.5-3.2.1">ppd:vendorCloud<a href="#section-6.5-3.2.1" class="pilcrow">¶</a></p>
+            <p id="section-6.5-3.2.1"><code>ppd:vendorCloud</code>: a remote service environment operated by the device or
+service vendor.<a href="#section-6.5-3.2.1" class="pilcrow">¶</a></p>
 </li>
           <li class="normal" id="section-6.5-3.3">
-            <p id="section-6.5-3.3.1">ppd:thirdPartyService<a href="#section-6.5-3.3.1" class="pilcrow">¶</a></p>
+            <p id="section-6.5-3.3.1"><code>ppd:thirdPartyService</code>: a remote service environment operated by an entity
+other than the device or service vendor.<a href="#section-6.5-3.3.1" class="pilcrow">¶</a></p>
 </li>
           <li class="normal" id="section-6.5-3.4">
-            <p id="section-6.5-3.4.1">ppd:dataBroker<a href="#section-6.5-3.4.1" class="pilcrow">¶</a></p>
+            <p id="section-6.5-3.4.1"><code>ppd:dataBroker</code>: a recipient whose role includes acquiring, exchanging, or
+redisclosing data as a commercial data asset.<a href="#section-6.5-3.4.1" class="pilcrow">¶</a></p>
 </li>
         </ul>
 </section>
@@ -1632,10 +1663,10 @@ side rather than only the sender's local storage duration; and<a href="#section-
 persistence beyond the immediate handling context.<a href="#section-6.6.1-6" class="pilcrow">¶</a></p>
 <p id="section-6.6.1-7"><code>ppd:indefinite</code> means no bounded upper retention limit is expressed in the
 rule.<a href="#section-6.6.1-7" class="pilcrow">¶</a></p>
-<p id="section-6.6.1-8">Bounded retention periods are expected to require more specific refinements,
-including explicit duration values, in later revisions or deployment profiles.
-The baseline compact participant-facing form therefore uses categorical
-retention values only.<a href="#section-6.6.1-8" class="pilcrow">¶</a></p>
+<p id="section-6.6.1-8">Bounded retention periods are expected to require more specific quantitative
+refinements, including explicit duration values and units, in later revisions
+or deployment profiles. The baseline compact participant-facing form defined
+here therefore standardizes only the categorical retention values above.<a href="#section-6.6.1-8" class="pilcrow">¶</a></p>
 <p id="section-6.6.1-9">Retention comparison does not use a generic taxonomy subsumption hierarchy in
 the same way as <code>data_type</code>, <code>purpose</code>, <code>source</code>, or <code>destination</code>.<a href="#section-6.6.1-9" class="pilcrow">¶</a></p>
 </section>
@@ -1772,56 +1803,82 @@ interoperable.<a href="#section-7-6" class="pilcrow">¶</a></p>
 <p id="section-8.1-2">A taxonomy release identifier can identify the vocabulary snapshot used for validation, reproducibility, or documentation. For example, a deployment might use a release identifier such as <code>ppd-core-2026-05</code>. However, release metadata does not replace the term identifier itself as the source of meaning.<a href="#section-8.1-2" class="pilcrow">¶</a></p>
 </section>
 </div>
-<div id="compact-wire-form">
+<div id="stability-of-term-meanings">
 <section id="section-8.2">
-        <h3 id="name-compact-wire-form">
-<a href="#section-8.2" class="section-number selfRef">8.2. </a><a href="#name-compact-wire-form" class="section-name selfRef">Compact Wire Form</a>
+        <h3 id="name-stability-of-term-meanings">
+<a href="#section-8.2" class="section-number selfRef">8.2. </a><a href="#name-stability-of-term-meanings" class="section-name selfRef">Stability of Term Meanings</a>
         </h3>
-<p id="section-8.2-1"><span>[<a href="#I-D.draft-dsmullen-ppd-protocol" class="cite xref">I-D.draft-dsmullen-ppd-protocol</a>]</span> defines compact term identifiers as the participant-facing wire format. The protocol's Taxonomy Context Object carries:<a href="#section-8.2-1" class="pilcrow">¶</a></p>
+<p id="section-8.2-1">Once published, a stable term identifier <span class="bcp14">MUST NOT</span> be silently reassigned an
+incompatible meaning in a later taxonomy release.<a href="#section-8.2-1" class="pilcrow">¶</a></p>
+<p id="section-8.2-2">Later releases <span class="bcp14">MAY</span>:<a href="#section-8.2-2" class="pilcrow">¶</a></p>
 <ul class="normal">
-<li class="normal" id="section-8.2-2.1">
-            <p id="section-8.2-2.1.1">a taxonomy release identifier; and<a href="#section-8.2-2.1.1" class="pilcrow">¶</a></p>
+<li class="normal" id="section-8.2-3.1">
+            <p id="section-8.2-3.1.1">add new terms;<a href="#section-8.2-3.1.1" class="pilcrow">¶</a></p>
 </li>
-          <li class="normal" id="section-8.2-2.2">
-            <p id="section-8.2-2.2.1">any required non-core prefix declarations.<a href="#section-8.2-2.2.1" class="pilcrow">¶</a></p>
+          <li class="normal" id="section-8.2-3.2">
+            <p id="section-8.2-3.2.1">clarify the prose associated with an existing term when the clarification
+does not change its comparison semantics; and<a href="#section-8.2-3.2.1" class="pilcrow">¶</a></p>
+</li>
+          <li class="normal" id="section-8.2-3.3">
+            <p id="section-8.2-3.3.1">deprecate a term for future use while preserving its published meaning for
+reproducibility and comparison of existing content.<a href="#section-8.2-3.3.1" class="pilcrow">¶</a></p>
 </li>
         </ul>
-<p id="section-8.2-3">This keeps participant-facing messages compact while preserving stable
-semantics.<a href="#section-8.2-3" class="pilcrow">¶</a></p>
+<p id="section-8.2-4">If a later release needs materially different semantics, it <span class="bcp14">MUST</span> define a new
+term identifier rather than repurposing the old one.<a href="#section-8.2-4" class="pilcrow">¶</a></p>
+</section>
+</div>
+<div id="compact-wire-form">
+<section id="section-8.3">
+        <h3 id="name-compact-wire-form">
+<a href="#section-8.3" class="section-number selfRef">8.3. </a><a href="#name-compact-wire-form" class="section-name selfRef">Compact Wire Form</a>
+        </h3>
+<p id="section-8.3-1"><span>[<a href="#I-D.draft-dsmullen-ppd-protocol" class="cite xref">I-D.draft-dsmullen-ppd-protocol</a>]</span> defines compact term identifiers as the participant-facing wire format. The protocol's Taxonomy Context Object carries:<a href="#section-8.3-1" class="pilcrow">¶</a></p>
+<ul class="normal">
+<li class="normal" id="section-8.3-2.1">
+            <p id="section-8.3-2.1.1">a taxonomy release identifier; and<a href="#section-8.3-2.1.1" class="pilcrow">¶</a></p>
+</li>
+          <li class="normal" id="section-8.3-2.2">
+            <p id="section-8.3-2.2.1">any required non-core prefix declarations.<a href="#section-8.3-2.2.1" class="pilcrow">¶</a></p>
+</li>
+        </ul>
+<p id="section-8.3-3">This keeps participant-facing messages compact while preserving stable
+semantics.<a href="#section-8.3-3" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="extension-namespaces-and-core-primitive-mapping">
-<section id="section-8.3">
+<section id="section-8.4">
         <h3 id="name-extension-namespaces-and-co">
-<a href="#section-8.3" class="section-number selfRef">8.3. </a><a href="#name-extension-namespaces-and-co" class="section-name selfRef">Extension Namespaces and Core-Primitive Mapping</a>
+<a href="#section-8.4" class="section-number selfRef">8.4. </a><a href="#name-extension-namespaces-and-co" class="section-name selfRef">Extension Namespaces and Core-Primitive Mapping</a>
         </h3>
-<p id="section-8.3-1">Organizations <span class="bcp14">MAY</span> define additional terms outside the baseline <code>ppd:</code>
+<p id="section-8.4-1">Organizations <span class="bcp14">MAY</span> define additional terms outside the baseline <code>ppd:</code>
 vocabulary. When such terms appear in participant-facing protocol messages, the
 sender <span class="bcp14">MUST</span> provide the required non-core prefix declarations through the
-protocol's taxonomy context.<a href="#section-8.3-1" class="pilcrow">¶</a></p>
-<p id="section-8.3-2">For comparison-relevant roles, namespace declaration alone is not enough.
-When a non-core term fills <code>data_type</code>, <code>purpose</code>, <code>action</code>, <code>source</code>,
-<code>destination</code>, <code>processing_boundary</code>, or a scoped <code>jurisdiction</code> role, that
-term <span class="bcp14">MUST</span> be defined with the semantic relationship or exact reduction by
-which it is reduced to one or more shared core concepts.<a href="#section-8.3-2" class="pilcrow">¶</a></p>
-<p id="section-8.3-3">That relationship can include equivalence or broader/narrower placement where
+protocol's taxonomy context.<a href="#section-8.4-1" class="pilcrow">¶</a></p>
+<p id="section-8.4-2">For comparison-relevant roles and qualifier families, namespace declaration
+alone is not enough. When a non-core term fills <code>data_type</code>, <code>purpose</code>,
+<code>action</code>, <code>source</code>, or <code>destination</code>, or supplies a non-core <code>retention</code>,
+<code>processing_boundary</code>, or scoped <code>jurisdiction</code> qualifier value, that term
+<span class="bcp14">MUST</span> be defined with the semantic relationship or exact reduction by which it
+is reduced to one or more shared core concepts.<a href="#section-8.4-2" class="pilcrow">¶</a></p>
+<p id="section-8.4-3">That relationship can include equivalence or broader/narrower placement where
 the role participates in subsumption, or exact reduction where it does not, so
-long as it preserves computable comparison against the shared core floor.<a href="#section-8.3-3" class="pilcrow">¶</a></p>
-<p id="section-8.3-4">For example, an organization might define:<a href="#section-8.3-4" class="pilcrow">¶</a></p>
+long as it preserves computable comparison against the shared core floor.<a href="#section-8.4-3" class="pilcrow">¶</a></p>
+<p id="section-8.4-4">For example, an organization might define:<a href="#section-8.4-4" class="pilcrow">¶</a></p>
 <ul class="normal">
-<li class="normal" id="section-8.3-5.1">
-            <p id="section-8.3-5.1.1">vendorx:airQualityIndex<a href="#section-8.3-5.1.1" class="pilcrow">¶</a></p>
+<li class="normal" id="section-8.4-5.1">
+            <p id="section-8.4-5.1.1">vendorx:airQualityIndex<a href="#section-8.4-5.1.1" class="pilcrow">¶</a></p>
 </li>
-          <li class="normal" id="section-8.3-5.2">
-            <p id="section-8.3-5.2.1">vendorx:buildingOccupancyEstimate<a href="#section-8.3-5.2.1" class="pilcrow">¶</a></p>
+          <li class="normal" id="section-8.4-5.2">
+            <p id="section-8.4-5.2.1">vendorx:buildingOccupancyEstimate<a href="#section-8.4-5.2.1" class="pilcrow">¶</a></p>
 </li>
-          <li class="normal" id="section-8.3-5.3">
-            <p id="section-8.3-5.3.1">vendorx:regionalComplianceArchive<a href="#section-8.3-5.3.1" class="pilcrow">¶</a></p>
+          <li class="normal" id="section-8.4-5.3">
+            <p id="section-8.4-5.3.1">vendorx:regionalComplianceArchive<a href="#section-8.4-5.3.1" class="pilcrow">¶</a></p>
 </li>
         </ul>
-<p id="section-8.3-6">Such terms can be useful, but they remain baseline-interoperable only when
+<p id="section-8.4-6">Such terms can be useful, but they remain baseline-interoperable only when
 their relationship to the relevant core roles is explicit enough that
-participants and household policy services can compare them meaningfully.<a href="#section-8.3-6" class="pilcrow">¶</a></p>
+participants and household policy services can compare them meaningfully.<a href="#section-8.4-6" class="pilcrow">¶</a></p>
 </section>
 </div>
 </section>
@@ -1952,11 +2009,11 @@ fallback to a broader local guess.<a href="#section-11-3" class="pilcrow">¶</a>
 <dl class="references">
 <dt id="I-D.draft-dsmullen-ppd-architecture">[I-D.draft-dsmullen-ppd-architecture]</dt>
         <dd>
-<span class="refAuthor">Smullen, D.</span> and <span class="refAuthor">B. Scriber</span>, <span class="refTitle">"Privacy Preference Declaration for Home Networks"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-dsmullen-ppd-architecture-06</span>, <time datetime="2026-05-18" class="refDate">18 May 2026</time>, <span>&lt;<a href="https://datatracker.ietf.org/doc/html/draft-dsmullen-ppd-architecture-06">https://datatracker.ietf.org/doc/html/draft-dsmullen-ppd-architecture-06</a>&gt;</span>. </dd>
+<span class="refAuthor">Smullen, D.</span> and <span class="refAuthor">B. Scriber</span>, <span class="refTitle">"Privacy Preference Declaration for Home Networks"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-dsmullen-ppd-architecture-07</span>, <time datetime="2026-05-20" class="refDate">20 May 2026</time>, <span>&lt;<a href="https://datatracker.ietf.org/doc/html/draft-dsmullen-ppd-architecture-07">https://datatracker.ietf.org/doc/html/draft-dsmullen-ppd-architecture-07</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 <dt id="I-D.draft-dsmullen-ppd-protocol">[I-D.draft-dsmullen-ppd-protocol]</dt>
       <dd>
-<span class="refAuthor">Smullen, D.</span> and <span class="refAuthor">B. Scriber</span>, <span class="refTitle">"Privacy Preference Declaration Protocol Specification"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-dsmullen-ppd-protocol-00</span>, <time datetime="2026-05-18" class="refDate">18 May 2026</time>, <span>&lt;<a href="https://datatracker.ietf.org/doc/html/draft-dsmullen-ppd-protocol-00">https://datatracker.ietf.org/doc/html/draft-dsmullen-ppd-protocol-00</a>&gt;</span>. </dd>
+<span class="refAuthor">Smullen, D.</span> and <span class="refAuthor">B. Scriber</span>, <span class="refTitle">"Privacy Preference Declaration Protocol Specification"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-dsmullen-ppd-protocol-01</span>, <time datetime="2026-05-20" class="refDate">20 May 2026</time>, <span>&lt;<a href="https://datatracker.ietf.org/doc/html/draft-dsmullen-ppd-protocol-01">https://datatracker.ietf.org/doc/html/draft-dsmullen-ppd-protocol-01</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 </dl>
 </section>

@@ -90,8 +90,9 @@ Table of Contents
    7.  Subsumption and Comparison
    8.  Identifier Model
      8.1.  Stable Term Identifiers
-     8.2.  Compact Wire Form
-     8.3.  Extension Namespaces and Core-Primitive Mapping
+     8.2.  Stability of Term Meanings
+     8.3.  Compact Wire Form
+     8.4.  Extension Namespaces and Core-Primitive Mapping
    9.  Use in PPD Messages
    10. Relationship to Richer Semantic Frameworks
    11. Security Considerations
@@ -236,6 +237,9 @@ Table of Contents
    the full space of home-IoT data categories, service roles, or policy-
    authoring concepts.  Its purpose is to define the minimum shared set
    of computable primitives to which richer vocabularies can be related.
+   Later taxonomy releases can add terms, but the initial core terms
+   defined here are the mandatory baseline floor for interoperable
+   computation.
 
 6.1.  Data Type (What)
 
@@ -243,19 +247,27 @@ Table of Contents
    Data Type participates in semantic comparison and can support
    broader-than/narrower-than relationships.
 
-   Initial core terms include:
+   The initial core term set is:
 
-   *  ppd:temperatureReading
+   *  ppd:temperatureReading: a measured temperature value associated
+      with the participant device, its immediate environment, or an
+      observed space.
 
-   *  ppd:humidityReading
+   *  ppd:humidityReading: a measured humidity value associated with the
+      participant device, its immediate environment, or an observed
+      space.
 
-   *  ppd:videoFrame
+   *  ppd:videoFrame: image or video-capture content obtained from a
+      camera-like sensing path.
 
-   *  ppd:eventClip
+   *  ppd:eventClip: a bounded media segment retained or emitted because
+      a triggering event or condition occurred.
 
-   *  ppd:audioSample
+   *  ppd:audioSample: audio-capture content obtained from a microphone-
+      like sensing path.
 
-   *  ppd:deviceIdentifier
+   *  ppd:deviceIdentifier: an identifier associated with a device,
+      participant, or device instance.
 
 6.2.  Purpose (Why)
 
@@ -263,23 +275,32 @@ Table of Contents
    handling.  Purpose participates in semantic comparison and can
    support broader-than/ narrower-than relationships.
 
-   Initial core terms include:
+   The initial core term set is:
 
-   *  ppd:coreFunctionality
+   *  ppd:coreFunctionality: handling directly necessary to deliver the
+      primary user-facing function of the device or service.
 
-   *  ppd:remoteMonitoring
+   *  ppd:remoteMonitoring: handling used to expose current or recent
+      device or environment state to an authorized remote observer.
 
-   *  ppd:motionDetection
+   *  ppd:motionDetection: handling used to detect, classify, or respond
+      to motion or occupancy-related events.
 
-   *  ppd:remoteViewing
+   *  ppd:remoteViewing: handling used to present captured media or live
+      capture output to an authorized remote viewer.
 
-   *  ppd:productImprovement
+   *  ppd:productImprovement: handling used to improve the quality,
+      reliability, or performance of the product or service beyond the
+      immediate user session.
 
-   *  ppd:analytics
+   *  ppd:analytics: handling used to derive operational, behavioral, or
+      statistical insight beyond immediate device operation.
 
-   *  ppd:advertising
+   *  ppd:advertising: handling used to target, deliver, measure, or
+      optimize promotional or marketing activity.
 
-   *  ppd:diagnostics
+   *  ppd:diagnostics: handling used to troubleshoot, maintain, secure,
+      or repair the device or service.
 
 6.3.  Action (How)
 
@@ -287,15 +308,19 @@ Table of Contents
    Unlike several of the other role-fillers, the baseline action family
    is intentionally flat rather than hierarchical.
 
-   Initial core terms include:
+   The initial core term set is:
 
-   *  ppd:collection
+   *  ppd:collection: acquiring, observing, or accepting data into the
+      handling context of the participant or service.
 
-   *  ppd:use
+   *  ppd:use: operating on data within the current handling context
+      without disclosing it to a different recipient.
 
-   *  ppd:transfer
+   *  ppd:transfer: disclosing, transmitting, or otherwise making data
+      available to a different recipient or handling context.
 
-   *  ppd:inference
+   *  ppd:inference: deriving new data, classifications, or conclusions
+      from existing data.
 
 6.4.  Source (From Where)
 
@@ -303,17 +328,23 @@ Table of Contents
    processing path.  Source participates in semantic comparison and can
    support broader-than/narrower-than relationships.
 
-   Initial core terms include:
+   The initial core term set is:
 
-   *  ppd:userInput
+   *  ppd:userInput: data intentionally provided by a user through
+      direct interaction with the participant, service, or associated
+      control surface.
 
-   *  ppd:sensor
+   *  ppd:sensor: data directly observed from a sensing path associated
+      with the participant or its environment.
 
-   *  ppd:cameraSensor
+   *  ppd:cameraSensor: data directly observed from an image- or video-
+      capture sensing path.
 
-   *  ppd:microphone
+   *  ppd:microphone: data directly observed from an audio-capture
+      sensing path.
 
-   *  ppd:derivedData
+   *  ppd:derivedData: data produced from prior data through
+      transformation, aggregation, inference, or similar derivation.
 
 6.5.  Destination (To Where)
 
@@ -321,15 +352,20 @@ Table of Contents
    to which the dataflow applies.  Destination participates in semantic
    comparison and can support broader-than/narrower-than relationships.
 
-   Initial core terms include:
+   The initial core term set is:
 
-   *  ppd:localProcessing
+   *  ppd:localProcessing: a handling target that remains on the
+      participant or within a household-local processing environment
+      rather than a remote service.
 
-   *  ppd:vendorCloud
+   *  ppd:vendorCloud: a remote service environment operated by the
+      device or service vendor.
 
-   *  ppd:thirdPartyService
+   *  ppd:thirdPartyService: a remote service environment operated by an
+      entity other than the device or service vendor.
 
-   *  ppd:dataBroker
+   *  ppd:dataBroker: a recipient whose role includes acquiring,
+      exchanging, or redisclosing data as a commercial data asset.
 
 6.6.  Dataflow Qualifiers
 
@@ -380,9 +416,10 @@ Table of Contents
    the rule.
 
    Bounded retention periods are expected to require more specific
-   refinements, including explicit duration values, in later revisions
-   or deployment profiles.  The baseline compact participant-facing form
-   therefore uses categorical retention values only.
+   quantitative refinements, including explicit duration values and
+   units, in later revisions or deployment profiles.  The baseline
+   compact participant-facing form defined here therefore standardizes
+   only the categorical retention values above.
 
    Retention comparison does not use a generic taxonomy subsumption
    hierarchy in the same way as data_type, purpose, source, or
@@ -495,7 +532,25 @@ Table of Contents
    However, release metadata does not replace the term identifier itself
    as the source of meaning.
 
-8.2.  Compact Wire Form
+8.2.  Stability of Term Meanings
+
+   Once published, a stable term identifier MUST NOT be silently
+   reassigned an incompatible meaning in a later taxonomy release.
+
+   Later releases MAY:
+
+   *  add new terms;
+
+   *  clarify the prose associated with an existing term when the
+      clarification does not change its comparison semantics; and
+
+   *  deprecate a term for future use while preserving its published
+      meaning for reproducibility and comparison of existing content.
+
+   If a later release needs materially different semantics, it MUST
+   define a new term identifier rather than repurposing the old one.
+
+8.3.  Compact Wire Form
 
    [I-D.draft-dsmullen-ppd-protocol] defines compact term identifiers as
    the participant-facing wire format.  The protocol's Taxonomy Context
@@ -508,19 +563,20 @@ Table of Contents
    This keeps participant-facing messages compact while preserving
    stable semantics.
 
-8.3.  Extension Namespaces and Core-Primitive Mapping
+8.4.  Extension Namespaces and Core-Primitive Mapping
 
    Organizations MAY define additional terms outside the baseline ppd:
    vocabulary.  When such terms appear in participant-facing protocol
    messages, the sender MUST provide the required non-core prefix
    declarations through the protocol's taxonomy context.
 
-   For comparison-relevant roles, namespace declaration alone is not
-   enough.  When a non-core term fills data_type, purpose, action,
-   source, destination, processing_boundary, or a scoped jurisdiction
-   role, that term MUST be defined with the semantic relationship or
-   exact reduction by which it is reduced to one or more shared core
-   concepts.
+   For comparison-relevant roles and qualifier families, namespace
+   declaration alone is not enough.  When a non-core term fills
+   data_type, purpose, action, source, or destination, or supplies a
+   non-core retention, processing_boundary, or scoped jurisdiction
+   qualifier value, that term MUST be defined with the semantic
+   relationship or exact reduction by which it is reduced to one or more
+   shared core concepts.
 
    That relationship can include equivalence or broader/narrower
    placement where the role participates in subsumption, or exact
@@ -658,16 +714,16 @@ Table of Contents
    [I-D.draft-dsmullen-ppd-architecture]
               Smullen, D. and B. Scriber, "Privacy Preference
               Declaration for Home Networks", Work in Progress,
-              Internet-Draft, draft-dsmullen-ppd-architecture-06, 18 May
+              Internet-Draft, draft-dsmullen-ppd-architecture-07, 20 May
               2026, <https://datatracker.ietf.org/doc/html/draft-
-              dsmullen-ppd-architecture-06>.
+              dsmullen-ppd-architecture-07>.
 
    [I-D.draft-dsmullen-ppd-protocol]
               Smullen, D. and B. Scriber, "Privacy Preference
               Declaration Protocol Specification", Work in Progress,
-              Internet-Draft, draft-dsmullen-ppd-protocol-00, 18 May
+              Internet-Draft, draft-dsmullen-ppd-protocol-01, 20 May
               2026, <https://datatracker.ietf.org/doc/html/draft-
-              dsmullen-ppd-protocol-00>.
+              dsmullen-ppd-protocol-01>.
 
 Acknowledgments
 
