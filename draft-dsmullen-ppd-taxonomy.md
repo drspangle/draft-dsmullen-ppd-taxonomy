@@ -219,6 +219,37 @@ prohibited or required, is not a valid baseline taxonomy refinement. Such
 modality belongs in the policy-rule layer rather than in the taxonomy term
 itself.
 
+## Semantic Validity of Terms and Refinements
+
+The baseline core and extension model defined here is intentionally strict
+about semantic validity. This is necessary to preserve interoperable
+comparison rather than allowing locally convenient but semantically unstable
+labels to appear participant-facing on the wire.
+
+For baseline participant-facing use:
+
+* a term or qualifier value MUST belong to exactly one field family or
+  qualifier family defined by this document or a later compatible taxonomy
+  specification;
+* a term or qualifier value MUST follow the classification rule of the family
+  in which it appears;
+* a term or qualifier value MUST NOT collapse multiple semantic axes that this
+  document models separately, such as destination identity plus policy
+  modality, or data type plus origin history;
+* a refinement in a family that supports subsumption MUST preserve and
+  specialize the meaning of its broader term rather than contradicting,
+  negating, or semantically escaping it;
+* if a local concept cannot be placed in one family without relying on
+  multiple immediate broader terms in that same family, it is not a valid
+  single refinement for baseline comparison; and
+* if a local concept spans multiple policy-relevant dimensions, it SHOULD be
+  decomposed across separate fields, qualifiers, or atomic dataflows rather
+  than encoded into one overloaded taxonomy term.
+
+These validity rules apply equally to core terms and non-core participant-
+facing refinements. A syntactically well-formed namespaced identifier is not
+enough to make a term valid for baseline comparison.
+
 ## Data Type (What)
 
 Data Type terms identify the kind of data involved in the dataflow.
@@ -598,6 +629,10 @@ alone is not enough. When a non-core term fills `data_type`, `purpose`,
 MUST be defined with the semantic relationship or exact reduction by which it
 is reduced to one or more shared core concepts.
 
+A non-core term that does not satisfy the semantic validity conditions above
+is invalid taxonomy content for baseline participant-facing use, even if the
+identifier syntax and namespace declaration are otherwise well-formed.
+
 Non-core terms also MUST NOT introduce policy modality into the taxonomy
 layer. An extension term can refine a field or qualifier concept, but it
 cannot turn that concept into an encoded policy effect such as "prohibited"
@@ -642,6 +677,13 @@ Destination refinements follow the same rule. For example:
 Such terms can be useful, but they remain baseline-interoperable only when
 their relationship to the relevant core fields is explicit enough that
 participants and household policy services can compare them meaningfully.
+
+This document does not define who is authorized to publish extension
+vocabularies, how ecosystems vet them, or what registry or profile structure
+may later be used to manage them. Those governance and publication-trust
+questions are out of scope for this revision. The focus here is narrower:
+what participant-facing terms and refinements are semantically valid for
+baseline interoperable computation.
 
 # Use in PPD Messages
 
