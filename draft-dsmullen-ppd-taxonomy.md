@@ -169,6 +169,8 @@ concepts. Its purpose is to define the minimum shared set of computable
 primitives to which richer vocabularies can be related.
 Later taxonomy releases can add terms, but the initial core terms defined here
 are the mandatory baseline floor for interoperable computation.
+The definitions in this section define the baseline meaning of those initial
+core terms.
 
 ## Data Type (What)
 
@@ -210,7 +212,7 @@ The initial core term set is:
 * `ppd:productImprovement`: handling used to improve the quality, reliability,
   or performance of the product or service beyond the immediate user session.
 * `ppd:analytics`: handling used to derive operational, behavioral, or
-  statistical insight beyond immediate device operation.
+  statistical insight beyond immediate device operation or troubleshooting.
 * `ppd:advertising`: handling used to target, deliver, measure, or optimize
   promotional or marketing activity.
 * `ppd:diagnostics`: handling used to troubleshoot, maintain, secure, or
@@ -248,8 +250,8 @@ The initial core term set is:
 * `ppd:cameraSensor`: data directly observed from an image- or video-capture
   sensing path.
 * `ppd:microphone`: data directly observed from an audio-capture sensing path.
-* `ppd:derivedData`: data produced from prior data through transformation,
-  aggregation, inference, or similar derivation.
+* `ppd:derivedData`: data whose immediate origin is prior data processing
+  rather than direct user input or direct sensing.
 
 ## Destination (To Where)
 
@@ -328,11 +330,15 @@ In the baseline model, `processing_boundary` is therefore primarily a
 qualifier on `use` and `inference` dataflows rather than a general qualifier
 on `transfer`.
 
-Initial core terms include:
+The initial core term set is:
 
-* ppd:onDeviceOnly
-* ppd:inHomeOnly
-* ppd:approvedRemoteProcessing
+* `ppd:onDeviceOnly`: the relevant processing is constrained to execute on the
+  participant device itself.
+* `ppd:inHomeOnly`: the relevant processing is constrained to execute within
+  the household-local trust boundary rather than in a remote service
+  environment.
+* `ppd:approvedRemoteProcessing`: the relevant processing is allowed to occur
+  in an approved remote service environment.
 
 Processing Boundary participates in semantic comparison and can support
 broader-than/narrower-than relationships.
@@ -340,7 +346,9 @@ broader-than/narrower-than relationships.
 ### Jurisdiction
 
 Jurisdiction qualifies the legal or regulatory domain relevant to the
-dataflow.
+dataflow. It is intended for cases where a policy needs to constrain the legal
+domain under which handling occurs, not merely the physical placement of a
+processor or store.
 
 Jurisdiction is intentionally not treated as a single flat label. Any use of a
 jurisdiction qualifier MUST identify the scoped subcase it constrains, such as:
@@ -352,6 +360,15 @@ jurisdiction qualifier MUST identify the scoped subcase it constrains, such as:
 The scoped subcase is part of the qualifier meaning. A jurisdiction
 constraint on processing is not automatically equivalent to the same
 jurisdiction constraint on storage or transfer.
+
+For example:
+
+* a processing-scoped jurisdiction qualifier can constrain the legal domain
+  under which processing is permitted to occur;
+* a storage-scoped jurisdiction qualifier can constrain the legal domain under
+  which retained data may be kept; and
+* a transfer-scoped jurisdiction qualifier can constrain the legal domain to
+  which a transfer recipient may belong.
 
 This keeps the qualifier machine-comparable while still allowing broader
 sovereignty concerns to be expressed through more concrete baseline semantics.
@@ -446,9 +463,12 @@ long as it preserves computable comparison against the shared core floor.
 
 For example, an organization might define:
 
-* vendorx:airQualityIndex
-* vendorx:buildingOccupancyEstimate
-* vendorx:regionalComplianceArchive
+* `vendorx:cameraStillFrame` as a narrower `data_type` under
+  `ppd:videoFrame`;
+* `vendorx:predictiveMaintenance` as a narrower `purpose` under
+  `ppd:diagnostics`; or
+* `vendorx:edgeHubOnly` as a narrower `processing_boundary` under
+  `ppd:inHomeOnly`.
 
 Such terms can be useful, but they remain baseline-interoperable only when
 their relationship to the relevant core roles is explicit enough that
