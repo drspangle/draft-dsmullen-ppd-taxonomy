@@ -301,6 +301,15 @@ categories by themselves. For example, a motion-detection feature may support
 `ppd:coreFunctionality`, `ppd:security`, or another narrower purpose depending
 on the actual rule context.
 
+When a real handling path genuinely serves multiple purposes, that ambiguity
+SHOULD NOT be collapsed into one purpose label. Instead, the handling should
+normally be represented as separate atomic dataflows, each with its own
+purpose classification. This is not only a comparison convenience. It also
+improves transparency by making it easier for a household, an implementer, or
+an automated policy-analysis function to identify and reason about specific
+sensitive purposes, specific data types, and the exact handling paths to which
+they apply.
+
 ## Action (How)
 
 Action terms identify the privacy-relevant operation being performed.
