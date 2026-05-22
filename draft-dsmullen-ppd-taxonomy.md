@@ -130,6 +130,9 @@ atomic dataflow with `data_type=ppd:contentData`,
 `handling_context=ppd:householdContext`, and
 `processing_boundary=ppd:onDeviceOnly`. The field and qualifier sections
 below explain how each part of such a dataflow is classified.
+Here, `handling_context` names the context a handling step is directed into
+or occurs within. It does not imply that every handling action involves
+transmission or movement of data.
 
 In this document, `dataflow` refers to the structured semantic object being
 compared. `Action` identifies the specific privacy-relevant operation within
@@ -457,6 +460,8 @@ handling step occurs. For `transfer`, Handling Context identifies the
 recipient-side context into which the data is transferred. Handling Context
 participates in semantic comparison and can support broader-than/narrower-than
 relationships.
+Here, `target` means the context the handling step is directed into or occurs
+within. It does not imply that every action is modeled as a transmission.
 Classification rule: classify by the target handling context to which the
 current handling step applies.
 
