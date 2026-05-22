@@ -1063,7 +1063,7 @@ svg :is([fill="white"], [fill^="#fff"]) {
 </tr></thead>
 <tfoot><tr>
 <td class="left">Smullen &amp; Scriber</td>
-<td class="center">Expires 21 November 2026</td>
+<td class="center">Expires 23 November 2026</td>
 <td class="right">[Page]</td>
 </tr></tfoot>
 </table>
@@ -1076,12 +1076,12 @@ svg :is([fill="white"], [fill^="#fff"]) {
 <dd class="internet-draft">draft-dsmullen-ppd-taxonomy-latest</dd>
 <dt class="label-published">Published:</dt>
 <dd class="published">
-<time datetime="2026-05-20" class="published">20 May 2026</time>
+<time datetime="2026-05-22" class="published">22 May 2026</time>
     </dd>
 <dt class="label-intended-status">Intended Status:</dt>
 <dd class="intended-status">Informational</dd>
 <dt class="label-expires">Expires:</dt>
-<dd class="expires"><time datetime="2026-11-21">21 November 2026</time></dd>
+<dd class="expires"><time datetime="2026-11-23">23 November 2026</time></dd>
 <dt class="label-authors">Authors:</dt>
 <dd class="authors">
 <div class="author">
@@ -1140,7 +1140,7 @@ ontology exchange on the wire.<a href="#section-abstract-1" class="pilcrow">¶</
         time. It is inappropriate to use Internet-Drafts as reference
         material or to cite them other than as "work in progress."<a href="#section-boilerplate.1-3" class="pilcrow">¶</a></p>
 <p id="section-boilerplate.1-4">
-        This Internet-Draft will expire on 21 November 2026.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
+        This Internet-Draft will expire on 23 November 2026.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="copyright">
@@ -1203,7 +1203,7 @@ ontology exchange on the wire.<a href="#section-abstract-1" class="pilcrow">¶</
                 <p id="section-toc.1-1.6.2.5.1"><a href="#section-6.5" class="auto internal xref">6.5</a>.  <a href="#name-source-from-where" class="internal xref">Source (From Where)</a></p>
 </li>
               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.6.2.6">
-                <p id="section-toc.1-1.6.2.6.1"><a href="#section-6.6" class="auto internal xref">6.6</a>.  <a href="#name-destination-to-where" class="internal xref">Destination (To Where)</a></p>
+                <p id="section-toc.1-1.6.2.6.1"><a href="#section-6.6" class="auto internal xref">6.6</a>.  <a href="#name-handling-context" class="internal xref">Handling Context</a></p>
 </li>
               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.6.2.7">
                 <p id="section-toc.1-1.6.2.7.1"><a href="#section-6.7" class="auto internal xref">6.7</a>.  <a href="#name-dataflow-qualifiers" class="internal xref">Dataflow Qualifiers</a></p>
@@ -1298,27 +1298,36 @@ device or associated service performs, requires, or may attempt. A household
 policy rule describes those same dataflows from the household side: whether
 they are allowed, denied, or qualified. The taxonomy exists so these two views
 can be compared coherently.<a href="#section-1-3" class="pilcrow">¶</a></p>
-<p id="section-1-4">The taxonomy is designed to be useful in constrained operational environments.
+<p id="section-1-4">In this architecture, those household-side rules express household privacy
+preferences for signaling and comparison purposes. They do not by themselves
+define or imply a separate enforcement mechanism that prevents, compels, or
+otherwise guarantees participant behavior. Enforcement-capable extensions or
+local control mechanisms are separate concerns and are outside the baseline
+scope of this document, because the taxonomy's job is to provide a shared
+semantic floor for expressing and comparing dataflows, while enforcement
+depends on deployment-specific control points, trust models, and device or
+service capabilities.<a href="#section-1-4" class="pilcrow">¶</a></p>
+<p id="section-1-5">The taxonomy is designed to be useful in constrained operational environments.
 It therefore separates the stable meaning of core terms from any richer
 external semantic framework that might also describe them. Implementations <span class="bcp14">MAY</span>
 use richer vocabularies, ontology representations, or local policy-analysis
 artifacts where useful, but baseline participant-facing interoperability
 depends on a shared computable semantic floor rather than on a full external
-reasoning stack.<a href="#section-1-4" class="pilcrow">¶</a></p>
-<p id="section-1-5">The rest of this document does four things:<a href="#section-1-5" class="pilcrow">¶</a></p>
+reasoning stack.<a href="#section-1-5" class="pilcrow">¶</a></p>
+<p id="section-1-6">The rest of this document does four things:<a href="#section-1-6" class="pilcrow">¶</a></p>
 <ul class="normal">
-<li class="normal" id="section-1-6.1">
-          <p id="section-1-6.1.1">it defines the core fields that make up an atomic PPD dataflow;<a href="#section-1-6.1.1" class="pilcrow">¶</a></p>
+<li class="normal" id="section-1-7.1">
+          <p id="section-1-7.1.1">it defines the core fields that make up an atomic PPD dataflow;<a href="#section-1-7.1.1" class="pilcrow">¶</a></p>
 </li>
-        <li class="normal" id="section-1-6.2">
-          <p id="section-1-6.2.1">it defines the initial qualifier families used with those fields;<a href="#section-1-6.2.1" class="pilcrow">¶</a></p>
+        <li class="normal" id="section-1-7.2">
+          <p id="section-1-7.2.1">it defines the initial qualifier families used with those fields;<a href="#section-1-7.2.1" class="pilcrow">¶</a></p>
 </li>
-        <li class="normal" id="section-1-6.3">
-          <p id="section-1-6.3.1">it defines the comparison model used to relate core and non-core terms; and<a href="#section-1-6.3.1" class="pilcrow">¶</a></p>
+        <li class="normal" id="section-1-7.3">
+          <p id="section-1-7.3.1">it defines the comparison model used to relate core and non-core terms; and<a href="#section-1-7.3.1" class="pilcrow">¶</a></p>
 </li>
-        <li class="normal" id="section-1-6.4">
-          <p id="section-1-6.4.1">it defines what makes a participant-facing term or refinement semantically
-valid or invalid for baseline use.<a href="#section-1-6.4.1" class="pilcrow">¶</a></p>
+        <li class="normal" id="section-1-7.4">
+          <p id="section-1-7.4.1">it defines what makes a participant-facing term or refinement semantically
+valid or invalid for baseline use.<a href="#section-1-7.4.1" class="pilcrow">¶</a></p>
 </li>
       </ul>
 </section>
@@ -1341,67 +1350,56 @@ appear in all capitals, as shown here.<a href="#section-2-1" class="pilcrow">¶<
       </h2>
 <p id="section-3-1">The foundational semantic unit in this taxonomy is an atomic privacy-relevant
 dataflow.<a href="#section-3-1" class="pilcrow">¶</a></p>
-<p id="section-3-2">In the baseline PPD model:<a href="#section-3-2" class="pilcrow">¶</a></p>
+<p id="section-3-2">In the baseline PPD model, the participant-facing protocol defined by
+<span>[<a href="#I-D.draft-dsmullen-ppd-protocol" class="cite xref">I-D.draft-dsmullen-ppd-protocol</a>]</span> carries atomic participant-side
+dataflows in declarations and atomic household-side dataflows in policy
+rules. Household-side policy rules also carry a separate rule effect such as
+<code>allow</code> or <code>deny</code>. Comparison between participant behavior and household
+policy is grounded in comparison of those atomic dataflows.<a href="#section-3-2" class="pilcrow">¶</a></p>
+<p id="section-3-3">A baseline atomic dataflow contains these five core fields:<a href="#section-3-3" class="pilcrow">¶</a></p>
 <ul class="normal">
-<li class="normal" id="section-3-3.1">
-          <p id="section-3-3.1.1">a Device Declaration Statement describes one participant-side dataflow case;<a href="#section-3-3.1.1" class="pilcrow">¶</a></p>
+<li class="normal" id="section-3-4.1">
+          <p id="section-3-4.1.1"><code>data_type</code>: what kind of data is involved;<a href="#section-3-4.1.1" class="pilcrow">¶</a></p>
 </li>
-        <li class="normal" id="section-3-3.2">
-          <p id="section-3-3.2.1">a Policy Rule describes one household-side normative dataflow case; and<a href="#section-3-3.2.1" class="pilcrow">¶</a></p>
+        <li class="normal" id="section-3-4.2">
+          <p id="section-3-4.2.1"><code>purpose</code>: why the dataflow occurs;<a href="#section-3-4.2.1" class="pilcrow">¶</a></p>
 </li>
-        <li class="normal" id="section-3-3.3">
-          <p id="section-3-3.3.1">comparison between participant behavior and household policy is grounded in
-comparison of those dataflows.<a href="#section-3-3.3.1" class="pilcrow">¶</a></p>
+        <li class="normal" id="section-3-4.3">
+          <p id="section-3-4.3.1"><code>action</code>: which privacy-relevant action occurs;<a href="#section-3-4.3.1" class="pilcrow">¶</a></p>
+</li>
+        <li class="normal" id="section-3-4.4">
+          <p id="section-3-4.4.1"><code>source</code>: the immediate origin of the data in that dataflow; and<a href="#section-3-4.4.1" class="pilcrow">¶</a></p>
+</li>
+        <li class="normal" id="section-3-4.5">
+          <p id="section-3-4.5.1"><code>handling_context</code>: the context in which that dataflow occurs or into which
+it is directed.<a href="#section-3-4.5.1" class="pilcrow">¶</a></p>
 </li>
       </ul>
-<p id="section-3-4">A baseline atomic dataflow contains these five core fields:<a href="#section-3-4" class="pilcrow">¶</a></p>
-<ul class="normal">
-<li class="normal" id="section-3-5.1">
-          <p id="section-3-5.1.1"><code>data_type</code><a href="#section-3-5.1.1" class="pilcrow">¶</a></p>
-</li>
-        <li class="normal" id="section-3-5.2">
-          <p id="section-3-5.2.1"><code>purpose</code><a href="#section-3-5.2.1" class="pilcrow">¶</a></p>
-</li>
-        <li class="normal" id="section-3-5.3">
-          <p id="section-3-5.3.1"><code>action</code><a href="#section-3-5.3.1" class="pilcrow">¶</a></p>
-</li>
-        <li class="normal" id="section-3-5.4">
-          <p id="section-3-5.4.1"><code>source</code><a href="#section-3-5.4.1" class="pilcrow">¶</a></p>
-</li>
-        <li class="normal" id="section-3-5.5">
-          <p id="section-3-5.5.1"><code>destination</code><a href="#section-3-5.5.1" class="pilcrow">¶</a></p>
-</li>
-      </ul>
-<p id="section-3-6">It can also carry structured dataflow qualifiers.<a href="#section-3-6" class="pilcrow">¶</a></p>
+<p id="section-3-5">It can also carry structured dataflow qualifiers.<a href="#section-3-5" class="pilcrow">¶</a></p>
+<p id="section-3-6">In this document, <code>handling</code> is the general umbrella term for the collection,
+use, transfer, or inference of data represented by an atomic dataflow.
+<code>Processing</code> is used more narrowly for execution semantics, such as those
+constrained by <code>processing_boundary</code>. <code>Operation</code> is reserved for protocol
+operations defined by <span>[<a href="#I-D.draft-dsmullen-ppd-protocol" class="cite xref">I-D.draft-dsmullen-ppd-protocol</a>]</span>.<a href="#section-3-6" class="pilcrow">¶</a></p>
 <p id="section-3-7">One compact example is a camera that uses observed media data for a security
-function within the household context. That handling can be described as one
+function within the household context. That can be described as one
 atomic dataflow with <code>data_type=ppd:contentData</code>,
 <code>purpose=ppd:security</code>, <code>action=ppd:use</code>,
 <code>source=ppd:participantObserved</code>,
-<code>destination=ppd:householdContext</code>, and
+<code>handling_context=ppd:householdContext</code>, and
 <code>processing_boundary=ppd:onDeviceOnly</code>. The field and qualifier sections
-below explain how each part of such a dataflow is classified.<a href="#section-3-7" class="pilcrow">¶</a></p>
-<p id="section-3-8">In this document, <code>dataflow</code> refers to the structured semantic object being
-compared. <code>Action</code> identifies the specific privacy-relevant operation within
-that object. <code>Handling</code> is used as a general umbrella term for the
-collection, use, transfer, or inference of data represented by an atomic
-dataflow. <code>Processing</code> is used more narrowly for execution semantics, such as
-those constrained by <code>processing_boundary</code>. <code>Operation</code> is reserved for
-protocol operations defined by <span>[<a href="#I-D.draft-dsmullen-ppd-protocol" class="cite xref">I-D.draft-dsmullen-ppd-protocol</a>]</span>.<a href="#section-3-8" class="pilcrow">¶</a></p>
-<p id="section-3-9">The rule effect, such as <code>allow</code> or <code>deny</code>, is not part of the dataflow tuple
-itself. It belongs to the household-side policy-rule layer defined by
-<span>[<a href="#I-D.draft-dsmullen-ppd-protocol" class="cite xref">I-D.draft-dsmullen-ppd-protocol</a>]</span>.<a href="#section-3-9" class="pilcrow">¶</a></p>
-<p id="section-3-10">Modality is likewise not part of the taxonomy terms that populate the core
+below define the field families and qualifier families in detail.<a href="#section-3-7" class="pilcrow">¶</a></p>
+<p id="section-3-8">Modality is likewise not part of the taxonomy terms that populate the core
 fields or qualifier families. Core and non-core taxonomy terms <span class="bcp14">MUST NOT</span> encode
 policy effect or policy modality such as allowed, denied, prohibited,
 required, or optional. If a deployment needs to express both a dataflow
 concept and a policy position about that concept, the concept <span class="bcp14">MUST</span> be carried
 in the appropriate core field or qualifier family and the policy position
-<span class="bcp14">MUST</span> be expressed separately through the policy-rule layer.<a href="#section-3-10" class="pilcrow">¶</a></p>
-<p id="section-3-11">This document does not define a household policy authoring workflow, a full
+<span class="bcp14">MUST</span> be expressed separately through the policy-rule layer.<a href="#section-3-8" class="pilcrow">¶</a></p>
+<p id="section-3-9">This document does not define a household policy authoring workflow, a full
 conflict-resolution procedure, or a general reasoning engine. It defines the
 minimum semantic structure needed so participant declarations and household
-policy can be compared in an interoperable way.<a href="#section-3-11" class="pilcrow">¶</a></p>
+policy can be compared in an interoperable way.<a href="#section-3-9" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="design-goals">
@@ -1452,25 +1450,36 @@ concepts over time.<a href="#section-5-1" class="pilcrow">¶</a></p>
 shared semantic substrate against which participant declarations and household
 policy can still be interpreted and compared when those richer vocabularies
 are present.<a href="#section-5-2" class="pilcrow">¶</a></p>
-<p id="section-5-3">For baseline participant-facing interoperability:<a href="#section-5-3" class="pilcrow">¶</a></p>
+<p id="section-5-3">This means the baseline model tolerates variability in how deployments,
+vendors, or policy tools interpret and name finer-grained concepts. It does
+not require every deployment to use the same intermediate categories. It does
+require comparison-relevant participant-facing terms to collapse back to the
+shared core in a declared, computable way.<a href="#section-5-3" class="pilcrow">¶</a></p>
+<p id="section-5-4">That tolerance also applies when participant-facing privacy descriptions are
+broader, narrower, or intentionally ambiguous across vendors or ecosystems.
+The purpose of the shared core is to ensure that such local variation can
+still be reduced to a common computable floor, so that household policies can
+be compared against participant declarations without requiring the household
+to model each vendor's vocabulary or interpretation strategy directly.<a href="#section-5-4" class="pilcrow">¶</a></p>
+<p id="section-5-5">For baseline participant-facing interoperability:<a href="#section-5-5" class="pilcrow">¶</a></p>
 <ul class="normal">
-<li class="normal" id="section-5-4.1">
-          <p id="section-5-4.1.1">core terms define the shared semantic floor;<a href="#section-5-4.1.1" class="pilcrow">¶</a></p>
+<li class="normal" id="section-5-6.1">
+          <p id="section-5-6.1.1">core terms define the shared semantic floor;<a href="#section-5-6.1.1" class="pilcrow">¶</a></p>
 </li>
-        <li class="normal" id="section-5-4.2">
-          <p id="section-5-4.2.1">richer non-core terms <span class="bcp14">MAY</span> be used through the taxonomy context mechanism
-defined by <span>[<a href="#I-D.draft-dsmullen-ppd-protocol" class="cite xref">I-D.draft-dsmullen-ppd-protocol</a>]</span>; and<a href="#section-5-4.2.1" class="pilcrow">¶</a></p>
+        <li class="normal" id="section-5-6.2">
+          <p id="section-5-6.2.1">richer non-core terms <span class="bcp14">MAY</span> be used through the taxonomy context mechanism
+defined by <span>[<a href="#I-D.draft-dsmullen-ppd-protocol" class="cite xref">I-D.draft-dsmullen-ppd-protocol</a>]</span>; and<a href="#section-5-6.2.1" class="pilcrow">¶</a></p>
 </li>
-        <li class="normal" id="section-5-4.3">
-          <p id="section-5-4.3.1">when a non-core term or qualifier is used in a comparison-relevant field, it
+        <li class="normal" id="section-5-6.3">
+          <p id="section-5-6.3.1">when a non-core term or qualifier is used in a comparison-relevant field, it
 <span class="bcp14">MUST</span>
 be defined with an explicit relationship or reduction to one or more core
 concepts sufficient to keep the term computable against the shared core
-model.<a href="#section-5-4.3.1" class="pilcrow">¶</a></p>
+model.<a href="#section-5-6.3.1" class="pilcrow">¶</a></p>
 </li>
       </ul>
-<p id="section-5-5">Terms that do not carry such a relationship can still be locally meaningful,
-but they are outside baseline interoperable computation.<a href="#section-5-5" class="pilcrow">¶</a></p>
+<p id="section-5-7">Terms that do not carry such a relationship can still be locally meaningful,
+but they are outside baseline interoperable computation.<a href="#section-5-7" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="core-taxonomy-structure">
@@ -1495,30 +1504,38 @@ used in that family are expected to reduce to exactly one broader core term.
 If a local concept appears to span multiple broad categories, that usually
 means the handling needs a narrower term below the floor, a clearer field
 choice, or separate atomic dataflows.<a href="#section-6-3" class="pilcrow">¶</a></p>
-<p id="section-6-4">For field families that participate in subsumption, this document is therefore
-intentionally prescriptive about refinement discipline:<a href="#section-6-4" class="pilcrow">¶</a></p>
+<p id="section-6-4">That ambiguity is expected to arise in practice, because humans and local
+semantic systems will not always classify concepts the same way. The baseline
+rule is therefore not that every local interpretation must be identical. It is
+that any participant-facing refinement used for interoperable comparison must
+ultimately resolve to one computable branch within the relevant field family.<a href="#section-6-4" class="pilcrow">¶</a></p>
+<p id="section-6-5">In other words, variation in local semantic expression is tolerated, but the
+burden of reduction to the shared comparison basis belongs to the
+participant-facing taxonomy content rather than to the household.<a href="#section-6-5" class="pilcrow">¶</a></p>
+<p id="section-6-6">For field families that participate in subsumption, this document is therefore
+intentionally prescriptive about refinement discipline:<a href="#section-6-6" class="pilcrow">¶</a></p>
 <ul class="normal">
-<li class="normal" id="section-6-5.1">
-          <p id="section-6-5.1.1">a non-core refinement <span class="bcp14">MUST</span> identify exactly one immediate broader term within
-the same field family;<a href="#section-6-5.1.1" class="pilcrow">¶</a></p>
+<li class="normal" id="section-6-7.1">
+          <p id="section-6-7.1.1">a non-core refinement <span class="bcp14">MUST</span> identify exactly one immediate broader term within
+the same field family;<a href="#section-6-7.1.1" class="pilcrow">¶</a></p>
 </li>
-        <li class="normal" id="section-6-5.2">
-          <p id="section-6-5.2.1">repeated broader-than relationships <span class="bcp14">MUST</span> eventually terminate at a core term
-in that family; and<a href="#section-6-5.2.1" class="pilcrow">¶</a></p>
+        <li class="normal" id="section-6-7.2">
+          <p id="section-6-7.2.1">repeated broader-than relationships <span class="bcp14">MUST</span> eventually terminate at a core term
+in that family; and<a href="#section-6-7.2.1" class="pilcrow">¶</a></p>
 </li>
-        <li class="normal" id="section-6-5.3">
-          <p id="section-6-5.3.1">if a concept would require multiple immediate broader terms in the same
+        <li class="normal" id="section-6-7.3">
+          <p id="section-6-7.3.1">if a concept would require multiple immediate broader terms in the same
 family, it is not a valid single refinement for baseline comparison and
 should instead be modeled through a narrower term under one branch, a
-clearer field choice, or separate atomic dataflows.<a href="#section-6-5.3.1" class="pilcrow">¶</a></p>
+clearer field choice, or separate atomic dataflows.<a href="#section-6-7.3.1" class="pilcrow">¶</a></p>
 </li>
       </ul>
-<p id="section-6-6">These refinement rules do not allow policy modality to be folded into field
+<p id="section-6-8">These refinement rules do not allow policy modality to be folded into field
 or qualifier concepts. For example, a term that attempts to combine a
-destination category with a policy position, such as a recipient marked as
+handling-context category with a policy position, such as a recipient marked as
 prohibited or required, is not a valid baseline taxonomy refinement. Such
 modality belongs in the policy-rule layer rather than in the taxonomy term
-itself.<a href="#section-6-6" class="pilcrow">¶</a></p>
+itself.<a href="#section-6-8" class="pilcrow">¶</a></p>
 <div id="semantic-validity-of-terms-and-refinements">
 <section id="section-6.1">
         <h3 id="name-semantic-validity-of-terms-">
@@ -1540,7 +1557,7 @@ document or by a later compatible taxonomy specification;<a href="#section-6.1-3
 </li>
           <li class="normal" id="section-6.1-3.3">
             <p id="section-6.1-3.3.1">it does not collapse multiple semantic axes that this document models
-separately, such as destination identity plus policy modality, or data type
+separately, such as handling-context identity plus policy modality, or data type
 plus origin history;<a href="#section-6.1-3.3.1" class="pilcrow">¶</a></p>
 </li>
           <li class="normal" id="section-6.1-3.4">
@@ -1584,48 +1601,60 @@ placed. These categories are based on the immediate semantic content of the
 data, not on its source, derivation history, transport path, or downstream
 use. Whether data is directly observed or derived from prior data is handled
 through the <code>source</code> field rather than by a separate <code>data_type</code> category.<a href="#section-6.2-3" class="pilcrow">¶</a></p>
-<p id="section-6.2-4">The initial core term set is:<a href="#section-6.2-4" class="pilcrow">¶</a></p>
+<p id="section-6.2-4">This also means different deployments may introduce different narrower data
+type terms for concepts that are genuinely open to interpretation. The
+baseline requirement is not to eliminate that variability. The requirement is
+that a participant-facing <code>data_type</code> term still classify by what the data is
+and reduce to one computable branch of the shared core.<a href="#section-6.2-4" class="pilcrow">¶</a></p>
+<p id="section-6.2-5">The initial core term set is:<a href="#section-6.2-5" class="pilcrow">¶</a></p>
 <ul class="normal">
-<li class="normal" id="section-6.2-5.1">
-            <p id="section-6.2-5.1.1"><code>ppd:identifierData</code>: data used to identify a user, household, participant,
-device, account, or service interaction.<a href="#section-6.2-5.1.1" class="pilcrow">¶</a></p>
+<li class="normal" id="section-6.2-6.1">
+            <p id="section-6.2-6.1.1"><code>ppd:identifierData</code>: data used to identify a user, household, participant,
+device, account, or service interaction.<a href="#section-6.2-6.1.1" class="pilcrow">¶</a></p>
 </li>
-          <li class="normal" id="section-6.2-5.2">
-            <p id="section-6.2-5.2.1"><code>ppd:profileData</code>: data that describes a user, household, account, or
-associated preferences and characteristics.<a href="#section-6.2-5.2.1" class="pilcrow">¶</a></p>
+          <li class="normal" id="section-6.2-6.2">
+            <p id="section-6.2-6.2.1"><code>ppd:profileData</code>: data that describes a user, household, account, or
+associated preferences and characteristics.<a href="#section-6.2-6.2.1" class="pilcrow">¶</a></p>
 </li>
-          <li class="normal" id="section-6.2-5.3">
-            <p id="section-6.2-5.3.1"><code>ppd:sensorData</code>: non-content measured or observed data obtained from
+          <li class="normal" id="section-6.2-6.3">
+            <p id="section-6.2-6.3.1"><code>ppd:sensorData</code>: non-content measured or observed data obtained from
 sensing of the device, the local environment, or an observed space or
-object.<a href="#section-6.2-5.3.1" class="pilcrow">¶</a></p>
+object.<a href="#section-6.2-6.3.1" class="pilcrow">¶</a></p>
 </li>
-          <li class="normal" id="section-6.2-5.4">
-            <p id="section-6.2-5.4.1"><code>ppd:contentData</code>: content captured, communicated, or stored as user- or
+          <li class="normal" id="section-6.2-6.4">
+            <p id="section-6.2-6.4.1"><code>ppd:contentData</code>: content captured, communicated, or stored as user- or
 environment-associated content, including text, audio, image, and video
-content.<a href="#section-6.2-5.4.1" class="pilcrow">¶</a></p>
+content.<a href="#section-6.2-6.4.1" class="pilcrow">¶</a></p>
 </li>
-          <li class="normal" id="section-6.2-5.5">
-            <p id="section-6.2-5.5.1"><code>ppd:locationData</code>: data about physical location, movement, or place
-association.<a href="#section-6.2-5.5.1" class="pilcrow">¶</a></p>
+          <li class="normal" id="section-6.2-6.5">
+            <p id="section-6.2-6.5.1"><code>ppd:locationData</code>: data about physical location, movement, or place
+association.<a href="#section-6.2-6.5.1" class="pilcrow">¶</a></p>
 </li>
-          <li class="normal" id="section-6.2-5.6">
-            <p id="section-6.2-5.6.1"><code>ppd:deviceAndNetworkData</code>: data about device configuration, capabilities,
-settings, status, connectivity, or network environment.<a href="#section-6.2-5.6.1" class="pilcrow">¶</a></p>
+          <li class="normal" id="section-6.2-6.6">
+            <p id="section-6.2-6.6.1"><code>ppd:deviceAndNetworkData</code>: data about device configuration, capabilities,
+settings, status, connectivity, or network environment.<a href="#section-6.2-6.6.1" class="pilcrow">¶</a></p>
 </li>
-          <li class="normal" id="section-6.2-5.7">
-            <p id="section-6.2-5.7.1"><code>ppd:usageData</code>: data about interaction with the device, service, or
-associated interfaces.<a href="#section-6.2-5.7.1" class="pilcrow">¶</a></p>
+          <li class="normal" id="section-6.2-6.7">
+            <p id="section-6.2-6.7.1"><code>ppd:usageData</code>: data about interaction with the device, service, or
+associated interfaces.<a href="#section-6.2-6.7.1" class="pilcrow">¶</a></p>
 </li>
         </ul>
-<p id="section-6.2-6">For example, a thermostat reading is <code>ppd:sensorData</code>, an account nickname is
-<code>ppd:profileData</code>, and a doorbell video clip is <code>ppd:contentData</code>.<a href="#section-6.2-6" class="pilcrow">¶</a></p>
-<p id="section-6.2-7">Terms such as temperature readings, humidity readings, audio samples, video
+<p id="section-6.2-7">For example, a thermostat reading is <code>ppd:sensorData</code>, an account nickname is
+<code>ppd:profileData</code>, and a doorbell video clip is <code>ppd:contentData</code>.<a href="#section-6.2-7" class="pilcrow">¶</a></p>
+<p id="section-6.2-8">Terms such as temperature readings, humidity readings, audio samples, video
 frames, event clips, device identifiers, crash logs, and occupancy estimates
 are expected to appear as narrower refinements of these broader core data
 types. For example, an occupancy estimate that describes the state of an
 observed space is still classified by what that data means, while the fact
 that it was inferred from prior data is captured separately through the
-<code>source</code> field.<a href="#section-6.2-7" class="pilcrow">¶</a></p>
+<code>source</code> field.<a href="#section-6.2-8" class="pilcrow">¶</a></p>
+<p id="section-6.2-9">Because humans ultimately define many of these refinements, misclassification
+is a real risk. In particular, authors may be tempted to classify by
+downstream use, by source, or by a composite payload rather than by the
+immediate semantic content of the data itself. Such cases are exactly why the
+baseline model requires explicit reduction to the core and rejects a single
+participant-facing refinement that would need multiple immediate broader terms
+within the same <code>data_type</code> family.<a href="#section-6.2-9" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="purpose-why">
@@ -1796,28 +1825,33 @@ these broader source categories.<a href="#section-6.5-5" class="pilcrow">¶</a><
 handling path is <code>ppd:derivedFromPriorData</code>.<a href="#section-6.5-6" class="pilcrow">¶</a></p>
 </section>
 </div>
-<div id="destination-to-where">
+<div id="handling-context">
 <section id="section-6.6">
-        <h3 id="name-destination-to-where">
-<a href="#section-6.6" class="section-number selfRef">6.6. </a><a href="#name-destination-to-where" class="section-name selfRef">Destination (To Where)</a>
+        <h3 id="name-handling-context">
+<a href="#section-6.6" class="section-number selfRef">6.6. </a><a href="#name-handling-context" class="section-name selfRef">Handling Context</a>
         </h3>
-<p id="section-6.6-1">Destination terms identify the recipient-side or handling-side context to
-which the dataflow applies. For <code>transfer</code>, Destination identifies the
-recipient or recipient-side handling context. For <code>use</code> and <code>inference</code>,
-Destination identifies the handling context in which that operation takes
-place. Destination participates in semantic comparison and can support
-broader-than/narrower-than relationships.
-Classification rule: classify by the recipient-side or handling-side context
-to which the current handling step applies.<a href="#section-6.6-1" class="pilcrow">¶</a></p>
-<p id="section-6.6-2">Destination does not by itself express a placement restriction on how a <code>use</code>
-or <code>inference</code> operation executes inside that handling context. More specific
+<p id="section-6.6-1">Handling Context terms identify the target handling context to which the
+current atomic dataflow applies. For <code>collection</code>, Handling Context
+identifies the context into which the collected data is brought. For <code>use</code>
+and <code>inference</code>, Handling Context identifies the context in which that
+handling step occurs. For <code>transfer</code>, Handling Context identifies the
+recipient-side context into which the data is transferred. Handling Context
+participates in semantic comparison and can support broader-than/narrower-than
+relationships.
+Here, <code>target</code> means the context the dataflow is directed into or occurs
+within. It does not imply that every action is modeled as a transmission.
+Classification rule: classify by the target handling context to which the
+current handling step applies.<a href="#section-6.6-1" class="pilcrow">¶</a></p>
+<p id="section-6.6-2">Handling Context does not by itself express a placement restriction on how a
+<code>use</code> or <code>inference</code> operation executes inside that context. More specific
 execution restrictions belong in the <code>processing_boundary</code> qualifier family.
 The two are related but not interchangeable.<a href="#section-6.6-2" class="pilcrow">¶</a></p>
-<p id="section-6.6-3">Destination classifies semantic handling context, not organization identity.
+<p id="section-6.6-3">Handling Context classifies semantic handling context, not organization
+identity.
 Named entities such as a particular company or service brand are not
-themselves core destination terms. If such identifiers are introduced through
+themselves core handling-context terms. If such identifiers are introduced through
 non-core refinements, their role-specific meaning still needs to reduce to one
-of the destination categories below.<a href="#section-6.6-3" class="pilcrow">¶</a></p>
+of the handling-context categories below.<a href="#section-6.6-3" class="pilcrow">¶</a></p>
 <p id="section-6.6-4">The initial core term set is:<a href="#section-6.6-4" class="pilcrow">¶</a></p>
 <ul class="normal">
 <li class="normal" id="section-6.6-5.1">
@@ -1842,7 +1876,7 @@ relationship.<a href="#section-6.6-5.4.1" class="pilcrow">¶</a></p>
 <p id="section-6.6-6">Terms such as vendor cloud, household controller, partner analytics service,
 data broker, public feed, or other more specific recipient or handling
 contexts are expected to appear as narrower refinements of these broader
-destination categories.<a href="#section-6.6-6" class="pilcrow">¶</a></p>
+handling-context categories.<a href="#section-6.6-6" class="pilcrow">¶</a></p>
 <p id="section-6.6-7">For example, sending data to the device vendor is <code>ppd:vendorContext</code>, using
 data within a household hub is <code>ppd:householdContext</code>, and publishing data to
 an open feed is <code>ppd:publicAudience</code>.<a href="#section-6.6-7" class="pilcrow">¶</a></p>
@@ -1869,9 +1903,8 @@ qualifier family outside its defined applicability are invalid.<a href="#section
 <a href="#section-6.7.1" class="section-number selfRef">6.7.1. </a><a href="#name-retention" class="section-name selfRef">Retention</a>
           </h4>
 <p id="section-6.7.1-1">Retention qualifies how long the relevant data or resulting artifact may
-persist after the action in question.
-Classification rule: classify by how long the relevant data or artifact may
-persist after the scoped action.<a href="#section-6.7.1-1" class="pilcrow">¶</a></p>
+persist after the scoped action in question. It is classified by how long the
+relevant data or artifact may persist after that scoped action.<a href="#section-6.7.1-1" class="pilcrow">¶</a></p>
 <p id="section-6.7.1-2">Retention is action-sensitive. In particular:<a href="#section-6.7.1-2" class="pilcrow">¶</a></p>
 <ul class="normal">
 <li class="normal" id="section-6.7.1-3.1">
@@ -1906,9 +1939,11 @@ rule.<a href="#section-6.7.1-7" class="pilcrow">¶</a></p>
 <p id="section-6.7.1-8">Bounded retention periods are expected to require more specific quantitative
 refinements, including explicit duration values and units, in later revisions
 or deployment profiles. The baseline compact participant-facing form defined
-here therefore standardizes only the categorical retention values above.<a href="#section-6.7.1-8" class="pilcrow">¶</a></p>
-<p id="section-6.7.1-9">Retention comparison does not use a generic taxonomy subsumption hierarchy in
-the same way as <code>data_type</code>, <code>purpose</code>, <code>source</code>, or <code>destination</code>.<a href="#section-6.7.1-9" class="pilcrow">¶</a></p>
+here therefore standardizes only the categorical retention values above.
+Retention therefore uses its own family-specific categorical or quantitative
+comparison semantics rather than the broader-than/narrower-than hierarchy used
+by field families such as <code>data_type</code>, <code>purpose</code>, <code>source</code>, or
+<code>handling_context</code>.<a href="#section-6.7.1-8" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="processing-boundary">
@@ -1919,17 +1954,17 @@ the same way as <code>data_type</code>, <code>purpose</code>, <code>source</code
 <p id="section-6.7.2-1">Processing Boundary qualifies where a processing operation may execute or
 remain. This family is most natural for <code>use</code> and <code>inference</code>. It is not the
 primary semantic mechanism for describing transfer recipients, because
-<code>destination</code> already identifies the transfer target.
+<code>handling_context</code> already identifies the transfer target context.
 Classification rule: classify by where <code>use</code> or <code>inference</code> may execute
 within the applicable handling context.<a href="#section-6.7.2-1" class="pilcrow">¶</a></p>
 <p id="section-6.7.2-2">In the baseline model, <code>processing_boundary</code> is therefore primarily a
 qualifier on <code>use</code> and <code>inference</code> dataflows rather than a general qualifier
 on <code>transfer</code>.<a href="#section-6.7.2-2" class="pilcrow">¶</a></p>
-<p id="section-6.7.2-3"><code>processing_boundary</code> does not replace <code>destination</code>. <code>Destination</code> identifies
-the handling target or recipient context to which the dataflow applies.
+<p id="section-6.7.2-3"><code>processing_boundary</code> does not replace <code>handling_context</code>. Handling Context
+identifies the target handling context to which the dataflow applies.
 <code>processing_boundary</code> further constrains where a <code>use</code> or <code>inference</code>
 operation may execute within that context. For example, a <code>use</code> dataflow with
-<code>destination=ppd:householdContext</code> can still be further narrowed by
+<code>handling_context=ppd:householdContext</code> can still be further narrowed by
 <code>processing_boundary=ppd:onDeviceOnly</code> or
 <code>processing_boundary=ppd:inHomeOnly</code>.<a href="#section-6.7.2-3" class="pilcrow">¶</a></p>
 <p id="section-6.7.2-4">The initial core term set is:<a href="#section-6.7.2-4" class="pilcrow">¶</a></p>
@@ -1958,53 +1993,90 @@ broader-than/narrower-than relationships.<a href="#section-6.7.2-6" class="pilcr
 <a href="#section-6.7.3" class="section-number selfRef">6.7.3. </a><a href="#name-jurisdiction" class="section-name selfRef">Jurisdiction</a>
           </h4>
 <p id="section-6.7.3-1">Jurisdiction qualifies the legal or regulatory domain relevant to the
-dataflow. It is intended for cases where a policy needs to constrain the legal
-domain under which handling occurs, not merely the physical placement of a
-processor or store.
-Classification rule: classify by the scoped legal or regulatory domain
-relevant to the handling step.<a href="#section-6.7.3-1" class="pilcrow">¶</a></p>
-<p id="section-6.7.3-2">Jurisdiction is intentionally not treated as a single flat label. Any use of a
-jurisdiction qualifier <span class="bcp14">MUST</span> identify the scoped subcase it constrains, such as:<a href="#section-6.7.3-2" class="pilcrow">¶</a></p>
+dataflow. It is intended for cases where a policy needs to declare which
+jurisdictions matter for a handling step or storage context, not to model the
+substance of those jurisdictions' laws and regulations.
+Classification rule: classify by the scoped handling step or storage context
+being constrained, together with the declared jurisdiction codes attached to
+that scope.<a href="#section-6.7.3-1" class="pilcrow">¶</a></p>
+<p id="section-6.7.3-2">Jurisdiction is a structured qualifier family, not a single flat label. For
+baseline participant-facing use, a jurisdiction qualifier identifies:<a href="#section-6.7.3-2" class="pilcrow">¶</a></p>
 <ul class="normal">
 <li class="normal" id="section-6.7.3-3.1">
-              <p id="section-6.7.3-3.1.1">processing<a href="#section-6.7.3-3.1.1" class="pilcrow">¶</a></p>
+              <p id="section-6.7.3-3.1.1">a <code>scope</code>; and<a href="#section-6.7.3-3.1.1" class="pilcrow">¶</a></p>
 </li>
             <li class="normal" id="section-6.7.3-3.2">
-              <p id="section-6.7.3-3.2.1">storage<a href="#section-6.7.3-3.2.1" class="pilcrow">¶</a></p>
-</li>
-            <li class="normal" id="section-6.7.3-3.3">
-              <p id="section-6.7.3-3.3.1">transfer<a href="#section-6.7.3-3.3.1" class="pilcrow">¶</a></p>
+              <p id="section-6.7.3-3.2.1">one or more jurisdiction codes.<a href="#section-6.7.3-3.2.1" class="pilcrow">¶</a></p>
 </li>
           </ul>
-<p id="section-6.7.3-4">The scoped subcase is part of the qualifier meaning. A jurisdiction
-constraint on processing is not automatically equivalent to the same
-jurisdiction constraint on storage or transfer.<a href="#section-6.7.3-4" class="pilcrow">¶</a></p>
-<p id="section-6.7.3-5">For example:<a href="#section-6.7.3-5" class="pilcrow">¶</a></p>
+<p id="section-6.7.3-4">The <code>scope</code> identifies which handling step or storage context the qualifier
+constrains. The baseline <code>scope</code> values are:<a href="#section-6.7.3-4" class="pilcrow">¶</a></p>
 <ul class="normal">
-<li class="normal" id="section-6.7.3-6.1">
-              <p id="section-6.7.3-6.1.1">a processing-scoped jurisdiction qualifier can constrain the legal domain
-under which processing is permitted to occur;<a href="#section-6.7.3-6.1.1" class="pilcrow">¶</a></p>
+<li class="normal" id="section-6.7.3-5.1">
+              <p id="section-6.7.3-5.1.1"><code>collection</code><a href="#section-6.7.3-5.1.1" class="pilcrow">¶</a></p>
 </li>
-            <li class="normal" id="section-6.7.3-6.2">
-              <p id="section-6.7.3-6.2.1">a storage-scoped jurisdiction qualifier can constrain the legal domain under
-which retained data may be kept; and<a href="#section-6.7.3-6.2.1" class="pilcrow">¶</a></p>
+            <li class="normal" id="section-6.7.3-5.2">
+              <p id="section-6.7.3-5.2.1"><code>use</code><a href="#section-6.7.3-5.2.1" class="pilcrow">¶</a></p>
 </li>
-            <li class="normal" id="section-6.7.3-6.3">
-              <p id="section-6.7.3-6.3.1">a transfer-scoped jurisdiction qualifier can constrain the legal domain to
-which a transfer recipient may belong.<a href="#section-6.7.3-6.3.1" class="pilcrow">¶</a></p>
+            <li class="normal" id="section-6.7.3-5.3">
+              <p id="section-6.7.3-5.3.1"><code>inference</code><a href="#section-6.7.3-5.3.1" class="pilcrow">¶</a></p>
+</li>
+            <li class="normal" id="section-6.7.3-5.4">
+              <p id="section-6.7.3-5.4.1"><code>transfer</code><a href="#section-6.7.3-5.4.1" class="pilcrow">¶</a></p>
+</li>
+            <li class="normal" id="section-6.7.3-5.5">
+              <p id="section-6.7.3-5.5.1"><code>storage</code><a href="#section-6.7.3-5.5.1" class="pilcrow">¶</a></p>
 </li>
           </ul>
-<p id="section-6.7.3-7">This keeps the qualifier machine-comparable while still allowing broader
-sovereignty concerns to be expressed through more concrete baseline semantics.<a href="#section-6.7.3-7" class="pilcrow">¶</a></p>
-<p id="section-6.7.3-8">This document defines the qualifier family and the scoped-semantics rule, but
-it does not yet define a closed baseline set of jurisdiction vocabulary
-values. In this revision, <code>jurisdiction</code> is therefore a structured qualifier
-family shell rather than a fully populated baseline value hierarchy.<a href="#section-6.7.3-8" class="pilcrow">¶</a></p>
-<p id="section-6.7.3-9">Baseline interoperable computation can still validate that a jurisdiction
-qualifier is well-formed and scoped correctly, but semantic comparison of
-jurisdiction values requires a later taxonomy revision or deployment profile
-that defines shared jurisdiction vocabulary and reduction rules for the scoped
-subcase in question.<a href="#section-6.7.3-9" class="pilcrow">¶</a></p>
+<p id="section-6.7.3-6">The first four values align with baseline handling actions. <code>storage</code> is a
+distinct handling-related context used when the constraint applies to retained
+data rather than to a specific action step.<a href="#section-6.7.3-6" class="pilcrow">¶</a></p>
+<p id="section-6.7.3-7">For baseline participant-facing use, the jurisdiction codes use existing
+IETF-defined code formats:<a href="#section-6.7.3-7" class="pilcrow">¶</a></p>
+<ul class="normal">
+<li class="normal" id="section-6.7.3-8.1">
+              <p id="section-6.7.3-8.1.1"><code>countrycode</code> for ISO 3166-1 alpha-2 country codes in lowercase
+<span>[<a href="#RFC8006" class="cite xref">RFC8006</a>]</span>; and<a href="#section-6.7.3-8.1.1" class="pilcrow">¶</a></p>
+</li>
+            <li class="normal" id="section-6.7.3-8.2">
+              <p id="section-6.7.3-8.2.1"><code>subdivisioncode</code> for ISO 3166-2 subdivision codes in lowercase
+<span>[<a href="#RFC9388" class="cite xref">RFC9388</a>]</span>.<a href="#section-6.7.3-8.2.1" class="pilcrow">¶</a></p>
+</li>
+          </ul>
+<p id="section-6.7.3-9">For example:<a href="#section-6.7.3-9" class="pilcrow">¶</a></p>
+<ul class="normal">
+<li class="normal" id="section-6.7.3-10.1">
+              <p id="section-6.7.3-10.1.1">a collection-scoped jurisdiction qualifier can constrain the jurisdictions
+in which collection may occur;<a href="#section-6.7.3-10.1.1" class="pilcrow">¶</a></p>
+</li>
+            <li class="normal" id="section-6.7.3-10.2">
+              <p id="section-6.7.3-10.2.1">a transfer-scoped jurisdiction qualifier can constrain the jurisdictions to
+which a transfer recipient may belong; and<a href="#section-6.7.3-10.2.1" class="pilcrow">¶</a></p>
+</li>
+            <li class="normal" id="section-6.7.3-10.3">
+              <p id="section-6.7.3-10.3.1">a storage-scoped jurisdiction qualifier can constrain the jurisdictions in
+which retained data may be kept.<a href="#section-6.7.3-10.3.1" class="pilcrow">¶</a></p>
+</li>
+          </ul>
+<p id="section-6.7.3-11">Jurisdiction does not use generic taxonomy subsumption. Baseline comparison is
+family-specific:<a href="#section-6.7.3-11" class="pilcrow">¶</a></p>
+<ul class="normal">
+<li class="normal" id="section-6.7.3-12.1">
+              <p id="section-6.7.3-12.1.1"><code>scope</code> compares by exact identity;<a href="#section-6.7.3-12.1.1" class="pilcrow">¶</a></p>
+</li>
+            <li class="normal" id="section-6.7.3-12.2">
+              <p id="section-6.7.3-12.2.1"><code>countrycode</code> values compare by exact identifier matching;<a href="#section-6.7.3-12.2.1" class="pilcrow">¶</a></p>
+</li>
+            <li class="normal" id="section-6.7.3-12.3">
+              <p id="section-6.7.3-12.3.1"><code>subdivisioncode</code> values compare by exact identifier matching; and<a href="#section-6.7.3-12.3.1" class="pilcrow">¶</a></p>
+</li>
+            <li class="normal" id="section-6.7.3-12.4">
+              <p id="section-6.7.3-12.4.1">a <code>countrycode</code> also contains <code>subdivisioncode</code> values within that country.<a href="#section-6.7.3-12.4.1" class="pilcrow">¶</a></p>
+</li>
+          </ul>
+<p id="section-6.7.3-13">For example, <code>countrycode=us</code> contains <code>subdivisioncode=us-ca</code>, but a
+jurisdiction qualifier scoped to <code>transfer</code> does not automatically compare as
+equivalent to the same jurisdiction codes scoped to <code>storage</code>.<a href="#section-6.7.3-13" class="pilcrow">¶</a></p>
 </section>
 </div>
 </section>
@@ -2043,7 +2115,7 @@ subsumption:<a href="#section-7-4" class="pilcrow">¶</a></p>
           <p id="section-7-5.3.1"><code>source</code><a href="#section-7-5.3.1" class="pilcrow">¶</a></p>
 </li>
         <li class="normal" id="section-7-5.4">
-          <p id="section-7-5.4.1"><code>destination</code><a href="#section-7-5.4.1" class="pilcrow">¶</a></p>
+          <p id="section-7-5.4.1"><code>handling_context</code><a href="#section-7-5.4.1" class="pilcrow">¶</a></p>
 </li>
         <li class="normal" id="section-7-5.5">
           <p id="section-7-5.5.1"><code>processing_boundary</code><a href="#section-7-5.5.1" class="pilcrow">¶</a></p>
@@ -2060,8 +2132,8 @@ exact identity or exact reduction to a core action value; and<a href="#section-7
 semantics rather than a generic taxonomy hierarchy; and<a href="#section-7-7.2.1" class="pilcrow">¶</a></p>
 </li>
         <li class="normal" id="section-7-7.3">
-          <p id="section-7-7.3.1"><code>jurisdiction</code>, which in this revision defines qualifier structure and scope
-rules but not yet a closed baseline value hierarchy.<a href="#section-7-7.3.1" class="pilcrow">¶</a></p>
+          <p id="section-7-7.3.1"><code>jurisdiction</code>, which uses the family-specific scope and code-containment
+semantics defined above rather than a generic taxonomy hierarchy.<a href="#section-7-7.3.1" class="pilcrow">¶</a></p>
 </li>
       </ul>
 <p id="section-7-8">This document does not define a full conflict-resolution procedure. It defines
@@ -2140,10 +2212,10 @@ sender <span class="bcp14">MUST</span> provide the required non-core prefix decl
 protocol's taxonomy context.<a href="#section-8.4-1" class="pilcrow">¶</a></p>
 <p id="section-8.4-2">For comparison-relevant fields and qualifier families, namespace declaration
 alone is not enough. When a non-core term fills <code>data_type</code>, <code>purpose</code>,
-<code>action</code>, <code>source</code>, or <code>destination</code>, or supplies a non-core <code>retention</code>,
+<code>action</code>, <code>source</code>, or <code>handling_context</code>, or supplies a non-core <code>retention</code>,
 <code>processing_boundary</code>, or scoped <code>jurisdiction</code> qualifier value, that term
 <span class="bcp14">MUST</span> be defined with the semantic relationship or exact reduction by which it
-is reduced to one or more shared core concepts.<a href="#section-8.4-2" class="pilcrow">¶</a></p>
+is reduced to the shared core comparison basis for that family.<a href="#section-8.4-2" class="pilcrow">¶</a></p>
 <p id="section-8.4-3">A non-core term that does not satisfy the semantic validity conditions above
 is invalid taxonomy content for baseline participant-facing use, even if the
 identifier syntax and namespace declaration are otherwise well-formed.<a href="#section-8.4-3" class="pilcrow">¶</a></p>
@@ -2154,9 +2226,8 @@ or "required". Those meanings belong in policy rules, not in taxonomy terms.<a h
 <p id="section-8.4-5">That relationship can include equivalence or broader/narrower placement where
 the field participates in subsumption, or exact reduction where it does not, so
 long as it preserves computable comparison against the shared core floor. For
-<code>jurisdiction</code>, baseline participant-facing use further depends on a later
-taxonomy revision or deployment profile that defines the shared scoped
-jurisdiction vocabulary being used.<a href="#section-8.4-5" class="pilcrow">¶</a></p>
+<code>jurisdiction</code>, that comparison basis is the qualifier's declared <code>scope</code>
+together with the <code>countrycode</code> and <code>subdivisioncode</code> model defined above.<a href="#section-8.4-5" class="pilcrow">¶</a></p>
 <p id="section-8.4-6">For field families that participate in subsumption, a non-core refinement
 <span class="bcp14">MUST</span> identify exactly one immediate broader term and <span class="bcp14">MUST</span> remain reducible by
 repeated application of that relationship to one core term in the same family.
@@ -2181,19 +2252,19 @@ the family-specific comparison rules defined by this document apply.<a href="#se
 <code>ppd:inHomeOnly</code>.<a href="#section-8.4-8.4.1" class="pilcrow">¶</a></p>
 </li>
         </ul>
-<p id="section-8.4-9">Destination refinements follow the same rule. For example:<a href="#section-8.4-9" class="pilcrow">¶</a></p>
+<p id="section-8.4-9">Handling-context refinements follow the same rule. For example:<a href="#section-8.4-9" class="pilcrow">¶</a></p>
 <ul class="normal">
 <li class="normal" id="section-8.4-10.1">
-            <p id="section-8.4-10.1.1"><code>vendorx:vendorCloudService</code> can be a narrower <code>destination</code> under
+            <p id="section-8.4-10.1.1"><code>vendorx:vendorCloudService</code> can be a narrower <code>handling_context</code> under
 <code>ppd:vendorContext</code>;<a href="#section-8.4-10.1.1" class="pilcrow">¶</a></p>
 </li>
           <li class="normal" id="section-8.4-10.2">
-            <p id="section-8.4-10.2.1"><code>vendorx:dataBrokerService</code> can be a narrower <code>destination</code> under
+            <p id="section-8.4-10.2.1"><code>vendorx:dataBrokerService</code> can be a narrower <code>handling_context</code> under
 <code>ppd:thirdPartyContext</code>; and<a href="#section-8.4-10.2.1" class="pilcrow">¶</a></p>
 </li>
           <li class="normal" id="section-8.4-10.3">
             <p id="section-8.4-10.3.1">a named entity such as <code>vendorx:exampleServices</code> is only meaningful if the
-refinement defines which destination role is involved. The same organization
+refinement defines which handling-context role is involved. The same organization
 might reduce to <code>ppd:vendorContext</code> when acting as the participant's own
 vendor service, or to <code>ppd:thirdPartyContext</code> when acting as an unrelated
 recipient.<a href="#section-8.4-10.3.1" class="pilcrow">¶</a></p>
@@ -2226,7 +2297,7 @@ baseline interoperable computation.<a href="#section-8.4-12" class="pilcrow">¶<
           <p id="section-9-2.2.1">the taxonomy defines what the terms used in those combinations mean.<a href="#section-9-2.2.1" class="pilcrow">¶</a></p>
 </li>
       </ul>
-<p id="section-9-3">This distinction matters. A flat bag of supported data types, purposes, actions, and destinations is not enough to describe which combinations actually apply to a participant. The protocol therefore carries atomic declaration statements and atomic policy rules, while this taxonomy defines the term spaces and qualifier meanings used in those objects.<a href="#section-9-3" class="pilcrow">¶</a></p>
+<p id="section-9-3">This distinction matters. A flat bag of supported data types, purposes, actions, and handling contexts is not enough to describe which combinations actually apply to a participant. The protocol therefore carries atomic declaration statements and atomic policy rules, while this taxonomy defines the term spaces and qualifier meanings used in those objects.<a href="#section-9-3" class="pilcrow">¶</a></p>
 <p id="section-9-4">The protocol wire object for qualifiers is named <code>constraints</code>, but the
 semantics described here are qualifier semantics on those atomic dataflows.<a href="#section-9-4" class="pilcrow">¶</a></p>
 <p id="section-9-5">When those objects use non-core comparison-relevant terms, the objects remain
@@ -2241,7 +2312,7 @@ through the extension and mapping rules above.<a href="#section-9-5" class="pilc
   "purpose": "ppd:analyticsAndImprovement",
   "action": "ppd:transfer",
   "source": "ppd:participantObserved",
-  "destination": "ppd:vendorContext",
+  "handling_context": "ppd:vendorContext",
   "constraints": {
     "retention": "ppd:indefinite"
   }
@@ -2253,11 +2324,11 @@ through the extension and mapping rules above.<a href="#section-9-5" class="pilc
 <pre>
 {
   "rule_id": "r1",
-  "data_type": "ppd:mediaData",
+  "data_type": "ppd:contentData",
   "purpose": "ppd:security",
   "action": "ppd:use",
   "source": "ppd:participantObserved",
-  "destination": "ppd:householdContext",
+  "handling_context": "ppd:householdContext",
   "effect": "allow",
   "constraints": {
     "processing_boundary": "ppd:onDeviceOnly"
@@ -2339,8 +2410,16 @@ fallback to a broader local guess.<a href="#section-11-3" class="pilcrow">¶</a>
 <span class="refAuthor">Smullen, D.</span> and <span class="refAuthor">B. Scriber</span>, <span class="refTitle">"Privacy Preference Declaration for Home Networks"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-dsmullen-ppd-architecture-08</span>, <time datetime="2026-05-20" class="refDate">20 May 2026</time>, <span>&lt;<a href="https://datatracker.ietf.org/doc/html/draft-dsmullen-ppd-architecture-08">https://datatracker.ietf.org/doc/html/draft-dsmullen-ppd-architecture-08</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 <dt id="I-D.draft-dsmullen-ppd-protocol">[I-D.draft-dsmullen-ppd-protocol]</dt>
-      <dd>
+        <dd>
 <span class="refAuthor">Smullen, D.</span> and <span class="refAuthor">B. Scriber</span>, <span class="refTitle">"Privacy Preference Declaration Protocol Specification"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-dsmullen-ppd-protocol-02</span>, <time datetime="2026-05-20" class="refDate">20 May 2026</time>, <span>&lt;<a href="https://datatracker.ietf.org/doc/html/draft-dsmullen-ppd-protocol-02">https://datatracker.ietf.org/doc/html/draft-dsmullen-ppd-protocol-02</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="RFC8006">[RFC8006]</dt>
+        <dd>
+<span class="refAuthor">Niven-Jenkins, B.</span>, <span class="refAuthor">Murray, R.</span>, <span class="refAuthor">Caulfield, M.</span>, and <span class="refAuthor">K. Ma</span>, <span class="refTitle">"Content Delivery Network Interconnection (CDNI) Metadata"</span>, <span class="seriesInfo">RFC 8006</span>, <span class="seriesInfo">DOI 10.17487/RFC8006</span>, <time datetime="2016-12" class="refDate">December 2016</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc8006">https://www.rfc-editor.org/rfc/rfc8006</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="RFC9388">[RFC9388]</dt>
+      <dd>
+<span class="refAuthor">Sopher, N.</span> and <span class="refAuthor">S. Mishra</span>, <span class="refTitle">"Content Delivery Network Interconnection (CDNI) Footprint Types: Country Subdivision Code and Footprint Union"</span>, <span class="seriesInfo">RFC 9388</span>, <span class="seriesInfo">DOI 10.17487/RFC9388</span>, <time datetime="2023-07" class="refDate">July 2023</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc9388">https://www.rfc-editor.org/rfc/rfc9388</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 </dl>
 </section>
