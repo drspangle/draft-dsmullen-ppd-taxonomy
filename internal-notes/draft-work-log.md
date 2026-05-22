@@ -133,11 +133,18 @@ It is not part of the rendered Internet-Draft.
   tolerates local semantic variability, including vendor ambiguity, while
   requiring participant-facing terms to collapse back to a declared,
   computable shared core.
-- Current near-term status: the next review should focus on term consistency,
-  residual awkward phrasing in the taxonomy prose, and whether any remaining
-  sections still imply that the household must normalize vendor vocabularies
-  mentally rather than relying on taxonomy reduction.
-- Updated resume point for the next taxonomy read: continue from Section `7`
-  in the rendered draft. Section `6.7.1 Retention` was reviewed, and Section
-  `6.7.3 Processing Boundary` has a deferred wording cleanup note recorded
-  separately.
+- Continued editorial cleanup in the rendered taxonomy draft:
+  - smoothed the `Core Semantic Model` opening so it no longer appears to
+    define protocol object names directly;
+  - clarified that `handling_context` is defined by the taxonomy and carried by
+    protocol objects rather than inferred from examples;
+  - clarified that household-side rules express preferences for signaling and
+    comparison, not baseline enforcement semantics; and
+  - clarified that the shared core is intended to absorb both honest semantic
+    variation and broader or intentionally ambiguous vendor vocabulary without
+    forcing the household to normalize those terms manually.
+- Current near-term status: the full taxonomy review pass is complete.
+  Deferred local cleanup notes remain for Section `6.7.3 Processing
+  Boundary`, especially its opening wording and the clarity of its closing
+  example, but no broader taxonomy reread is pending before the next targeted
+  edit pass.
