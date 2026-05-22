@@ -68,7 +68,7 @@ The current direction should remain conservative: semantic taxonomy terms
 classify what kind of destination or handling context is involved, while
 entity identity is likely a distinct concern.
 
-## 5. Section 6.7.3 Wording Cleanup
+## 4. Section 6.7.3 Wording Cleanup
 
 The current `Processing Boundary` subsection still has two prose issues worth
 revisiting in a later editorial pass:
@@ -87,7 +87,34 @@ model:
 - make the consequence of the example clearer, especially how
   `processing_boundary` narrows `handling_context` without replacing it.
 
-## 4. Provenance and Lineage-Sensitive Policy
+## 5. Taxonomy Authoring and Validation Tooling
+
+The current taxonomy draft is now explicit enough that a substantial part of
+taxonomy correctness could likely be validated computationally, especially for
+non-core extensions meant to remain baseline-interoperable.
+
+Follow-up work should explore a tooling path for authoring and validation of
+taxonomy extensions, such as a linter or schema-backed authoring workflow that
+can check:
+
+- field-family assignment and whether a term is being introduced in the right
+  semantic family;
+- whether a family that supports subsumption declares exactly one immediate
+  broader term;
+- whether broader-than chains terminate at the required core floor;
+- whether a non-core term attempts to collapse multiple semantic axes into one
+  refinement;
+- whether a term improperly encodes policy modality;
+- whether qualifier families are used only in semantically valid scoped
+  contexts; and
+- whether required reduction metadata is present for participant-facing
+  interoperability.
+
+This could make the draft's semantic discipline more practical in real authoring
+work, especially when vendors or ecosystems publish richer local vocabularies
+that still need to compare cleanly against household policy.
+
+## 6. Provenance and Lineage-Sensitive Policy
 
 The current `source` model is intentionally limited to immediate origin in the
 current handling step. It does not attempt to encode full provenance or
