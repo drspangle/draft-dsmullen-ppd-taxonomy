@@ -118,7 +118,7 @@ A baseline atomic dataflow contains these five core fields:
 * `purpose`
 * `action`
 * `source`
-* `destination`
+* `handling_context`
 
 It can also carry structured dataflow qualifiers.
 
@@ -127,7 +127,7 @@ function within the household context. That handling can be described as one
 atomic dataflow with `data_type=ppd:contentData`,
 `purpose=ppd:security`, `action=ppd:use`,
 `source=ppd:participantObserved`,
-`destination=ppd:householdContext`, and
+`handling_context=ppd:householdContext`, and
 `processing_boundary=ppd:onDeviceOnly`. The field and qualifier sections
 below explain how each part of such a dataflow is classified.
 
@@ -235,7 +235,7 @@ intentionally prescriptive about refinement discipline:
 
 These refinement rules do not allow policy modality to be folded into field
 or qualifier concepts. For example, a term that attempts to combine a
-destination category with a policy position, such as a recipient marked as
+handling-context category with a policy position, such as a recipient marked as
 prohibited or required, is not a valid baseline taxonomy refinement. Such
 modality belongs in the policy-rule layer rather than in the taxonomy term
 itself.
@@ -254,7 +254,7 @@ facing use only if all of the following are true:
   document or by a later compatible taxonomy specification;
 * it follows the classification rule of the family in which it appears;
 * it does not collapse multiple semantic axes that this document models
-  separately, such as destination identity plus policy modality, or data type
+  separately, such as handling-context identity plus policy modality, or data type
   plus origin history;
 * if it is a refinement in a family that supports subsumption, it preserves
   and specializes the meaning of its broader term rather than contradicting,
@@ -447,27 +447,30 @@ For example, a camera frame captured by the participant is
 `ppd:vendorProvided`, and an occupancy score computed earlier in the same
 handling path is `ppd:derivedFromPriorData`.
 
-## Destination (To Where)
+## Handling Context
 
-Destination terms identify the recipient-side or handling-side context to
-which the dataflow applies. For `transfer`, Destination identifies the
-recipient or recipient-side handling context. For `use` and `inference`,
-Destination identifies the handling context in which that operation takes
-place. Destination participates in semantic comparison and can support
-broader-than/narrower-than relationships.
-Classification rule: classify by the recipient-side or handling-side context
-to which the current handling step applies.
+Handling Context terms identify the target handling context to which the
+current atomic dataflow applies. For `collection`, Handling Context
+identifies the context into which the collected data is brought. For `use`
+and `inference`, Handling Context identifies the context in which that
+handling step occurs. For `transfer`, Handling Context identifies the
+recipient-side context into which the data is transferred. Handling Context
+participates in semantic comparison and can support broader-than/narrower-than
+relationships.
+Classification rule: classify by the target handling context to which the
+current handling step applies.
 
-Destination does not by itself express a placement restriction on how a `use`
-or `inference` operation executes inside that handling context. More specific
+Handling Context does not by itself express a placement restriction on how a
+`use` or `inference` operation executes inside that context. More specific
 execution restrictions belong in the `processing_boundary` qualifier family.
 The two are related but not interchangeable.
 
-Destination classifies semantic handling context, not organization identity.
+Handling Context classifies semantic handling context, not organization
+identity.
 Named entities such as a particular company or service brand are not
-themselves core destination terms. If such identifiers are introduced through
+themselves core handling-context terms. If such identifiers are introduced through
 non-core refinements, their role-specific meaning still needs to reduce to one
-of the destination categories below.
+of the handling-context categories below.
 
 The initial core term set is:
 
@@ -485,7 +488,7 @@ The initial core term set is:
 Terms such as vendor cloud, household controller, partner analytics service,
 data broker, public feed, or other more specific recipient or handling
 contexts are expected to appear as narrower refinements of these broader
-destination categories.
+handling-context categories.
 
 For example, sending data to the device vendor is `ppd:vendorContext`, using
 data within a household hub is `ppd:householdContext`, and publishing data to
@@ -540,14 +543,14 @@ or deployment profiles. The baseline compact participant-facing form defined
 here therefore standardizes only the categorical retention values above.
 
 Retention comparison does not use a generic taxonomy subsumption hierarchy in
-the same way as `data_type`, `purpose`, `source`, or `destination`.
+the same way as `data_type`, `purpose`, `source`, or `handling_context`.
 
 ### Processing Boundary
 
 Processing Boundary qualifies where a processing operation may execute or
 remain. This family is most natural for `use` and `inference`. It is not the
 primary semantic mechanism for describing transfer recipients, because
-`destination` already identifies the transfer target.
+`handling_context` already identifies the transfer target context.
 Classification rule: classify by where `use` or `inference` may execute
 within the applicable handling context.
 
@@ -555,11 +558,11 @@ In the baseline model, `processing_boundary` is therefore primarily a
 qualifier on `use` and `inference` dataflows rather than a general qualifier
 on `transfer`.
 
-`processing_boundary` does not replace `destination`. `Destination` identifies
-the handling target or recipient context to which the dataflow applies.
+`processing_boundary` does not replace `handling_context`. Handling Context
+identifies the handling target context to which the dataflow applies.
 `processing_boundary` further constrains where a `use` or `inference`
 operation may execute within that context. For example, a `use` dataflow with
-`destination=ppd:householdContext` can still be further narrowed by
+`handling_context=ppd:householdContext` can still be further narrowed by
 `processing_boundary=ppd:onDeviceOnly` or
 `processing_boundary=ppd:inHomeOnly`.
 
@@ -579,45 +582,60 @@ broader-than/narrower-than relationships.
 ### Jurisdiction
 
 Jurisdiction qualifies the legal or regulatory domain relevant to the
-dataflow. It is intended for cases where a policy needs to constrain the legal
-domain under which handling occurs, not merely the physical placement of a
-processor or store.
-Classification rule: classify by the scoped legal or regulatory domain
-relevant to the handling step.
+dataflow. It is intended for cases where a policy needs to declare which
+jurisdictions matter for a handling step or storage context, not to model the
+substance of those jurisdictions' laws and regulations.
+Classification rule: classify by the scoped handling step or storage context
+being constrained, together with the declared jurisdiction codes attached to
+that scope.
 
-Jurisdiction is intentionally not treated as a single flat label. Any use of a
-jurisdiction qualifier MUST identify the scoped subcase it constrains, such as:
+Jurisdiction is a structured qualifier family, not a single flat label. For
+baseline participant-facing use, a jurisdiction qualifier identifies:
 
-* processing
-* storage
-* transfer
+* a `scope`; and
+* one or more jurisdiction codes.
 
-The scoped subcase is part of the qualifier meaning. A jurisdiction
-constraint on processing is not automatically equivalent to the same
-jurisdiction constraint on storage or transfer.
+The `scope` identifies which handling step or storage context the qualifier
+constrains. The baseline `scope` values are:
+
+* `collection`
+* `use`
+* `inference`
+* `transfer`
+* `storage`
+
+The first four values align with baseline handling actions. `storage` is a
+distinct handling-related context used when the constraint applies to retained
+data rather than to a specific action step.
+
+For baseline participant-facing use, the jurisdiction codes use existing
+IETF-defined code formats:
+
+* `countrycode` for ISO 3166-1 alpha-2 country codes in lowercase
+  {{?RFC8006}}; and
+* `subdivisioncode` for ISO 3166-2 subdivision codes in lowercase
+  {{?RFC9388}}.
 
 For example:
 
-* a processing-scoped jurisdiction qualifier can constrain the legal domain
-  under which processing is permitted to occur;
-* a storage-scoped jurisdiction qualifier can constrain the legal domain under
-  which retained data may be kept; and
-* a transfer-scoped jurisdiction qualifier can constrain the legal domain to
-  which a transfer recipient may belong.
+* a collection-scoped jurisdiction qualifier can constrain the jurisdictions
+  in which collection may occur;
+* a transfer-scoped jurisdiction qualifier can constrain the jurisdictions to
+  which a transfer recipient may belong; and
+* a storage-scoped jurisdiction qualifier can constrain the jurisdictions in
+  which retained data may be kept.
 
-This keeps the qualifier machine-comparable while still allowing broader
-sovereignty concerns to be expressed through more concrete baseline semantics.
+Jurisdiction does not use generic taxonomy subsumption. Baseline comparison is
+family-specific:
 
-This document defines the qualifier family and the scoped-semantics rule, but
-it does not yet define a closed baseline set of jurisdiction vocabulary
-values. In this revision, `jurisdiction` is therefore a structured qualifier
-family shell rather than a fully populated baseline value hierarchy.
+* `scope` compares by exact identity;
+* `countrycode` values compare by exact identifier matching;
+* `subdivisioncode` values compare by exact identifier matching; and
+* a `countrycode` also contains `subdivisioncode` values within that country.
 
-Baseline interoperable computation can still validate that a jurisdiction
-qualifier is well-formed and scoped correctly, but semantic comparison of
-jurisdiction values requires a later taxonomy revision or deployment profile
-that defines shared jurisdiction vocabulary and reduction rules for the scoped
-subcase in question.
+For example, `countrycode=us` contains `subdivisioncode=us-ca`, but a
+jurisdiction qualifier scoped to `transfer` does not automatically compare as
+equivalent to the same jurisdiction codes scoped to `storage`.
 
 # Subsumption and Comparison
 
@@ -636,7 +654,7 @@ subsumption:
 * `data_type`
 * `purpose`
 * `source`
-* `destination`
+* `handling_context`
 * `processing_boundary`
 
 The following do not use baseline subsumption:
@@ -645,8 +663,8 @@ The following do not use baseline subsumption:
   exact identity or exact reduction to a core action value; and
 * `retention`, which uses its own categorical or quantitative comparison
   semantics rather than a generic taxonomy hierarchy; and
-* `jurisdiction`, which in this revision defines qualifier structure and scope
-  rules but not yet a closed baseline value hierarchy.
+* `jurisdiction`, which uses the family-specific scope and code-containment
+  semantics defined above rather than a generic taxonomy hierarchy.
 
 This document does not define a full conflict-resolution procedure. It defines
 the semantic basis that allows comparison to remain computable and
@@ -698,10 +716,10 @@ protocol's taxonomy context.
 
 For comparison-relevant fields and qualifier families, namespace declaration
 alone is not enough. When a non-core term fills `data_type`, `purpose`,
-`action`, `source`, or `destination`, or supplies a non-core `retention`,
+`action`, `source`, or `handling_context`, or supplies a non-core `retention`,
 `processing_boundary`, or scoped `jurisdiction` qualifier value, that term
 MUST be defined with the semantic relationship or exact reduction by which it
-is reduced to one or more shared core concepts.
+is reduced to the shared core comparison basis for that family.
 
 A non-core term that does not satisfy the semantic validity conditions above
 is invalid taxonomy content for baseline participant-facing use, even if the
@@ -715,9 +733,8 @@ or "required". Those meanings belong in policy rules, not in taxonomy terms.
 That relationship can include equivalence or broader/narrower placement where
 the field participates in subsumption, or exact reduction where it does not, so
 long as it preserves computable comparison against the shared core floor. For
-`jurisdiction`, baseline participant-facing use further depends on a later
-taxonomy revision or deployment profile that defines the shared scoped
-jurisdiction vocabulary being used.
+`jurisdiction`, that comparison basis is the qualifier's declared `scope`
+together with the `countrycode` and `subdivisioncode` model defined above.
 
 For field families that participate in subsumption, a non-core refinement
 MUST identify exactly one immediate broader term and MUST remain reducible by
@@ -736,14 +753,14 @@ For example, an organization might define:
 * `vendorx:edgeHubOnly` as a narrower `processing_boundary` under
   `ppd:inHomeOnly`.
 
-Destination refinements follow the same rule. For example:
+Handling-context refinements follow the same rule. For example:
 
-* `vendorx:vendorCloudService` can be a narrower `destination` under
+* `vendorx:vendorCloudService` can be a narrower `handling_context` under
   `ppd:vendorContext`;
-* `vendorx:dataBrokerService` can be a narrower `destination` under
+* `vendorx:dataBrokerService` can be a narrower `handling_context` under
   `ppd:thirdPartyContext`; and
 * a named entity such as `vendorx:exampleServices` is only meaningful if the
-  refinement defines which destination role is involved. The same organization
+  refinement defines which handling-context role is involved. The same organization
   might reduce to `ppd:vendorContext` when acting as the participant's own
   vendor service, or to `ppd:thirdPartyContext` when acting as an unrelated
   recipient.
@@ -766,7 +783,7 @@ The protocol and taxonomy have different jobs:
 * the protocol carries which atomic combinations a participant asserts or a household policy applies; and
 * the taxonomy defines what the terms used in those combinations mean.
 
-This distinction matters. A flat bag of supported data types, purposes, actions, and destinations is not enough to describe which combinations actually apply to a participant. The protocol therefore carries atomic declaration statements and atomic policy rules, while this taxonomy defines the term spaces and qualifier meanings used in those objects.
+This distinction matters. A flat bag of supported data types, purposes, actions, and handling contexts is not enough to describe which combinations actually apply to a participant. The protocol therefore carries atomic declaration statements and atomic policy rules, while this taxonomy defines the term spaces and qualifier meanings used in those objects.
 
 The protocol wire object for qualifiers is named `constraints`, but the
 semantics described here are qualifier semantics on those atomic dataflows.
@@ -784,7 +801,7 @@ A declaration statement example is:
   "purpose": "ppd:analyticsAndImprovement",
   "action": "ppd:transfer",
   "source": "ppd:participantObserved",
-  "destination": "ppd:vendorContext",
+  "handling_context": "ppd:vendorContext",
   "constraints": {
     "retention": "ppd:indefinite"
   }
@@ -796,11 +813,11 @@ A corresponding effective-policy rule example is:
 ~~~ json
 {
   "rule_id": "r1",
-  "data_type": "ppd:mediaData",
+  "data_type": "ppd:contentData",
   "purpose": "ppd:security",
   "action": "ppd:use",
   "source": "ppd:participantObserved",
-  "destination": "ppd:householdContext",
+  "handling_context": "ppd:householdContext",
   "effect": "allow",
   "constraints": {
     "processing_boundary": "ppd:onDeviceOnly"
