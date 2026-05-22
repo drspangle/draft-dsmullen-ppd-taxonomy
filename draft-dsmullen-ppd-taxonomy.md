@@ -80,6 +80,16 @@ policy rule describes those same dataflows from the household side: whether
 they are allowed, denied, or qualified. The taxonomy exists so these two views
 can be compared coherently.
 
+In this architecture, those household-side rules express household privacy
+preferences for signaling and comparison purposes. They do not by themselves
+define or imply a separate enforcement mechanism that prevents, compels, or
+otherwise guarantees participant behavior. Enforcement-capable extensions or
+local control mechanisms are separate concerns and are outside the baseline
+scope of this document, because the taxonomy's job is to provide a shared
+semantic floor for expressing and comparing dataflows, while enforcement
+depends on deployment-specific control points, trust models, and device or
+service capabilities.
+
 The taxonomy is designed to be useful in constrained operational environments.
 It therefore separates the stable meaning of core terms from any richer
 external semantic framework that might also describe them. Implementations MAY
@@ -105,46 +115,38 @@ The rest of this document does four things:
 The foundational semantic unit in this taxonomy is an atomic privacy-relevant
 dataflow.
 
-In the baseline PPD model:
-
-* a Device Declaration Statement describes one participant-side dataflow case;
-* a Policy Rule describes one household-side normative dataflow case; and
-* comparison between participant behavior and household policy is grounded in
-  comparison of those dataflows.
+In the baseline PPD model, the participant-facing protocol defined by
+{{?I-D.draft-dsmullen-ppd-protocol}} carries atomic participant-side
+dataflows in declarations and atomic household-side dataflows in policy
+rules. Household-side policy rules also carry a separate rule effect such as
+`allow` or `deny`. Comparison between participant behavior and household
+policy is grounded in comparison of those atomic dataflows.
 
 A baseline atomic dataflow contains these five core fields:
 
-* `data_type`
-* `purpose`
-* `action`
-* `source`
-* `handling_context`
+* `data_type`: what kind of data is involved;
+* `purpose`: why the dataflow occurs;
+* `action`: which privacy-relevant action occurs;
+* `source`: the immediate origin of the data in that dataflow; and
+* `handling_context`: the context in which that dataflow occurs or into which
+  it is directed.
 
 It can also carry structured dataflow qualifiers.
 
+In this document, `handling` is the general umbrella term for the collection,
+use, transfer, or inference of data represented by an atomic dataflow.
+`Processing` is used more narrowly for execution semantics, such as those
+constrained by `processing_boundary`. `Operation` is reserved for protocol
+operations defined by {{?I-D.draft-dsmullen-ppd-protocol}}.
+
 One compact example is a camera that uses observed media data for a security
-function within the household context. That handling can be described as one
+function within the household context. That can be described as one
 atomic dataflow with `data_type=ppd:contentData`,
 `purpose=ppd:security`, `action=ppd:use`,
 `source=ppd:participantObserved`,
 `handling_context=ppd:householdContext`, and
 `processing_boundary=ppd:onDeviceOnly`. The field and qualifier sections
-below explain how each part of such a dataflow is classified.
-Here, `handling_context` names the context a handling step is directed into
-or occurs within. It does not imply that every handling action involves
-transmission or movement of data.
-
-In this document, `dataflow` refers to the structured semantic object being
-compared. `Action` identifies the specific privacy-relevant operation within
-that object. `Handling` is used as a general umbrella term for the
-collection, use, transfer, or inference of data represented by an atomic
-dataflow. `Processing` is used more narrowly for execution semantics, such as
-those constrained by `processing_boundary`. `Operation` is reserved for
-protocol operations defined by {{?I-D.draft-dsmullen-ppd-protocol}}.
-
-The rule effect, such as `allow` or `deny`, is not part of the dataflow tuple
-itself. It belongs to the household-side policy-rule layer defined by
-{{?I-D.draft-dsmullen-ppd-protocol}}.
+below define the field families and qualifier families in detail.
 
 Modality is likewise not part of the taxonomy terms that populate the core
 fields or qualifier families. Core and non-core taxonomy terms MUST NOT encode
@@ -188,6 +190,19 @@ shared semantic substrate against which participant declarations and household
 policy can still be interpreted and compared when those richer vocabularies
 are present.
 
+This means the baseline model tolerates variability in how deployments,
+vendors, or policy tools interpret and name finer-grained concepts. It does
+not require every deployment to use the same intermediate categories. It does
+require comparison-relevant participant-facing terms to collapse back to the
+shared core in a declared, computable way.
+
+That tolerance also applies when participant-facing privacy descriptions are
+broader, narrower, or intentionally ambiguous across vendors or ecosystems.
+The purpose of the shared core is to ensure that such local variation can
+still be reduced to a common computable floor, so that household policies can
+be compared against participant declarations without requiring the household
+to model each vendor's vocabulary or interpretation strategy directly.
+
 For baseline participant-facing interoperability:
 
 * core terms define the shared semantic floor;
@@ -223,6 +238,16 @@ used in that family are expected to reduce to exactly one broader core term.
 If a local concept appears to span multiple broad categories, that usually
 means the handling needs a narrower term below the floor, a clearer field
 choice, or separate atomic dataflows.
+
+That ambiguity is expected to arise in practice, because humans and local
+semantic systems will not always classify concepts the same way. The baseline
+rule is therefore not that every local interpretation must be identical. It is
+that any participant-facing refinement used for interoperable comparison must
+ultimately resolve to one computable branch within the relevant field family.
+
+In other words, variation in local semantic expression is tolerated, but the
+burden of reduction to the shared comparison basis belongs to the
+participant-facing taxonomy content rather than to the household.
 
 For field families that participate in subsumption, this document is therefore
 intentionally prescriptive about refinement discipline:
@@ -291,6 +316,12 @@ data, not on its source, derivation history, transport path, or downstream
 use. Whether data is directly observed or derived from prior data is handled
 through the `source` field rather than by a separate `data_type` category.
 
+This also means different deployments may introduce different narrower data
+type terms for concepts that are genuinely open to interpretation. The
+baseline requirement is not to eliminate that variability. The requirement is
+that a participant-facing `data_type` term still classify by what the data is
+and reduce to one computable branch of the shared core.
+
 The initial core term set is:
 
 * `ppd:identifierData`: data used to identify a user, household, participant,
@@ -320,6 +351,14 @@ types. For example, an occupancy estimate that describes the state of an
 observed space is still classified by what that data means, while the fact
 that it was inferred from prior data is captured separately through the
 `source` field.
+
+Because humans ultimately define many of these refinements, misclassification
+is a real risk. In particular, authors may be tempted to classify by
+downstream use, by source, or by a composite payload rather than by the
+immediate semantic content of the data itself. Such cases are exactly why the
+baseline model requires explicit reduction to the core and rejects a single
+participant-facing refinement that would need multiple immediate broader terms
+within the same `data_type` family.
 
 ## Purpose (Why)
 
@@ -460,7 +499,7 @@ handling step occurs. For `transfer`, Handling Context identifies the
 recipient-side context into which the data is transferred. Handling Context
 participates in semantic comparison and can support broader-than/narrower-than
 relationships.
-Here, `target` means the context the handling step is directed into or occurs
+Here, `target` means the context the dataflow is directed into or occurs
 within. It does not imply that every action is modeled as a transmission.
 Classification rule: classify by the target handling context to which the
 current handling step applies.
@@ -517,9 +556,8 @@ qualifier family outside its defined applicability are invalid.
 ### Retention
 
 Retention qualifies how long the relevant data or resulting artifact may
-persist after the action in question.
-Classification rule: classify by how long the relevant data or artifact may
-persist after the scoped action.
+persist after the scoped action in question. It is classified by how long the
+relevant data or artifact may persist after that scoped action.
 
 Retention is action-sensitive. In particular:
 
@@ -546,9 +584,10 @@ Bounded retention periods are expected to require more specific quantitative
 refinements, including explicit duration values and units, in later revisions
 or deployment profiles. The baseline compact participant-facing form defined
 here therefore standardizes only the categorical retention values above.
-
-Retention comparison does not use a generic taxonomy subsumption hierarchy in
-the same way as `data_type`, `purpose`, `source`, or `handling_context`.
+Retention therefore uses its own family-specific categorical or quantitative
+comparison semantics rather than the broader-than/narrower-than hierarchy used
+by field families such as `data_type`, `purpose`, `source`, or
+`handling_context`.
 
 ### Processing Boundary
 

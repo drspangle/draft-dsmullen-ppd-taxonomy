@@ -113,3 +113,30 @@ It is not part of the rendered Internet-Draft.
   next Datatracker revision, but before submitting again it should get one
   more human read focused on compression, repeated phrasing, and whether `Use
   in PPD Messages` still carries more explanation than it needs.
+
+## 2026-05-22
+
+- Replaced `destination` with `handling_context` across the taxonomy draft and
+  tightened the term so it works coherently for `collection`, `use`,
+  `inference`, and `transfer`.
+- Defined the baseline `jurisdiction` qualifier as a declarative structured
+  family with `scope`, `countrycode`, and `subdivisioncode`, using the RFC
+  code formats already referenced by the draft.
+- Tightened the opening `Core Semantic Model` section so the taxonomy no
+  longer appears to define protocol object names, and the opening field
+  definitions now stand on their own.
+- Added clearer signaling-vs-enforcement boundary text: household policy rules
+  express preferences for signaling and comparison, while enforcement depends
+  on deployment-specific control points, trust models, and participant
+  capabilities and remains out of scope for the baseline draft.
+- Strengthened the extension/core-floor discussion so the draft explicitly
+  tolerates local semantic variability, including vendor ambiguity, while
+  requiring participant-facing terms to collapse back to a declared,
+  computable shared core.
+- Current near-term status: the next review should focus on term consistency,
+  residual awkward phrasing in the taxonomy prose, and whether any remaining
+  sections still imply that the household must normalize vendor vocabularies
+  mentally rather than relying on taxonomy reduction.
+- Explicit resume point for the next taxonomy read: Section `6.7.1 Retention`
+  in the rendered draft, where wording and local flow are currently under
+  close review.
