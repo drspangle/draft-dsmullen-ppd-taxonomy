@@ -1472,10 +1472,9 @@ defined by <span>[<a href="#I-D.draft-dsmullen-ppd-protocol" class="cite xref">I
 </li>
         <li class="normal" id="section-5-6.3">
           <p id="section-5-6.3.1">when a non-core term or qualifier is used in a comparison-relevant field, it
-<span class="bcp14">MUST</span>
-be defined with an explicit relationship or reduction to one or more core
-concepts sufficient to keep the term computable against the shared core
-model.<a href="#section-5-6.3.1" class="pilcrow">¶</a></p>
+<span class="bcp14">MUST</span> be defined with an explicit relationship or reduction to the relevant
+core term or family-specific comparison basis sufficient to keep the term
+computable against the shared core model.<a href="#section-5-6.3.1" class="pilcrow">¶</a></p>
 </li>
       </ul>
 <p id="section-5-7">Terms that do not carry such a relationship can still be locally meaningful,
@@ -1591,8 +1590,8 @@ enough to make a term valid for baseline comparison.<a href="#section-6.1-4" cla
         <h3 id="name-data-type-what">
 <a href="#section-6.2" class="section-number selfRef">6.2. </a><a href="#name-data-type-what" class="section-name selfRef">Data Type (What)</a>
         </h3>
-<p id="section-6.2-1">Data Type terms identify the kind of data involved in the dataflow.
-Classification rule: classify by what the data is.<a href="#section-6.2-1" class="pilcrow">¶</a></p>
+<p id="section-6.2-1">Data Type terms identify the kind of data involved in the dataflow. They are
+classified by what the data is.<a href="#section-6.2-1" class="pilcrow">¶</a></p>
 <p id="section-6.2-2">Data Type participates in semantic comparison and supports
 broader-than/narrower-than relationships.<a href="#section-6.2-2" class="pilcrow">¶</a></p>
 <p id="section-6.2-3">The core Data Type set is intentionally broad. Its purpose is to provide a
@@ -1663,7 +1662,7 @@ within the same <code>data_type</code> family.<a href="#section-6.2-9" class="pi
 <a href="#section-6.3" class="section-number selfRef">6.3. </a><a href="#name-purpose-why" class="section-name selfRef">Purpose (Why)</a>
         </h3>
 <p id="section-6.3-1">Purpose terms identify the reason or operational objective for the handling.
-Classification rule: classify by why the current handling step occurs.<a href="#section-6.3-1" class="pilcrow">¶</a></p>
+They are classified by why the current handling step occurs.<a href="#section-6.3-1" class="pilcrow">¶</a></p>
 <p id="section-6.3-2">Purpose participates in semantic comparison and supports broader-than/
 narrower-than relationships.<a href="#section-6.3-2" class="pilcrow">¶</a></p>
 <p id="section-6.3-3">The core Purpose set is intentionally broad. It is designed to reflect the
@@ -1740,7 +1739,7 @@ and the exact handling paths to which they apply.<a href="#section-6.3-10" class
 <a href="#section-6.4" class="section-number selfRef">6.4. </a><a href="#name-action-how" class="section-name selfRef">Action (How)</a>
         </h3>
 <p id="section-6.4-1">Action terms identify the privacy-relevant operation being performed.
-Classification rule: classify by which privacy-relevant operation occurs.<a href="#section-6.4-1" class="pilcrow">¶</a></p>
+Action terms are classified by which privacy-relevant operation occurs.<a href="#section-6.4-1" class="pilcrow">¶</a></p>
 <p id="section-6.4-2">Unlike several of the other core fields, the baseline action vocabulary is
 intentionally flat rather than hierarchical.<a href="#section-6.4-2" class="pilcrow">¶</a></p>
 <p id="section-6.4-3">The initial core term set is:<a href="#section-6.4-3" class="pilcrow">¶</a></p>
@@ -1770,11 +1769,10 @@ existing data.<a href="#section-6.4-4.4.1" class="pilcrow">¶</a></p>
 <a href="#section-6.5" class="section-number selfRef">6.5. </a><a href="#name-source-from-where" class="section-name selfRef">Source (From Where)</a>
         </h3>
 <p id="section-6.5-1">Source terms identify the immediate origin of the handled data as it enters
-the current handling step. Source does not attempt to encode full provenance
-or multi-step lineage. Source participates in semantic comparison and
-supports broader-than/narrower-than relationships.
-Classification rule: classify by the immediate origin of the data as it
-enters the current handling step.<a href="#section-6.5-1" class="pilcrow">¶</a></p>
+the current handling step. They are classified by that immediate origin.
+Source does not attempt to encode full provenance or multi-step lineage.
+Source participates in semantic comparison and supports broader-than/
+narrower-than relationships.<a href="#section-6.5-1" class="pilcrow">¶</a></p>
 <p id="section-6.5-2">The initial core term set is:<a href="#section-6.5-2" class="pilcrow">¶</a></p>
 <ul class="normal">
 <li class="normal" id="section-6.5-3.1">
@@ -1834,14 +1832,13 @@ handling path is <code>ppd:derivedFromPriorData</code>.<a href="#section-6.5-6" 
 current atomic dataflow applies. For <code>collection</code>, Handling Context
 identifies the context into which the collected data is brought. For <code>use</code>
 and <code>inference</code>, Handling Context identifies the context in which that
-handling step occurs. For <code>transfer</code>, Handling Context identifies the
-recipient-side context into which the data is transferred. Handling Context
+dataflow occurs. For <code>transfer</code>, Handling Context identifies the recipient-
+side context into which the data is transferred. Handling Context
 participates in semantic comparison and can support broader-than/narrower-than
-relationships.
-Here, <code>target</code> means the context the dataflow is directed into or occurs
-within. It does not imply that every action is modeled as a transmission.
-Classification rule: classify by the target handling context to which the
-current handling step applies.<a href="#section-6.6-1" class="pilcrow">¶</a></p>
+relationships. It is classified by the target handling context to which the
+current dataflow applies. Here, <code>target</code> means the context the dataflow is
+directed into or occurs within. It does not imply that every action is
+modeled as a transmission.<a href="#section-6.6-1" class="pilcrow">¶</a></p>
 <p id="section-6.6-2">Handling Context does not by itself express a placement restriction on how a
 <code>use</code> or <code>inference</code> operation executes inside that context. More specific
 execution restrictions belong in the <code>processing_boundary</code> qualifier family.
@@ -1952,11 +1949,11 @@ by field families such as <code>data_type</code>, <code>purpose</code>, <code>so
 <a href="#section-6.7.2" class="section-number selfRef">6.7.2. </a><a href="#name-processing-boundary" class="section-name selfRef">Processing Boundary</a>
           </h4>
 <p id="section-6.7.2-1">Processing Boundary qualifies where a processing operation may execute or
-remain. This family is most natural for <code>use</code> and <code>inference</code>. It is not the
-primary semantic mechanism for describing transfer recipients, because
-<code>handling_context</code> already identifies the transfer target context.
-Classification rule: classify by where <code>use</code> or <code>inference</code> may execute
-within the applicable handling context.<a href="#section-6.7.2-1" class="pilcrow">¶</a></p>
+remain. It is classified by where <code>use</code> or <code>inference</code> may execute within the
+applicable handling context. This family is most natural for <code>use</code> and
+<code>inference</code>. It is not the primary semantic mechanism for describing transfer
+recipients, because <code>handling_context</code> already identifies the transfer target
+context.<a href="#section-6.7.2-1" class="pilcrow">¶</a></p>
 <p id="section-6.7.2-2">In the baseline model, <code>processing_boundary</code> is therefore primarily a
 qualifier on <code>use</code> and <code>inference</code> dataflows rather than a general qualifier
 on <code>transfer</code>.<a href="#section-6.7.2-2" class="pilcrow">¶</a></p>
@@ -1995,10 +1992,9 @@ broader-than/narrower-than relationships.<a href="#section-6.7.2-6" class="pilcr
 <p id="section-6.7.3-1">Jurisdiction qualifies the legal or regulatory domain relevant to the
 dataflow. It is intended for cases where a policy needs to declare which
 jurisdictions matter for a handling step or storage context, not to model the
-substance of those jurisdictions' laws and regulations.
-Classification rule: classify by the scoped handling step or storage context
-being constrained, together with the declared jurisdiction codes attached to
-that scope.<a href="#section-6.7.3-1" class="pilcrow">¶</a></p>
+substance of those jurisdictions' laws and regulations. It is classified by
+the scoped handling step or storage context being constrained, together with
+the declared jurisdiction codes attached to that scope.<a href="#section-6.7.3-1" class="pilcrow">¶</a></p>
 <p id="section-6.7.3-2">Jurisdiction is a structured qualifier family, not a single flat label. For
 baseline participant-facing use, a jurisdiction qualifier identifies:<a href="#section-6.7.3-2" class="pilcrow">¶</a></p>
 <ul class="normal">

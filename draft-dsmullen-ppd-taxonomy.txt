@@ -288,8 +288,9 @@ Table of Contents
 
    *  when a non-core term or qualifier is used in a comparison-relevant
       field, it MUST be defined with an explicit relationship or
-      reduction to one or more core concepts sufficient to keep the term
-      computable against the shared core model.
+      reduction to the relevant core term or family-specific comparison
+      basis sufficient to keep the term computable against the shared
+      core model.
 
    Terms that do not carry such a relationship can still be locally
    meaningful, but they are outside baseline interoperable computation.
@@ -395,7 +396,7 @@ Table of Contents
 6.2.  Data Type (What)
 
    Data Type terms identify the kind of data involved in the dataflow.
-   Classification rule: classify by what the data is.
+   They are classified by what the data is.
 
    Data Type participates in semantic comparison and supports broader-
    than/narrower-than relationships.
@@ -465,8 +466,8 @@ Table of Contents
 6.3.  Purpose (Why)
 
    Purpose terms identify the reason or operational objective for the
-   handling.  Classification rule: classify by why the current handling
-   step occurs.
+   handling.  They are classified by why the current handling step
+   occurs.
 
    Purpose participates in semantic comparison and supports broader-
    than/ narrower-than relationships.
@@ -539,7 +540,7 @@ Table of Contents
 6.4.  Action (How)
 
    Action terms identify the privacy-relevant operation being performed.
-   Classification rule: classify by which privacy-relevant operation
+   Action terms are classified by which privacy-relevant operation
    occurs.
 
    Unlike several of the other core fields, the baseline action
@@ -562,11 +563,10 @@ Table of Contents
 6.5.  Source (From Where)
 
    Source terms identify the immediate origin of the handled data as it
-   enters the current handling step.  Source does not attempt to encode
-   full provenance or multi-step lineage.  Source participates in
-   semantic comparison and supports broader-than/narrower-than
-   relationships.  Classification rule: classify by the immediate origin
-   of the data as it enters the current handling step.
+   enters the current handling step.  They are classified by that
+   immediate origin.  Source does not attempt to encode full provenance
+   or multi-step lineage.  Source participates in semantic comparison
+   and supports broader-than/ narrower-than relationships.
 
    The initial core term set is:
 
@@ -621,14 +621,14 @@ Table of Contents
    the current atomic dataflow applies.  For collection, Handling
    Context identifies the context into which the collected data is
    brought.  For use and inference, Handling Context identifies the
-   context in which that handling step occurs.  For transfer, Handling
-   Context identifies the recipient-side context into which the data is
+   context in which that dataflow occurs.  For transfer, Handling
+   Context identifies the recipient- side context into which the data is
    transferred.  Handling Context participates in semantic comparison
-   and can support broader-than/narrower-than relationships.  Here,
-   target means the context the dataflow is directed into or occurs
-   within.  It does not imply that every action is modeled as a
-   transmission.  Classification rule: classify by the target handling
-   context to which the current handling step applies.
+   and can support broader-than/narrower-than relationships.  It is
+   classified by the target handling context to which the current
+   dataflow applies.  Here, target means the context the dataflow is
+   directed into or occurs within.  It does not imply that every action
+   is modeled as a transmission.
 
    Handling Context does not by itself express a placement restriction
    on how a use or inference operation executes inside that context.
@@ -732,11 +732,11 @@ Table of Contents
 6.7.2.  Processing Boundary
 
    Processing Boundary qualifies where a processing operation may
-   execute or remain.  This family is most natural for use and
-   inference.  It is not the primary semantic mechanism for describing
-   transfer recipients, because handling_context already identifies the
-   transfer target context.  Classification rule: classify by where use
-   or inference may execute within the applicable handling context.
+   execute or remain.  It is classified by where use or inference may
+   execute within the applicable handling context.  This family is most
+   natural for use and inference.  It is not the primary semantic
+   mechanism for describing transfer recipients, because
+   handling_context already identifies the transfer target context.
 
    In the baseline model, processing_boundary is therefore primarily a
    qualifier on use and inference dataflows rather than a general
@@ -771,9 +771,9 @@ Table of Contents
    dataflow.  It is intended for cases where a policy needs to declare
    which jurisdictions matter for a handling step or storage context,
    not to model the substance of those jurisdictions' laws and
-   regulations.  Classification rule: classify by the scoped handling
-   step or storage context being constrained, together with the declared
-   jurisdiction codes attached to that scope.
+   regulations.  It is classified by the scoped handling step or storage
+   context being constrained, together with the declared jurisdiction
+   codes attached to that scope.
 
    Jurisdiction is a structured qualifier family, not a single flat
    label.  For baseline participant-facing use, a jurisdiction qualifier
