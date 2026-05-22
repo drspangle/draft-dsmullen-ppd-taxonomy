@@ -68,6 +68,25 @@ The current direction should remain conservative: semantic taxonomy terms
 classify what kind of destination or handling context is involved, while
 entity identity is likely a distinct concern.
 
+## 5. Section 6.7.3 Wording Cleanup
+
+The current `Processing Boundary` subsection still has two prose issues worth
+revisiting in a later editorial pass:
+
+- the opening sentence still uses the slightly awkward inline "classification
+  rule" style that has been getting smoothed out elsewhere in the draft; and
+- the example near the end of the subsection is harder to parse than it should
+  be and does not explain its reasoning or implication clearly enough.
+
+Follow-up work should tighten that subsection without changing the underlying
+model:
+
+- restate the opening rule in plain prose rather than as a visibly separate
+  stylistic formula;
+- simplify the example sentence structure; and
+- make the consequence of the example clearer, especially how
+  `processing_boundary` narrows `handling_context` without replacing it.
+
 ## 4. Provenance and Lineage-Sensitive Policy
 
 The current `source` model is intentionally limited to immediate origin in the

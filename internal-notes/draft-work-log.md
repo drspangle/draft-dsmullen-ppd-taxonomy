@@ -137,6 +137,7 @@ It is not part of the rendered Internet-Draft.
   residual awkward phrasing in the taxonomy prose, and whether any remaining
   sections still imply that the household must normalize vendor vocabularies
   mentally rather than relying on taxonomy reduction.
-- Explicit resume point for the next taxonomy read: Section `6.7.1 Retention`
-  in the rendered draft, where wording and local flow are currently under
-  close review.
+- Updated resume point for the next taxonomy read: continue from Section `7`
+  in the rendered draft. Section `6.7.1 Retention` was reviewed, and Section
+  `6.7.3 Processing Boundary` has a deferred wording cleanup note recorded
+  separately.
