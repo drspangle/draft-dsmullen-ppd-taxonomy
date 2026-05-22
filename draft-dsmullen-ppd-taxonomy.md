@@ -559,7 +559,7 @@ qualifier on `use` and `inference` dataflows rather than a general qualifier
 on `transfer`.
 
 `processing_boundary` does not replace `handling_context`. Handling Context
-identifies the handling target context to which the dataflow applies.
+identifies the target handling context to which the dataflow applies.
 `processing_boundary` further constrains where a `use` or `inference`
 operation may execute within that context. For example, a `use` dataflow with
 `handling_context=ppd:householdContext` can still be further narrowed by
