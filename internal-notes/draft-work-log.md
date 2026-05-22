@@ -148,3 +148,16 @@ It is not part of the rendered Internet-Draft.
   Boundary`, especially its opening wording and the clarity of its closing
   example, but no broader taxonomy reread is pending before the next targeted
   edit pass.
+- Final pre-submission pass completed:
+  - cross-draft terminology and example alignment were rechecked;
+  - local validation passed for the submitted `-05` revision;
+  - the draft was approved for submission; and
+  - the IOTOPS follow-up email covering the coordinated companion draft set
+    was sent.
+- Submission checkpoint:
+  - GitHub tag `draft-dsmullen-ppd-taxonomy-05` was pushed to trigger the
+    Datatracker submission workflow;
+  - end-of-day status is clean locally and pushed to GitHub; and
+  - next work should wait for submission confirmation and then return to the
+    deferred `6.7.3 Processing Boundary` cleanup or later taxonomy-tooling
+    follow-up work.
