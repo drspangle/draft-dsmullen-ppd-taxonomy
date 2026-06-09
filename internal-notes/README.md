@@ -13,6 +13,12 @@ Use this directory to capture:
 
 Do not put settled taxonomy semantics here if they belong in the draft itself.
 
+Implementation-backed cross-draft implications should not start here. Capture
+them first in the gateway repository's standards-facing handoff note
+[draft-notes/ppd-internet-draft-notes.md](https://code.cablelabs.com/cablelabs/security-evolution/federated-identity-authentication-and-privacy/user-centric-privacy/habanero-ppd-gateway/-/blob/main/draft-notes/ppd-internet-draft-notes.md),
+then copy only the taxonomy-specific normalized work into this directory when
+draft-local editorial notes are still needed.
+
 ## Files
 
 - `template-operations.md`: build, render, GitHub Pages, and Datatracker
