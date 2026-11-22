@@ -5,7 +5,7 @@
 Network Working Group                                         D. Smullen
 Internet-Draft                                                B. Scriber
 Intended status: Informational                                 CableLabs
-Expires: 23 November 2026                                    22 May 2026
+Expires: 26 May 2027                                    22 November 2026
 
 
                 Privacy Preference Declaration Taxonomy
@@ -54,7 +54,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 23 November 2026.
+   This Internet-Draft will expire on 26 May 2027.
 
 Copyright Notice
 
@@ -731,12 +731,11 @@ Table of Contents
 
 6.7.2.  Processing Boundary
 
-   Processing Boundary qualifies where a processing operation may
-   execute or remain.  It is classified by where use or inference may
-   execute within the applicable handling context.  This family is most
-   natural for use and inference.  It is not the primary semantic
-   mechanism for describing transfer recipients, because
-   handling_context already identifies the transfer target context.
+   Processing Boundary qualifies where a use or inference dataflow may
+   execute within the applicable handling context.  It is not the
+   primary semantic mechanism for describing transfer recipients,
+   because handling_context already identifies the transfer target
+   context.
 
    In the baseline model, processing_boundary is therefore primarily a
    qualifier on use and inference dataflows rather than a general
@@ -1120,16 +1119,16 @@ Table of Contents
    [I-D.draft-dsmullen-ppd-architecture]
               Smullen, D. and B. Scriber, "Privacy Preference
               Declaration for Home Networks", Work in Progress,
-              Internet-Draft, draft-dsmullen-ppd-architecture-08, 20 May
-              2026, <https://datatracker.ietf.org/doc/html/draft-
-              dsmullen-ppd-architecture-08>.
+              Internet-Draft, draft-dsmullen-ppd-architecture-11, 13
+              October 2026, <https://datatracker.ietf.org/doc/html/
+              draft-dsmullen-ppd-architecture-11>.
 
    [I-D.draft-dsmullen-ppd-protocol]
               Smullen, D. and B. Scriber, "Privacy Preference
               Declaration Protocol Specification", Work in Progress,
-              Internet-Draft, draft-dsmullen-ppd-protocol-02, 20 May
+              Internet-Draft, draft-dsmullen-ppd-protocol-04, 13 October
               2026, <https://datatracker.ietf.org/doc/html/draft-
-              dsmullen-ppd-protocol-02>.
+              dsmullen-ppd-protocol-04>.
 
    [RFC8006]  Niven-Jenkins, B., Murray, R., Caulfield, M., and K. Ma,
               "Content Delivery Network Interconnection (CDNI)
