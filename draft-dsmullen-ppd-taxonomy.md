@@ -588,12 +588,10 @@ by field families such as `data_type`, `purpose`, `source`, or
 
 ### Processing Boundary
 
-Processing Boundary qualifies where a processing operation may execute or
-remain. It is classified by where `use` or `inference` may execute within the
-applicable handling context. This family is most natural for `use` and
-`inference`. It is not the primary semantic mechanism for describing transfer
-recipients, because `handling_context` already identifies the transfer target
-context.
+Processing Boundary qualifies where a `use` or `inference` dataflow may
+execute within the applicable handling context. It is not the primary
+semantic mechanism for describing transfer recipients, because
+`handling_context` already identifies the transfer target context.
 
 In the baseline model, `processing_boundary` is therefore primarily a
 qualifier on `use` and `inference` dataflows rather than a general qualifier
